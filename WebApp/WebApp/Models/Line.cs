@@ -7,8 +7,8 @@ namespace WebApp.Models
 {
     public class Line
     {
+        public int Id { get; set; }
         public short Number { get; set; }
-        public List<Station> Stations {get;set;}
-        public List<Vehicle> Vehicles { get; set; }
+        public List<Station> Stations { get; set; }
     }
 }

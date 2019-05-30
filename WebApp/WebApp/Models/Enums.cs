@@ -5,11 +5,8 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class Enums
-    {
-        public enum TicketType { HourlyTicket, DailyTicket, MothlyTicket, AnnualTicket };
+    public enum TicketType { HourlyTicket, DailyTicket, MothlyTicket, AnnualTicket };
 
-        public enum CustomerType { Student, Pensioner, Regular };
-        public enum VehicleType { Bus, Tram, Trolleybus};
-    }
+    public enum CustomerType { Student, Pensioner, Regular };
+    public enum VehicleType { Bus, Tram, Trolleybus };
 }

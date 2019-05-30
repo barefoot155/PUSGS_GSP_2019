@@ -7,7 +7,8 @@ namespace WebApp.Models
 {
     public class Ticket
     {
-        public Enums.TicketType TicketType { get; set; }
+        public int Id { get; set; }
+        public TicketType TicketType { get; set; }
         public double Price { get; set; }
         public DateTime CheckTime { get; set; }
         public DateTime ExpirationDate { get; set; }

@@ -7,8 +7,10 @@ namespace WebApp.Models
 {
     public class Schedule
     {
+        public int Id { get; set; }
         public DayOfWeek Day { get; set; }
-        public DateTime Time { get; set; }
+        public List<DateTime> Times { get; set; }
         public Line Line { get; set; }
+        public int LineId { get; set; }
     }
 }

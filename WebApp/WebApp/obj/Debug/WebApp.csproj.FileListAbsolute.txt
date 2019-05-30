@@ -146,3 +146,9 @@ C:\Users\e341-2015\Downloads\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResou
 C:\Users\e341-2015\Downloads\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e341-2015\Downloads\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\e341-2015\Downloads\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.Cache
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.dll
+C:\Users\e341-2015\Documents\PUSGS_GSP_2019-master\WebApp\WebApp\obj\Debug\WebApp.pdb
