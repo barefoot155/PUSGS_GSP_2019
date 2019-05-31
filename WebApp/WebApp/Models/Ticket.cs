@@ -13,7 +13,7 @@ namespace WebApp.Models
         public double Price { get; set; }
         public DateTime CheckTime { get; set; }
         public DateTime ExpirationDate { get; set; }
-        public Pricelist_Item Pricelist_item { get; set; }
+        public virtual Pricelist_Item Pricelist_item { get; set; }
         public int Pricelist_itemId { get; set; }
     }
 }

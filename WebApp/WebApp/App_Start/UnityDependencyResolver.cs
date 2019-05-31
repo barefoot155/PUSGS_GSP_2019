@@ -8,6 +8,7 @@ using System.Web.Http.Dependencies;
 using Unity;
 using Unity.Injection;
 using Unity.Lifetime;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Persistence;
 using WebApp.Persistence.Repository;
@@ -66,8 +67,15 @@ namespace WebApp.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
-           
+            container.RegisterType<IDiscountRepository, DiscountRepository>();
+            container.RegisterType<IItemRepository, ItemRepository>();
+            container.RegisterType<ILineRepository, LineRepository>();
+            container.RegisterType<IPricelistRepository, PricelistRepository>();
+            container.RegisterType<IPricelist_ItemRepository,Pricelist_ItemRepository>();
+            container.RegisterType<IScheduleRepository,ScheduleRepository>();
+            container.RegisterType<IStationRepository,StationRepository>();
+            container.RegisterType<ITicketRepository,TicketRepository>();
+         
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
         }

@@ -10,8 +10,8 @@ namespace WebApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public Location Location { get; set; }
+        public virtual Location Location { get; set; }
         public int LocationId { get; set; }
-        public List<Line> Lines { get; set; }
+        public virtual List<Line> Lines { get; set; }
     }
 }

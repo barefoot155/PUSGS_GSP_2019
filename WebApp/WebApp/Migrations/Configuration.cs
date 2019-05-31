@@ -22,6 +22,61 @@ namespace WebApp.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            //Discount
+            //if(!context.Discounts.Any(d=>d.CustomerType==CustomerType.Student))
+            var disc1 = new Discount() { Id = 1, Coefficient = (float)0.8, CustomerType = CustomerType.Student };
+           
+            //if (!context.Discounts.Any(d => d.CustomerType == CustomerType.Pensioner))
+            var disc2 = new Discount() { Id = 2, Coefficient = (float)0.5, CustomerType = CustomerType.Pensioner };
+           
+            //if (!context.Discounts.Any(d => d.CustomerType == CustomerType.Regular))
+            var disc3 = new Discount() { Id = 3, Coefficient = 1, CustomerType = CustomerType.Regular };
+
+            context.Discounts.AddOrUpdate(a => a.Id, disc1);
+            context.Discounts.AddOrUpdate(a => a.Id, disc2);
+            context.Discounts.AddOrUpdate(a => a.Id, disc3);
+
+            context.SaveChanges();
+
+            //Items
+            //if (!context.Items.Any(i => i.Type == TicketType.HourlyTicket))
+
+            var item1 = new Item() { Id = 1, Type = TicketType.HourlyTicket };
+            var item2 = new Item() { Id = 2, Type = TicketType.DailyTicket };
+            var item3 = new Item() { Id = 3, Type = TicketType.MothlyTicket };
+            var item4 = new Item() { Id = 4, Type = TicketType.AnnualTicket };
+
+
+            context.Items.AddOrUpdate(a => a.Id, item1);
+            //if (!context.Items.Any(i => i.Type == TicketType.DailyTicket))
+            context.Items.AddOrUpdate(a => a.Id, item2);
+            //if (!context.Items.Any(i => i.Type == TicketType.MothlyTicket))
+            context.Items.AddOrUpdate(a => a.Id, item3);
+            //if (!context.Items.Any(i => i.Type == TicketType.AnnualTicket))
+            context.Items.AddOrUpdate(a => a.Id, item4);
+
+            context.SaveChanges();
+
+            //Pricelists
+            //if (!context.Pricelists.Any(p => p.IsActive))
+            var prList = new Pricelist() { Id = 1, IsActive = true, StartDate = DateTime.Now, EndDate = new DateTime(2020, 5, 30) };
+            context.Pricelists.AddOrUpdate(a => a.Id, prList);
+            //Lines
+            //if (!context.Lines.Any(s => s.Number == 7))
+
+            var line = new Line() { Id = 1, Number = 7 };
+            context.Lines.AddOrUpdate(a => a.Id, line);
+
+            context.SaveChanges();
+
+            //Schedules
+            //if (!context.Schedules.Any(s => s.Day == DayOfWeek.Monday))
+
+            var sch = new Schedule() { Id = 1, Day = DayOfWeek.Monday, LineId = context.Lines.Find(1).Id };
+            context.Schedules.AddOrUpdate(a => a.Id, sch);
+
+            context.SaveChanges();
+
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);

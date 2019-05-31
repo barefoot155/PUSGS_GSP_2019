@@ -9,6 +9,6 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         public short Number { get; set; }
-        public List<Station> Stations { get; set; }
+        public virtual List<Station> Stations { get; set; }
     }
 }
