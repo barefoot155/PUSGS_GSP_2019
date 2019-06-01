@@ -450,3 +450,4 @@ C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebAp
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.RegisterMigration.resources

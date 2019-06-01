@@ -14,6 +14,10 @@ namespace WebApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public DateTime DateOfBirth { get; set; }
+        public string Address { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public List<Ticket> Ticket { get; set; }
         public CustomerType Type { get; set; }
 
@@ -22,6 +26,7 @@ namespace WebApp.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here
+            
             return userIdentity;
         }
 

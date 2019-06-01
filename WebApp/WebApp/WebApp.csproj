@@ -251,6 +251,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -263,6 +265,10 @@
     <Compile Include="Migrations\201905301710439_AddDiscount.cs" />
     <Compile Include="Migrations\201905301710439_AddDiscount.Designer.cs">
       <DependentUpon>201905301710439_AddDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906011839374_RegisterMigration.cs" />
+    <Compile Include="Migrations\201906011839374_RegisterMigration.Designer.cs">
+      <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -291,6 +297,7 @@
     <Compile Include="Persistence\Repository\IStationRepository.cs" />
     <Compile Include="Persistence\Repository\ItemRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketRepository.cs" />
+    <Compile Include="Persistence\Repository\IUserRepository.cs" />
     <Compile Include="Persistence\Repository\LineRepository.cs" />
     <Compile Include="Persistence\Repository\LocationRepository.cs" />
     <Compile Include="Persistence\Repository\PricelistRepository.cs" />
@@ -299,6 +306,7 @@
     <Compile Include="Persistence\Repository\ScheduleRepository.cs" />
     <Compile Include="Persistence\Repository\StationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepository.cs" />
+    <Compile Include="Persistence\Repository\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -404,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905301710439_AddDiscount.resx">
       <DependentUpon>201905301710439_AddDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011839374_RegisterMigration.resx">
+      <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
