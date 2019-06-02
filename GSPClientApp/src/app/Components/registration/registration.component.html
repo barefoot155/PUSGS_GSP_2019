@@ -1,0 +1,40 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <label>
+    UserName:
+    <input type="text" formControlName="UserName" required> 
+  </label>
+  <label>
+    Email:
+    <input type="text" formControlName="Email" required> 
+  </label>
+  <label>
+    Password:
+    <input type="password" formControlName="Password" required> 
+  </label>
+  <label>
+    Confirm password:
+    <input type="password" formControlName="ConfirmPassword" required> 
+  </label>
+  <label>
+    Name:
+    <input type="text" formControlName="Name"> 
+  </label>
+  <label>
+    Surname:
+    <input type="text" formControlName="Surname"> 
+  </label>
+  <label>
+    Phone number:
+    <input type="text" formControlName="PhoneNumber"> 
+  </label>
+  <label>
+    Date of birth:
+    <input type="text" formControlName="DateOfBirth"> 
+  </label>
+  <label>
+    Address:
+    <input type="text" formControlName="Address"> 
+  </label>
+
+  <button type="submit">Submit</button>
+</form>>

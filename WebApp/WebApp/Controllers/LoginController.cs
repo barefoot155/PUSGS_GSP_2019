@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApp.Models;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -19,9 +20,9 @@ namespace WebApp.Controllers
         }
                 
         [Route("PostLogin")]
-        public IHttpActionResult PostLogin(string username,string password)
+        public IHttpActionResult PostLogin(LoginBindingModel loginModel)
         {
-            if(unitOfWork.Users.Login(username,password))
+            if(unitOfWork.Users.Login(loginModel.Username, loginModel.Password))
                 return Ok();
             return ResponseMessage(new HttpResponseMessage(HttpStatusCode.Forbidden) { ReasonPhrase = "Wrong username or password." });
         }

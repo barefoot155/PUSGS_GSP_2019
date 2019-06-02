@@ -5,6 +5,16 @@ using Newtonsoft.Json;
 namespace WebApp.Models
 {
     // Models used as parameters to AccountController actions.
+
+    public class LoginBindingModel
+    {
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+        [Required]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+    }
     public class DiscountBindingModel
     {
         [Required]
