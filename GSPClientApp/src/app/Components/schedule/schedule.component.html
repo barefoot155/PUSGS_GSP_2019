@@ -1,7 +1,12 @@
-<form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
   <label>
       Enter bus-line number:
       <input type="text" name="lineId" formControlName="LineId"> 
     </label>
   <button type="submit">Submit</button>
-</form>
+</form> -->
+<label>
+  Enter bus-lin number:
+  <input type="text" #lineId>
+</label>
+<button type="submit" (click)="onSubmit(lineId.value)">Submit</button>

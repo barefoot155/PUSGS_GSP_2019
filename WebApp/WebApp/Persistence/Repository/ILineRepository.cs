@@ -9,5 +9,6 @@ namespace WebApp.Persistence.Repository
 {
     public interface ILineRepository: IRepository<Line, int>
     {
+        int GetLineIdByLineNumber(string lineNumber);
     }
 }

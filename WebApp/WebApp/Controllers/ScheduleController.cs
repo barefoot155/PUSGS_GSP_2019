@@ -24,8 +24,9 @@ namespace WebApp.Controllers
         [ResponseType(typeof(IEnumerable<Schedule>))]
         [HttpGet]
         [Route("GetSchedule")]
-        public IHttpActionResult GetSchedule(int lineId)
+        public IHttpActionResult GetSchedule(string lineNumber)
         {
+            int lineId = unitOfWork.Lines.GetLineIdByLineNumber(lineNumber);
             var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId);
             return Ok(schs);
         }

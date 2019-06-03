@@ -12,6 +12,7 @@ import { RegisterServiceService } from 'src/app/Services/register-service.servic
 import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { ScheduleServiceService } from 'src/app/Services/schedule-service.service';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [HttpService, LoginServiceService, RegisterServiceService, ScheduleServiceService],
   bootstrap: [AppComponent]

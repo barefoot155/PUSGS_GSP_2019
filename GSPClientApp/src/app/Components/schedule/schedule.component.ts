@@ -8,16 +8,13 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-  scheduleForm = this.fb.group({
-    LineId : ['']
-  });
-  constructor(private scheduleService : ScheduleServiceService, private fb : FormBuilder) { }
+  
+  constructor(private scheduleService : ScheduleServiceService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(){
-    let lineId = "1"; //event.target.lineId.value;
+  onSubmit(lineId : string){
 
     this.scheduleService.getScheduleForLine(lineId).subscribe(data => {
       console.log(data);

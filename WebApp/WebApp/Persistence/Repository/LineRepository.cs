@@ -15,5 +15,13 @@ namespace WebApp.Persistence.Repository
         {
 
         }
+
+        public int GetLineIdByLineNumber(string lineNumber)
+        {
+            //short zamijeni u modelu sa string
+            var num = short.Parse(lineNumber);
+            
+            return AppDbContext.Lines.FirstOrDefault(l => l.Number == num).Id;
+        }
     }
 }

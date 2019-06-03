@@ -20,7 +20,7 @@ namespace WebApp.Persistence.UnitOfWork
         public IDiscountRepository Discounts { get; set; }
         //[Dependency]
         public IItemRepository Items { get; set; }
-        //[Dependency]
+        [Dependency]
         public ILineRepository Lines { get; set; }
         //[Dependency]
         public ILocationRepository Locations { get; set; }
