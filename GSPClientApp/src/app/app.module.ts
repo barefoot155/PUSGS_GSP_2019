@@ -8,19 +8,25 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { HttpService } from './Services/http.service';
 import { LoginServiceService } from './Services/login-service.service';
+import { RegisterServiceService } from 'src/app/Services/register-service.service';
+import { ScheduleComponent } from './Components/schedule/schedule.component';
+import { ScheduleServiceService } from 'src/app/Services/schedule-service.service';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ScheduleComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [HttpService, LoginServiceService],
+  providers: [HttpService, LoginServiceService, RegisterServiceService, ScheduleServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

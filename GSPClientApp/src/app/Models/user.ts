@@ -7,6 +7,6 @@ export class User{
     Surname : string;
     PhoneNumber : string;
     Address : string;
-    DateOfBirth : Date;
-    //CustomerType
+    DateOfBirth : string;
+    CustomerType : number;
 }

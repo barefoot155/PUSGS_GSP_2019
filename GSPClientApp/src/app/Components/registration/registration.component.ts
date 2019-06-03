@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RegisterServiceService } from 'src/app/Services/register-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,10 +17,11 @@ export class RegistrationComponent implements OnInit {
     Surname : [''],
     PhoneNumber : [''],
     DateOfBirth : [''],
-    Address : ['']
+    Address : [''],
+    CustomerType : ['']
   });
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder, private registerService : RegisterServiceService) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,9 @@ export class RegistrationComponent implements OnInit {
   onSubmit()
   {
     console.log(this.registerForm.value);
+    this.registerService.register(this.registerForm.value).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

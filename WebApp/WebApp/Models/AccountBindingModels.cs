@@ -158,7 +158,7 @@ namespace WebApp.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "ConfirmPassword")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         
@@ -170,8 +170,8 @@ namespace WebApp.Models
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Date of birth")]
-        public DateTime DateOfBirth { get; set; }
+        [Display(Name = "DateOfBirth")]
+        public string DateOfBirth { get; set; }
 
         [Required]
         [Display(Name = "Address")]
@@ -184,6 +184,10 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "Surname")]
         public string Surname { get; set; }
+
+        [Required]
+        [Display(Name = "CustomerType")]
+        public CustomerType CustomerType { get; set; }
     }
 
     public class RegisterExternalBindingModel

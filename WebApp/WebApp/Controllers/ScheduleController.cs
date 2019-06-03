@@ -26,7 +26,8 @@ namespace WebApp.Controllers
         [Route("GetSchedule")]
         public IHttpActionResult GetSchedule(int lineId)
         {
-            return Ok(unitOfWork.Schedules.GetSchedulesByLineId(lineId));
+            var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId);
+            return Ok(schs);
         }
     }
 }

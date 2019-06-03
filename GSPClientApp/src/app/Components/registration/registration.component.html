@@ -1,40 +1,98 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <label>
-    UserName:
-    <input type="text" formControlName="UserName" required> 
-  </label>
-  <label>
-    Email:
-    <input type="text" formControlName="Email" required> 
-  </label>
-  <label>
-    Password:
-    <input type="password" formControlName="Password" required> 
-  </label>
-  <label>
-    Confirm password:
-    <input type="password" formControlName="ConfirmPassword" required> 
-  </label>
-  <label>
-    Name:
-    <input type="text" formControlName="Name"> 
-  </label>
-  <label>
-    Surname:
-    <input type="text" formControlName="Surname"> 
-  </label>
-  <label>
-    Phone number:
-    <input type="text" formControlName="PhoneNumber"> 
-  </label>
-  <label>
-    Date of birth:
-    <input type="text" formControlName="DateOfBirth"> 
-  </label>
-  <label>
-    Address:
-    <input type="text" formControlName="Address"> 
-  </label>
-
-  <button type="submit">Submit</button>
-</form>>
+  <table class="table table-bordered">
+      <thead>
+          <tr class="success">
+              <th colspan="2">
+                  Registration                    
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr id="upozorenje" class="hidden">
+              <td colspan="2"><strong>Greska!</strong>Vec postoji korisnik sa zadatim korisnickim imenom</td>
+          </tr>
+          <tr>
+              <td>Username:</td>
+              <td>
+                  <input type="text" formControlName="UserName" placeholder="Username..." required> 
+                  <!--input type="text" id="txtUsername" placeholder="Korisnicko ime..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Email:</td>
+              <td>
+                  <input type="text" formControlName="Email" placeholder="Email..." required>
+                  <!--input type="email" id="txtEmail" placeholder="Email..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Password:</td>
+              <td>
+                  <input type="password" formControlName="Password" placeholder="Password..." required>
+                  <!--input type="password" id="txtPassword"
+                         placeholder="Sifra..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Confirm password:</td>
+              <td>
+                  <input type="password" formControlName="ConfirmPassword" placeholder="Confirm password..." required>
+                  <!--input type="password" id="txtPassword"
+                         placeholder="Sifra..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Name:</td>
+              <td>
+                  <input type="text" id="txtIme" pattern="^[A-Za-z]*$" formControlName="Name" placeholder="Name..."> 
+                  <!--input type="text" id="txtIme" pattern="^[A-Za-z]*$"
+                         placeholder="Ime..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Surname:</td>
+              <td>
+                  <input type="text" formControlName="Surname" placeholder="Surname...">
+                  <!--input type="text" id="txtPrezime"
+                         placeholder="Prezime..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Address:</td>
+              <td>
+                  <input type="text" formControlName="Address" placeholder="Address...">
+              </td>
+          </tr>
+          <tr>
+              <td>Phone number:</td>
+              <td>
+                  <input type="text" formControlName="PhoneNumber" placeholder="Phone number..."> 
+                  <!--input type="text" id="txtTelefon"
+                         placeholder="Broj telefona..." /-->
+              </td>
+          </tr>
+          <tr>
+              <td>Date of birth:</td>
+              <td>
+                  <input type="text" formControlName="DateOfBirth" placeholder="Date of birth..."> 
+              </td>
+          </tr>
+          <tr>
+              <td>Customer type:</td>
+              <td>
+                  <input type="radio" formControlName="CustomerType" name="CustomerType" value="0" checked="checked"> Student
+                  <input type="radio" formControlName="CustomerType" name="CustomerType" value="1" > Pensioner
+                  <input type="radio" formControlName="CustomerType" name="CustomerType" value="2" > Regular
+              </td>
+          </tr>
+          
+          <tr class="success">
+              <td colspan="2">
+                    <button class="btn btn-success pull-right" type="submit"> Register</button>
+                  <!-- <input id="btnRegister" class="btn btn-success" type="button"
+                         value="Registruj se" /> -->
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  </form>

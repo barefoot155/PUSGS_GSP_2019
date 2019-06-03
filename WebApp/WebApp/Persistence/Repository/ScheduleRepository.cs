@@ -19,7 +19,7 @@ namespace WebApp.Persistence.Repository
         public IEnumerable<Schedule> GetSchedulesByLineId(int lineId)
         {
             List<Schedule> temp = AppDbContext.Schedules.ToList();
-            return AppDbContext.Schedules.Where(s => s.LineId == lineId);
+            return AppDbContext.Schedules.Where(s => s.LineId == lineId).ToList();
         }
     }
 }

@@ -22,17 +22,20 @@ namespace WebApp.Controllers
         [Route("PostRegistration")]
         public IHttpActionResult PostRegistration(RegisterBindingModel registerBinding)
         {
+            DateTime.TryParse(registerBinding.DateOfBirth, out DateTime date);
+
             ApplicationUser user = new ApplicationUser()
             {
                 Email = registerBinding.Email,
                 UserName = registerBinding.UserName,
-                DateOfBirth = registerBinding.DateOfBirth,
+                DateOfBirth = date,
                 Address = registerBinding.Address,
                 Id = registerBinding.UserName,
                 Name = registerBinding.Name,
                 Surname = registerBinding.Surname,
                 PhoneNumber = registerBinding.PhoneNumber,
-                PasswordHash = ApplicationUser.HashPassword(registerBinding.Password)
+                PasswordHash = ApplicationUser.HashPassword(registerBinding.Password),
+                Type = registerBinding.CustomerType
             };
 
             if (!unitOfWork.Users.Register(user))
