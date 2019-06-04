@@ -9,15 +9,24 @@ import { Observable } from 'rxjs';
 })
 export class LoginServiceService extends HttpService {
 
-  specificUrl = this.url + "api/Login/PostLogin";
+  specificUrl = this.url + 'oauth/token';//+ "api/Login/PostLogin";
 
   login(data: LoginModel) : Observable<any>{
     let httpOptions = {
       headers:{
-        "Content-type":"application/json"
+        "Content-type":"application/x-www-form-urlencoded"
       }
     }
-    //let params = `username=${data.UserName}&password=${data.Password}`;
-    return this.http.post(this.specificUrl, data, httpOptions);
+    let params = `username=${data.UserName}&password=${data.Password}&grant_type=password`;
+    console.log(this.specificUrl+"----"+params);
+    return this.http.post(this.specificUrl, params, httpOptions);
+  }
+
+  logout(){
+    localStorage.setItem('username',undefined);
+    localStorage.setItem('jwt',undefined);
+    localStorage.setItem('role',undefined);
+
+    console.log('Logout succeed.');
   }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -18,10 +20,15 @@ namespace WebApp.Persistence.Repository
 
         public bool Register(ApplicationUser user)
         {
-            if(!AppDbContext.Users.Any(u=>u.Email==user.Email || u.UserName == user.UserName))
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            if (!AppDbContext.Users.Any(u=>u.Email==user.Email || u.UserName == user.UserName))
             {
-                AppDbContext.Users.Add(user);
-                AppDbContext.SaveChanges();
+                userManager.Create(user);
+                userManager.AddToRole(user.Id, "AppUser");
+
+                context.SaveChanges();
 
                 return true;
             }

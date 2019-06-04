@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterServiceService } from 'src/app/Services/register-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -21,7 +22,7 @@ export class RegistrationComponent implements OnInit {
     CustomerType : ['']
   });
 
-  constructor(private fb : FormBuilder, private registerService : RegisterServiceService) { }
+  constructor(private fb : FormBuilder, private registerService : RegisterServiceService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -30,7 +31,8 @@ export class RegistrationComponent implements OnInit {
   {
     console.log(this.registerForm.value);
     this.registerService.register(this.registerForm.value).subscribe(data => {
-      console.log(data);
+      console.log('Registration succeed.');
+      this.router.navigate(['/login']);
     });
   }
 
