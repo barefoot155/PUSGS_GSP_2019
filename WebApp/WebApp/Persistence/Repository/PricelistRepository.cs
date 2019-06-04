@@ -15,5 +15,10 @@ namespace WebApp.Persistence.Repository
         {
 
         }
+
+        public int GetActivePricelistId()
+        {
+            return AppDbContext.Pricelists.Single(pl => pl.IsActive).Id;
+        }
     }
 }

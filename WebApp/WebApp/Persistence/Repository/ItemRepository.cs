@@ -15,5 +15,10 @@ namespace WebApp.Persistence.Repository
         {
 
         }
+
+        public int GetTicketIdForTicketType(TicketType type)
+        {
+            return AppDbContext.Items.Single(i => i.Type == type).Id;
+        }
     }
 }

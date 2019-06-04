@@ -9,5 +9,7 @@ namespace WebApp.Persistence.Repository
     public interface IDiscountRepository : IRepository<Discount, int>
     {
         //IEnumerable<Discount> GetAllDiscountsForSinglePage(int pageIndex, int pageSize);
+
+        float GetCoefficientForCustomerType(CustomerType type);
     }
 }

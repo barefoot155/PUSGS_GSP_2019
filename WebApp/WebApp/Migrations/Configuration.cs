@@ -61,6 +61,22 @@ namespace WebApp.Migrations
             //if (!context.Pricelists.Any(p => p.IsActive))
             var prList = new Pricelist() { Id = 1, IsActive = true, StartDate = DateTime.Now, EndDate = new DateTime(2020, 5, 30) };
             context.Pricelists.AddOrUpdate(a => a.Id, prList);
+
+            context.SaveChanges();
+
+            //Pricelist_items
+            var pricelistItem1 = new Pricelist_Item() { Id = 1, ItemId = context.Items.Find(item1.Id).Id, PricelistId = context.Pricelists.Find(prList.Id).Id, Price = 65 };
+            var pricelistItem2 = new Pricelist_Item() { Id = 2, ItemId = context.Items.Find(item2.Id).Id, PricelistId = context.Pricelists.Find(prList.Id).Id, Price = 300 };
+            var pricelistItem3 = new Pricelist_Item() { Id = 3, ItemId = context.Items.Find(item3.Id).Id, PricelistId = context.Pricelists.Find(prList.Id).Id, Price = 1000 };
+            var pricelistItem4 = new Pricelist_Item() { Id = 4, ItemId = context.Items.Find(item4.Id).Id, PricelistId = context.Pricelists.Find(prList.Id).Id, Price = 6000 };
+
+            context.Pricelist_Items.AddOrUpdate(p => p.Id, pricelistItem1);
+            context.Pricelist_Items.AddOrUpdate(p => p.Id, pricelistItem2);
+            context.Pricelist_Items.AddOrUpdate(p => p.Id, pricelistItem3);
+            context.Pricelist_Items.AddOrUpdate(p => p.Id, pricelistItem4);
+
+            context.SaveChanges();
+
             //Lines
             //if (!context.Lines.Any(s => s.Number == 7))
 

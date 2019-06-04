@@ -15,5 +15,17 @@ namespace WebApp.Persistence.Repository
         {
 
         }
+
+        public double GetPriceWithDiscount(int pricelistId, int itemId, float coefficient)
+        {
+            double price = GetPriceForTicketType(pricelistId, itemId);
+
+            return price * coefficient;
+        }
+
+        public double GetPriceForTicketType(int pricelistId, int itemId)
+        {
+            return AppDbContext.Pricelist_Items.Single(pli => pli.PricelistId == pricelistId && pli.ItemId == itemId).Price; ;
+        }
     }
 }

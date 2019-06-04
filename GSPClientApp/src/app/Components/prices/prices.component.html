@@ -1,0 +1,11 @@
+<label>
+  Select ticket type:
+  <select #ticketType>
+    <option value="0">Hourly ticket</option>
+    <option value="1">Daily ticket</option>
+    <option value="2">MothlyTicket</option>
+    <option value="3">AnnualTicket</option>
+  </select>
+</label>
+<button type="submit" (click)="onSubmit(ticketType.value)">Submit</button>
+<p>Price: {{price}}</p>

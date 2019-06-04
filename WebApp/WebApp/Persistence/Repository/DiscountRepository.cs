@@ -16,6 +16,11 @@ namespace WebApp.Persistence.Repository
 
         }
 
+        public float GetCoefficientForCustomerType(CustomerType type)
+        {
+            return AppDbContext.Discounts.Single(d => d.CustomerType == type).Coefficient;
+        }
+
         //public IEnumerable<Discount> GetAllProductsForSinglePage(int pageIndex, int pageSize)
         //{
         //    return AppDbContext.Products.Skip((pageIndex - 1) * pageSize).Take(pageSize);

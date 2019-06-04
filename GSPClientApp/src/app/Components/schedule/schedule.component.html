@@ -1,12 +1,38 @@
-<!-- <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
-  <label>
-      Enter bus-line number:
-      <input type="text" name="lineId" formControlName="LineId"> 
-    </label>
-  <button type="submit">Submit</button>
-</form> -->
-<label>
-  Enter bus-lin number:
-  <input type="text" #lineId>
-</label>
-<button type="submit" (click)="onSubmit(lineId.value)">Submit</button>
+<table class="table table-bordered">
+  <thead>
+      <tr class="success">
+          <th colspan="2">
+              Schedule
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Enter bus-line number:</td>
+          <td>
+              <input type="text" #lineId placeholder="Bus-line number...">
+          </td>
+      </tr>        
+      <tr class="success">
+          <td colspan="2">
+              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineId.value)">Submit</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div>
+<table id="table" class="table table-bordered">
+  <thead>
+    <tr class="success">
+      <th style="text-align:center">{{scheduleTableHeader}}</th>
+    </tr>
+  </thead>
+  <tbody class="success">
+    <tr *ngFor="let sch of schedules">
+      <td style="text-align:center"> {{sch.Day}} </td>
+    </tr>
+  </tbody>
+</table>
+</div>

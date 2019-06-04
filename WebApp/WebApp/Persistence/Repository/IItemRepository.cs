@@ -8,5 +8,6 @@ namespace WebApp.Persistence.Repository
 {
     public interface IItemRepository:IRepository<Item,int>
     {
+        int GetTicketIdForTicketType(TicketType type);
     }
 }

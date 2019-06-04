@@ -18,15 +18,15 @@ namespace WebApp.Persistence.UnitOfWork
         }
         //[Dependency]
         public IDiscountRepository Discounts { get; set; }
-        //[Dependency]
+        [Dependency]
         public IItemRepository Items { get; set; }
         [Dependency]
         public ILineRepository Lines { get; set; }
         //[Dependency]
         public ILocationRepository Locations { get; set; }
-        //[Dependency]
+        [Dependency]
         public IPricelistRepository Pricelists { get; set; }
-        //[Dependency]
+        [Dependency]
         public IPricelist_ItemRepository Pricelist_Items { get; set; }
         [Dependency]
         public IScheduleRepository Schedules { get; set; }

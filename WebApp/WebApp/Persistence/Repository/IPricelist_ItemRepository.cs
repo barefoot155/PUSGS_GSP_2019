@@ -9,5 +9,7 @@ namespace WebApp.Persistence.Repository
 {
     public interface IPricelist_ItemRepository : IRepository<Pricelist_Item,int>
     {
+        double GetPriceWithDiscount(int pricelistId, int itemId, float coefficient);
+        double GetPriceForTicketType(int pricelistId, int itemId);
     }
 }

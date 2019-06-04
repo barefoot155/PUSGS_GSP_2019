@@ -75,6 +75,16 @@ namespace WebApp.Models
         public double Price { get; set; }
     }
 
+    public class TicketPriceBindingModel
+    {
+        [Required]
+        [Display(Name = "TicketType")]
+        public TicketType TicketType { get; set; }
+        [Required]
+        [Display(Name = "CustomerType")]
+        public CustomerType CustomerType { get; set; }
+    }
+
     public class ScheduleBindingModel
     {
         [Required]
