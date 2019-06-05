@@ -49,5 +49,10 @@ namespace WebApp.Persistence.Repository
 
             return false;
         }
+
+        public ApplicationUser GetUserByUsername(string username)
+        {
+            return AppDbContext.Users.Single(u => u.UserName == username);
+        }
     }
 }

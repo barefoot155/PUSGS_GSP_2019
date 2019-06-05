@@ -6,6 +6,40 @@ namespace WebApp.Models
 {
     // Models used as parameters to AccountController actions.
 
+    public class UserDataBindingModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "DateOfBirth")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
+        [Required]
+        [Display(Name = "CustomerType")]
+        public CustomerType CustomerType { get; set; }
+    }
+
     public class LoginBindingModel
     {
         [Required]

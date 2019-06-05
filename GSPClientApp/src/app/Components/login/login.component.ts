@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
 import { LoginModel } from 'src/app/Models/loginModel';
+import { UserData } from 'src/app/Models/userData';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
     Password : ['', Validators.required]
   });
 
+  loggedUser : UserData;
+
   constructor(private fb : FormBuilder, private loginService : LoginServiceService) { }
 
   ngOnInit() {
@@ -21,20 +24,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit()
   {
-    this.loginService.login(this.loginForm.value as LoginModel).subscribe(data => {
-      console.log(data);
-      console.log(data.access_token);
-
+    this.loginService.login(this.loginForm.value as LoginModel).subscribe(data => 
+    {
       let jwt = data.access_token;
 
       let jwtData = jwt.split('.')[1];
-      console.log('jwtData: ' + jwtData);
 
       let decodedJwtJsonData = window.atob(jwtData);
-      console.log('decodedJwtJsonData: ' + decodedJwtJsonData);
 
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
-      console.log('decodedJwtData:'+ decodedJwtData);
 
       let role = decodedJwtData.role;
       console.log('Role:' + role);
@@ -42,8 +40,19 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('jwt', jwt);
       localStorage.setItem('username', this.loginForm.value.UserName);
       localStorage.setItem('role', role);
+    
+      this.getUserData();
+      
     }, 
       err=>console.log('Login failed. Invalid username or password.')
+    );
+  }
+
+  getUserData()
+  {
+    this.loginService.getUserData(localStorage.getItem("username")).subscribe(
+      data => {this.loggedUser = data;
+      console.log(this.loggedUser)}
     );
   }
 }

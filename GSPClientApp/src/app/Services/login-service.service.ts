@@ -3,6 +3,7 @@ import { HttpService } from './http.service';
 import { LoginModel } from '../Models/loginModel';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserData } from 'src/app/Models/userData';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class LoginServiceService extends HttpService {
     let params = `username=${data.UserName}&password=${data.Password}&grant_type=password`;
     console.log(this.specificUrl+"----"+params);
     return this.http.post(this.specificUrl, params, httpOptions);
+  }
+
+  getUserData(username : string) : Observable<UserData>
+  {
+    return this.http.get<UserData>(this.url + `api/Login/GetUserData?username=${username}`);
   }
 
   logout(){
