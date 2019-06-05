@@ -17,11 +17,23 @@ namespace WebApp.Persistence.Repository
         }
 
         public int GetLineIdByLineNumber(string lineNumber)
+        {            
+            return AppDbContext.Lines.FirstOrDefault(l => l.Number == lineNumber).Id;
+        }
+
+        public List<string> GetLinesByLineType(LineType lineType)
         {
-            //short zamijeni u modelu sa string
-            var num = short.Parse(lineNumber);
-            
-            return AppDbContext.Lines.FirstOrDefault(l => l.Number == num).Id;
+            List<string> ret = new List<string>();
+
+            foreach (var item in AppDbContext.Lines.ToList())
+            {
+                if(item.LineType == lineType)
+                {
+                    ret.Add(item.Number);
+                }
+            }
+
+            return ret;
         }
     }
 }

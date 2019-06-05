@@ -7,10 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface ILineRepository: IRepository<Line, int>
+    public interface IScheduleTimeRepository : IRepository<ScheduleTime, int>
     {
-        int GetLineIdByLineNumber(string lineNumber);
-
-        List<string> GetLinesByLineType(LineType lineType);
     }
 }

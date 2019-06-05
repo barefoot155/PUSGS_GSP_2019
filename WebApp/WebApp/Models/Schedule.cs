@@ -9,7 +9,7 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         public DayOfWeek Day { get; set; }
-        public virtual List<DateTime> Times { get; set; }
+        public virtual List<ScheduleTime> Times { get; set; }
         public virtual Line Line { get; set; }
         public int LineId { get; set; }
     }

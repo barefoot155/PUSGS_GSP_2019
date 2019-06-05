@@ -36,6 +36,8 @@ namespace WebApp.Persistence.UnitOfWork
         public ITicketRepository Tickets { get; set; }
         [Dependency]
         public IUserRepository Users { get; set; }
+        //[Dependency]
+        public IScheduleTimeRepository ScheduleTimes { get; set; }
 
         public int Complete()
         {

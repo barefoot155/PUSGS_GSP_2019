@@ -8,7 +8,9 @@ namespace WebApp.Models
     public class Line
     {
         public int Id { get; set; }
-        public short Number { get; set; }
+        public string Number { get; set; }
         public virtual List<Station> Stations { get; set; }
+        public LineType LineType { get; set; }
+
     }
 }

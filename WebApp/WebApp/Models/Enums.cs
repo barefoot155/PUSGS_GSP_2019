@@ -8,5 +8,5 @@ namespace WebApp.Models
     public enum TicketType { HourlyTicket = 0, DailyTicket, MothlyTicket, AnnualTicket };
 
     public enum CustomerType { Student = 0, Pensioner, Regular };
-    public enum VehicleType { Bus, Tram, Trolleybus };
+    public enum LineType { Urban = 0, Suburban };
 }

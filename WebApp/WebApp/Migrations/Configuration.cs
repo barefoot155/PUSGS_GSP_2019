@@ -80,7 +80,7 @@ namespace WebApp.Migrations
             //Lines
             //if (!context.Lines.Any(s => s.Number == 7))
 
-            var line = new Line() { Id = 1, Number = 7 };
+            var line = new Line() { Id = 1, Number = "7a", LineType = LineType.Urban };
             context.Lines.AddOrUpdate(a => a.Id, line);
 
             context.SaveChanges();

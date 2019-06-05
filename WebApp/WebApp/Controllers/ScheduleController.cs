@@ -19,8 +19,17 @@ namespace WebApp.Controllers
         {
             this.unitOfWork = iUnitOfWork;
         }
-        
-        
+
+
+        [ResponseType(typeof(IEnumerable<string>))]
+        [HttpGet]
+        [Route("GetLinesByType")]
+        public IHttpActionResult GetLinesByType(LineType lineType)
+        { 
+            List<string> ret = unitOfWork.Lines.GetLinesByLineType(lineType);
+            return Ok(ret);
+        }
+
         [ResponseType(typeof(IEnumerable<Schedule>))]
         [HttpGet]
         [Route("GetSchedule")]

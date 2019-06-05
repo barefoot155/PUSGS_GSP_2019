@@ -271,6 +271,14 @@
     <Compile Include="Migrations\201906011839374_RegisterMigration.Designer.cs">
       <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906051247121_ScheduleTimesMigration.cs" />
+    <Compile Include="Migrations\201906051247121_ScheduleTimesMigration.Designer.cs">
+      <DependentUpon>201906051247121_ScheduleTimesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906051255584_LineNumberMigration.cs" />
+    <Compile Include="Migrations\201906051255584_LineNumberMigration.Designer.cs">
+      <DependentUpon>201906051255584_LineNumberMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -283,6 +291,7 @@
     <Compile Include="Models\Pricelist.cs" />
     <Compile Include="Models\Pricelist_Item.cs" />
     <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ScheduleTime.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -295,6 +304,7 @@
     <Compile Include="Persistence\Repository\IPricelist_ItemRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\IScheduleRepository.cs" />
+    <Compile Include="Persistence\Repository\IScheduleTimeRepository.cs" />
     <Compile Include="Persistence\Repository\IStationRepository.cs" />
     <Compile Include="Persistence\Repository\ItemRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketRepository.cs" />
@@ -305,6 +315,7 @@
     <Compile Include="Persistence\Repository\Pricelist_ItemRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\Repository\ScheduleRepository.cs" />
+    <Compile Include="Persistence\Repository\ScheduleTimeRepository.cs" />
     <Compile Include="Persistence\Repository\StationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepository.cs" />
     <Compile Include="Persistence\Repository\UserRepository.cs" />
@@ -416,6 +427,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906011839374_RegisterMigration.resx">
       <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051247121_ScheduleTimesMigration.resx">
+      <DependentUpon>201906051247121_ScheduleTimesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051255584_LineNumberMigration.resx">
+      <DependentUpon>201906051255584_LineNumberMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

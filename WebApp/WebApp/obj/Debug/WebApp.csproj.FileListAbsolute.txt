@@ -903,3 +903,5 @@ C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.ScheduleTimesMigration.resources
+C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.LineNumberMigration.resources

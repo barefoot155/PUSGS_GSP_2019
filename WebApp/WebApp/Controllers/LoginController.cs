@@ -43,7 +43,7 @@ namespace WebApp.Controllers
                 Name = user.Name,
                 PhoneNumber = user.PhoneNumber,
                 Surname = user.Surname,
-                //CustomerType = user.CustomerType
+                CustomerType = user.Type
             };
 
             return Ok(userData);
