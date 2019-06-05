@@ -32,7 +32,7 @@ namespace WebApp.Controllers
         [Route("GetUserData")]
         public IHttpActionResult GetUserData(string username)
         {
-            ApplicationUser user = this.unitOfWork.Users.GetUserByUsername(username);
+            ApplicationUser user = unitOfWork.Users.GetUserByUsername(username);
 
             UserDataBindingModel userData = new UserDataBindingModel()
             {
@@ -47,6 +47,25 @@ namespace WebApp.Controllers
             };
 
             return Ok(userData);
+        }
+
+        [Route("UpdateUserData")]
+        [HttpPatch]
+        public IHttpActionResult UpdateUserData(UserDataBindingModel updateUserData)
+        {
+            ApplicationUser user = unitOfWork.Users.GetUserByUsername(updateUserData.UserName);
+            user.Address = updateUserData.Address;
+            user.DateOfBirth = updateUserData.DateOfBirth;
+            user.Email = updateUserData.Email;
+            user.Name = updateUserData.Name;
+            user.Surname = updateUserData.Surname;
+            user.Type = updateUserData.CustomerType;
+            user.PhoneNumber = updateUserData.PhoneNumber;
+
+            if (unitOfWork.Users.UpdateUser(user))
+                return Ok("Successfuly updated.");
+            else
+                return Ok("Update user failed.");
         }
     }
 }

@@ -11,5 +11,6 @@ namespace WebApp.Persistence.Repository
         bool Register(ApplicationUser user);
         bool Login(string username, string password);
         ApplicationUser GetUserByUsername(string username);
+        bool UpdateUser(ApplicationUser updateUser);
     }
 }

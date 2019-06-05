@@ -54,5 +54,15 @@ namespace WebApp.Persistence.Repository
         {
             return AppDbContext.Users.Single(u => u.UserName == username);
         }
+
+        public bool UpdateUser(ApplicationUser updateUser)
+        {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            IdentityResult result = userManager.Update(updateUser);
+
+            return result.Succeeded;
+        }
     }
 }

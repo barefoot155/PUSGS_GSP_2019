@@ -35,4 +35,14 @@ export class LoginServiceService extends HttpService {
 
     console.log('Logout succeed.');
   }
+
+  updateUserData(data : UserData) : Observable<any> {
+    let httpOptions = {
+      headers:{
+        "Content-type":"application/json"
+      }
+    }
+    //let params = `username=${data.UserName}&password=${data.Password}`;
+    return this.http.patch<any>(this.url + "api/Login/UpdateUserData", data, httpOptions);
+  }
 }
