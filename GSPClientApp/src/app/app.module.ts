@@ -15,6 +15,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PricesComponent } from './Components/prices/prices.component';
 import { PricelistServiceService } from 'src/app/Services/pricelist-service.service';
+import { UserDetailsComponent } from './Components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PricelistServiceService } from 'src/app/Services/pricelist-service.serv
     RegistrationComponent,
     ScheduleComponent,
     NavbarComponent,
-    PricesComponent
+    PricesComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
