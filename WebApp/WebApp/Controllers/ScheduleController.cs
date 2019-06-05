@@ -33,10 +33,10 @@ namespace WebApp.Controllers
         [ResponseType(typeof(IEnumerable<Schedule>))]
         [HttpGet]
         [Route("GetSchedule")]
-        public IHttpActionResult GetSchedule(string lineNumber)
+        public IHttpActionResult GetSchedule(string lineNumber, DayType dayType)
         {
             int lineId = unitOfWork.Lines.GetLineIdByLineNumber(lineNumber);
-            var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId);
+            var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId, dayType);
             return Ok(schs);
         }
     }

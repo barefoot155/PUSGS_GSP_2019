@@ -19,12 +19,12 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(lineId : string){
+  onSubmit(lineNumber : string, dayType:number){
 
-    this.scheduleService.getScheduleForLine(lineId).subscribe(data => {
+    this.scheduleService.getScheduleForLine(lineNumber,dayType).subscribe(data => {
       console.log(data);
       this.schedules = data;
-      this.scheduleTableHeader = `Line number ${lineId}`;
+      this.scheduleTableHeader = `Line number ${lineNumber}`;
     });
   }
 

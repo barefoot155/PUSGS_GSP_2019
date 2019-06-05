@@ -27,10 +27,22 @@
                         <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
                 </select>
             </td>
+      </tr>  
+      <tr>
+            <td>
+                  Select day:
+            </td>
+            <td>
+                <select #dayType>
+                        <option value="0">Workday</option>
+                        <option value="1">Saturday</option>
+                        <option value="2">Sunday</option>
+                </select>
+            </td>
       </tr>      
       <tr class="success">
           <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineNumber.value)">Submit</button>
+              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineNumber.value, dayType.value)">Submit</button>
           </td>
       </tr>
   </tbody>

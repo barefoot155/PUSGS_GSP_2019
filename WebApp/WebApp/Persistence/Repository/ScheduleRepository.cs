@@ -16,10 +16,10 @@ namespace WebApp.Persistence.Repository
 
         }
 
-        public IEnumerable<Schedule> GetSchedulesByLineId(int lineId)
+        public IEnumerable<Schedule> GetSchedulesByLineId(int lineId, DayType day)
         {
             List<Schedule> temp = AppDbContext.Schedules.ToList();
-            return AppDbContext.Schedules.Where(s => s.LineId == lineId).ToList();
+            return AppDbContext.Schedules.Where(s => s.LineId == lineId && s.Day == day).ToList();
         }
     }
 }

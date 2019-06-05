@@ -123,7 +123,7 @@ namespace WebApp.Models
     {
         [Required]
         [Display(Name = "Day")]
-        public DayOfWeek Day { get; set; }
+        public DayType Day { get; set; }
         [Required]
         [Display(Name = "LineId")]
         public int LineId { get; set; }

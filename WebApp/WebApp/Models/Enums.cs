@@ -9,4 +9,5 @@ namespace WebApp.Models
 
     public enum CustomerType { Student = 0, Pensioner, Regular };
     public enum LineType { Urban = 0, Suburban };
+    public enum DayType { Workday=0, Saturday, Sunday};
 }

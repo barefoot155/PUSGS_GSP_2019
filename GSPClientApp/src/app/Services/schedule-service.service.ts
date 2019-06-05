@@ -12,10 +12,10 @@ export class ScheduleServiceService extends HttpService {
     specificUrlSch = this.url + "api/Schedule/GetSchedule";
     specificUrlLines = this.url + "api/Schedule/GetLinesByType";
     
-    getScheduleForLine(lineId: string) : Observable<ScheduleModel[]>{
-      console.log(lineId);
+    getScheduleForLine(lineId: string, dayType : number) : Observable<ScheduleModel[]>{
+      console.log(lineId + " " + dayType);
       
-      return this.http.get<ScheduleModel[]>(this.specificUrlSch + `?lineNumber=${lineId}`);
+      return this.http.get<ScheduleModel[]>(this.specificUrlSch + `?lineNumber=${lineId}&dayType=${dayType}`);
     }
 
     getLinesByType(lineType: number) : Observable<any>{      

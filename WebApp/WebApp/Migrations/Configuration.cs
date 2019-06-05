@@ -88,7 +88,7 @@ namespace WebApp.Migrations
             //Schedules
             //if (!context.Schedules.Any(s => s.Day == DayOfWeek.Monday))
 
-            var sch = new Schedule() { Id = 1, Day = DayOfWeek.Monday, LineId = context.Lines.Find(1).Id };
+            var sch = new Schedule() { Id = 1, Day = DayType.Workday, LineId = context.Lines.Find(1).Id };
             context.Schedules.AddOrUpdate(a => a.Id, sch);
 
             context.SaveChanges();

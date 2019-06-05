@@ -9,6 +9,6 @@ namespace WebApp.Persistence.Repository
 {
     public interface IScheduleRepository:IRepository<Schedule,int>
     {
-        IEnumerable<Schedule> GetSchedulesByLineId(int lineId);
+        IEnumerable<Schedule> GetSchedulesByLineId(int lineId, DayType day);
     }
 }
