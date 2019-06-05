@@ -11,7 +11,9 @@ import { ScheduleModel } from 'src/app/Models/scheduleModel';
 export class ScheduleComponent implements OnInit {
   
   schedules : ScheduleModel[];
+  lines : string[];
   scheduleTableHeader : string;
+  selectedLineType : number;
   constructor(private scheduleService : ScheduleServiceService) { }
 
   ngOnInit() {
@@ -25,4 +27,14 @@ export class ScheduleComponent implements OnInit {
       this.scheduleTableHeader = `Line number ${lineId}`;
     });
   }
+
+  onOptionSelected(event){
+    let lineType = event.target.value;
+    this.selectedLineType = lineType;
+    console.log(lineType);
+
+    this.scheduleService.getLinesByType(lineType).subscribe(data => {      
+      this.lines = data;
+    });
+ }
 }

@@ -8,14 +8,29 @@
   </thead>
   <tbody>
       <tr>
-          <td>Enter bus-line number:</td>
           <td>
-              <input type="text" #lineId placeholder="Bus-line number...">
+                Select line type:
           </td>
-      </tr>        
+          <td>
+                <select #lineType (change)='onOptionSelected($event)'>
+                        <option value="0">Urban</option>
+                        <option value="1">Suburban</option>
+                </select>
+          </td>
+      </tr>
+      <tr>
+            <td>
+                  Select line number:
+            </td>
+            <td>
+                <select #lineNumber>
+                        <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
+                </select>
+            </td>
+      </tr>      
       <tr class="success">
           <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineId.value)">Submit</button>
+              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineNumber.value)">Submit</button>
           </td>
       </tr>
   </tbody>
