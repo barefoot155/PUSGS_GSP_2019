@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebApp.Models;
 
@@ -63,6 +64,11 @@ namespace WebApp.Persistence.Repository
             IdentityResult result = userManager.Update(updateUser);
 
             return result.Succeeded;
+        }
+
+        public ApplicationUser GetUserByEmail(string email)
+        {
+            return AppDbContext.Users.FirstOrDefault(u=>u.Email == email);
         }
     }
 }

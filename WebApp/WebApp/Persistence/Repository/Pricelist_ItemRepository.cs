@@ -27,5 +27,10 @@ namespace WebApp.Persistence.Repository
         {
             return AppDbContext.Pricelist_Items.Single(pli => pli.PricelistId == pricelistId && pli.ItemId == itemId).Price; ;
         }
+
+        public int GetPricelist_ItemId(int pricelistId, int itemId)
+        {
+            return AppDbContext.Pricelist_Items.FirstOrDefault(p => p.PricelistId == pricelistId && p.ItemId == itemId).Id;
+        }
     }
 }

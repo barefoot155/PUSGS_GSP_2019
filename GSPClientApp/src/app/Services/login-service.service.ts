@@ -19,7 +19,7 @@ export class LoginServiceService extends HttpService {
       }
     }
     let params = `username=${data.UserName}&password=${data.Password}&grant_type=password`;
-    console.log(this.specificUrl+"----"+params);
+    //console.log(this.specificUrl+"----"+params);
     return this.http.post(this.specificUrl, params, httpOptions);
   }
 

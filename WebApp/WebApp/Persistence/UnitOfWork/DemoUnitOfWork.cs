@@ -16,7 +16,7 @@ namespace WebApp.Persistence.UnitOfWork
         {
             _context = context;
         }
-        //[Dependency]
+        [Dependency]
         public IDiscountRepository Discounts { get; set; }
         [Dependency]
         public IItemRepository Items { get; set; }
@@ -32,7 +32,7 @@ namespace WebApp.Persistence.UnitOfWork
         public IScheduleRepository Schedules { get; set; }
         //[Dependency]
         public IStationRepository Stations { get; set; }
-        //[Dependency]
+        [Dependency]
         public ITicketRepository Tickets { get; set; }
         [Dependency]
         public IUserRepository Users { get; set; }

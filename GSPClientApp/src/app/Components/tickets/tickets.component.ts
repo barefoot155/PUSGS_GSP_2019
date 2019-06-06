@@ -23,10 +23,14 @@ export class TicketsComponent implements OnInit {
   }
   onSubmit(email : string){
     //posalji kartu na email za neregistrovanog korisnika
-    this.ticketService.buyTicket(email);
+    this.ticketService.buyTicketUnregistered(email).subscribe(data=>{
+      console.log('uspjesno');
+    });
   }
   buyTicket(ticketType : number){
     //karta za ulogovanog
-    this.ticketService.buyTicketVerifiedUser(ticketType);
+    this.ticketService.buyTicketVerifiedUser(ticketType).subscribe(data=>{
+      console.log('buy ticket');      
+    });
   }
 }
