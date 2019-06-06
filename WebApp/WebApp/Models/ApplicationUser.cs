@@ -18,7 +18,8 @@ namespace WebApp.Models
         public string Address { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public List<Ticket> Ticket { get; set; }
+        public int? TicketId { get; set; }
+        public virtual Ticket Ticket { get; set; }
         public CustomerType Type { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)

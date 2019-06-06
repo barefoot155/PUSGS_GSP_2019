@@ -26,13 +26,8 @@ export class UserDetailsComponent implements OnInit {
     this.isChanged = true;
   }
 
-  onSubmit(email : string, name : string, surname : string, address : string, number : string, date : string){
-    this.userDetails.Email = email;
-    this.userDetails.Name = name;
-    this.userDetails.Surname = surname;
-    this.userDetails.Address = address;
-    this.userDetails.PhoneNumber = number;
-    this.userDetails.DateOfBirth = date;
+  onSubmit(){
+    console.log(this.userDetails);
     this.loginService.updateUserData(this.userDetails).subscribe(
       result => console.log(result)
     );

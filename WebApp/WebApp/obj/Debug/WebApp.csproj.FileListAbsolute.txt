@@ -746,8 +746,6 @@ C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\bin\System.Web.
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
-C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.AddDiscount.resources
-C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.RegisterMigration.resources
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.Cache
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
@@ -903,8 +901,6 @@ C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\BosaBratic\Desktop\pusgsnew\PUSGS_GSP_2019\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.pdb
-C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.ScheduleTimesMigration.resources
-C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.LineNumberMigration.resources
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll.config
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.pdb
@@ -1057,3 +1053,4 @@ C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebA
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.NewDbMigration.resources

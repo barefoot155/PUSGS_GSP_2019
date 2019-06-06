@@ -263,21 +263,9 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905301710439_AddDiscount.cs" />
-    <Compile Include="Migrations\201905301710439_AddDiscount.Designer.cs">
-      <DependentUpon>201905301710439_AddDiscount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906011839374_RegisterMigration.cs" />
-    <Compile Include="Migrations\201906011839374_RegisterMigration.Designer.cs">
-      <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906051247121_ScheduleTimesMigration.cs" />
-    <Compile Include="Migrations\201906051247121_ScheduleTimesMigration.Designer.cs">
-      <DependentUpon>201906051247121_ScheduleTimesMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906051255584_LineNumberMigration.cs" />
-    <Compile Include="Migrations\201906051255584_LineNumberMigration.Designer.cs">
-      <DependentUpon>201906051255584_LineNumberMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201906061254238_NewDbMigration.cs" />
+    <Compile Include="Migrations\201906061254238_NewDbMigration.Designer.cs">
+      <DependentUpon>201906061254238_NewDbMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -422,17 +410,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905301710439_AddDiscount.resx">
-      <DependentUpon>201905301710439_AddDiscount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906011839374_RegisterMigration.resx">
-      <DependentUpon>201906011839374_RegisterMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051247121_ScheduleTimesMigration.resx">
-      <DependentUpon>201906051247121_ScheduleTimesMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051255584_LineNumberMigration.resx">
-      <DependentUpon>201906051255584_LineNumberMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906061254238_NewDbMigration.resx">
+      <DependentUpon>201906061254238_NewDbMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

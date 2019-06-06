@@ -19,37 +19,37 @@
         <tr>
             <td>Email:</td>
             <td>
-                <input type="text" #email value="{{userDetails.Email}}" (change)="onChange($event)" placeholder="Email..." required>
+                <input type="text" [(ngModel)]="userDetails.Email" value="{{userDetails.Email}}" (change)="onChange($event)" placeholder="Email..." required>
             </td>
         </tr>
         <tr>
             <td>Name:</td>
             <td>
-                <input type="text" #name value="{{userDetails.Name}}" (change)="onChange($event)" id="txtIme" pattern="^[A-Za-z]*$" placeholder="Name..."> 
+                <input type="text" [(ngModel)]="userDetails.Name" value="{{userDetails.Name}}" (change)="onChange($event)" pattern="^[A-Za-z]*$" placeholder="Name..."> 
             </td>
         </tr>
         <tr>
             <td>Surname:</td>
             <td>
-                <input type="text" #surname value="{{userDetails.Surname}}" (change)="onChange($event)" placeholder="Surname...">
+                <input type="text" [(ngModel)]="userDetails.Surname" value="{{userDetails.Surname}}" (change)="onChange($event)" placeholder="Surname...">
             </td>
         </tr>
         <tr>
             <td>Address:</td>
             <td>
-                <input type="text" #address value="{{userDetails.Address}}" (change)="onChange($event)" placeholder="Address...">
+                <input type="text" [(ngModel)]="userDetails.Address" value="{{userDetails.Address}}" (change)="onChange($event)" placeholder="Address...">
             </td>
         </tr>
         <tr>
             <td>Phone number:</td>
             <td>
-                <input type="text" #number value="{{userDetails.PhoneNumber}}" (change)="onChange($event)" placeholder="Phone number..."> 
+                <input type="text" [(ngModel)]="userDetails.PhoneNumber" value="{{userDetails.PhoneNumber}}" (change)="onChange($event)" placeholder="Phone number..."> 
             </td>
         </tr>
         <tr>
             <td>Date of birth:</td>
             <td>
-                <input type="text" #date value="{{userDetails.DateOfBirth}}" (change)="onChange($event)" placeholder="Date of birth..."> 
+                <input type="text" [(ngModel)]="userDetails.DateOfBirth" value="{{userDetails.DateOfBirth}}" (change)="onChange($event)" placeholder="Date of birth..."> 
             </td>
         </tr>
         <tr>
@@ -58,15 +58,12 @@
                 <label *ngIf="userDetails.CustomerType == 0">Student</label>
                 <label *ngIf="userDetails.CustomerType == 1">Pensioner</label>
                 <label *ngIf="userDetails.CustomerType == 2">Regular</label>
-                <!-- <input type="radio" [ngModel]="userDetails.CustomerType" formControlName="CustomerType" name="CustomerType" value="0"> Student
-                <input type="radio" [ngModel]="userDetails.CustomerType" formControlName="CustomerType" name="CustomerType" value="1" > Pensioner
-                <input type="radio" [ngModel]="userDetails.CustomerType" formControlName="CustomerType" name="CustomerType" value="2" > Regular -->
             </td>
         </tr>
         
         <tr class="success">
             <td colspan="2">
-                  <button class="btn btn-success pull-right" *ngIf="isChanged" (click)="onSubmit(email.value, name.value, surname.value, address.value, number.value, date.value)"> Save changes</button>
+                  <button class="btn btn-success pull-right" *ngIf="isChanged" (click)="onSubmit()"> Save changes</button>
             </td>
         </tr>
     </tbody>
