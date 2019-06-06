@@ -21,6 +21,7 @@ namespace WebApp.Models
         public int? TicketId { get; set; }
         public virtual Ticket Ticket { get; set; }
         public CustomerType Type { get; set; }
+        public VerificationStatus Status { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {

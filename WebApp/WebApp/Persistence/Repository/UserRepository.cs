@@ -70,5 +70,29 @@ namespace WebApp.Persistence.Repository
         {
             return AppDbContext.Users.FirstOrDefault(u=>u.Email == email);
         }
+
+        public IEnumerable<UserDataBindingModel> GetAllUsers()
+        {
+            List<UserDataBindingModel> ret = new List<UserDataBindingModel>();
+
+            foreach (var item in AppDbContext.Users.ToList())
+            {
+                UserDataBindingModel temp = new UserDataBindingModel()
+                {
+                    UserName = item.UserName,
+                    Email = item.Email,
+                    Name = item.Name,
+                    Surname = item.Surname,
+                    Address = item.Address,
+                    DateOfBirth = item.DateOfBirth,
+                    PhoneNumber = item.PhoneNumber,
+                    CustomerType = item.Type
+                };
+
+                ret.Add(temp);
+            }
+
+            return ret;
+        }
     }
 }

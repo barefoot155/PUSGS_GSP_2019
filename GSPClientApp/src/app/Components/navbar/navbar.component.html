@@ -15,6 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             
             <ul class="nav navbar-nav navbar-right">
+				<li><a class="navbar-brand" id="verifications" data-toggle="modal" routerLink="/verifications">Verifications</a></li> 
                 <li><a class="navbar-brand" id="cjenovnik" data-toggle="modal" routerLink="/pricelist">Pricelist</a></li> 
                 <li><a class="navbar-brand" id="karta" data-toggle="modal" routerLink="/buyticket">Buy ticket</a></li>                 
                 <li><a class="navbar-brand" id="redVoznji" data-toggle="modal" routerLink="/schedules">Schedule</a></li>                   
@@ -37,7 +38,7 @@
                       <li><a id="izmijeniPodatke" href="#">Change personal data</a></li>
                       <li><a id="prikaziKarte" href="#">Tickets</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a id="promijeniSifru" href="#">Password change</a></li>
+                      <li><a id="promijeniSifru" routerLink="/passwordchange">Password change</a></li>
                   </ul>
                 </li>
                 <li><a class="navbar-brand glyphicon glyphicon-log-out pull-right" id="logout" routerLink="" (click)="logoutClick()"> Logout </a></li>

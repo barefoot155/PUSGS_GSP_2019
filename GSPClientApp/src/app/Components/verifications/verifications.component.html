@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th colspan="5" style="text-align:center">
+                All users in system                    
+            </th>
+        </tr>
+    </thead>
+    <tbody class="success">
+        <tr *ngFor="let user of users">
+          <td style="text-align:center"> {{user.UserName}} </td>
+          <td style="text-align:center"> {{user.Address}} zamijeniti sa dokumentom</td>
+          <td style="text-align:center"> {{user.CustomerType}} </td>
+          <td style="text-align:center"> {{user.Email}} zamijeniti sa verified </td>
+          <td><button class="btn btn-success">Verify</button></td>
+        </tr>
+      </tbody>
+  </table>

@@ -67,5 +67,15 @@ namespace WebApp.Controllers
             else
                 return Ok("Update user failed.");
         }
+
+        [Route("GetAllUsers")]
+        [ResponseType(typeof(IEnumerable<UserDataBindingModel>))]
+        [HttpGet]
+        public IHttpActionResult GetAllUsers()
+        {
+            List<UserDataBindingModel> ret = unitOfWork.Users.GetAllUsers().ToList();
+
+            return Ok(ret);
+        }
     }
 }

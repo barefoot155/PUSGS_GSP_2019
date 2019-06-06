@@ -19,7 +19,7 @@ using WebApp.Results;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -115,6 +115,8 @@ namespace WebApp.Controllers
         }
 
         // POST api/Account/ChangePassword
+        [HttpPost]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {

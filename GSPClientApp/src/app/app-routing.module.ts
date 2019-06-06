@@ -8,6 +8,8 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { PricesComponent } from 'src/app/Components/prices/prices.component';
 import { UserDetailsComponent } from 'src/app/Components/user-details/user-details.component';
 import { TicketsComponent } from 'src/app/Components/tickets/tickets.component';
+import { ChangePasswordComponent } from 'src/app/Components/change-password/change-password.component';
+import { VerificationsComponent } from 'src/app/Components/verifications/verifications.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -15,7 +17,9 @@ const routes:Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'pricelist', component: PricesComponent},
   {path: 'userdata', component: UserDetailsComponent},
-  {path: 'buyticket', component: TicketsComponent}
+  {path: 'buyticket', component: TicketsComponent},
+  {path: 'passwordchange', component: ChangePasswordComponent},
+  {path: 'verifications', component: VerificationsComponent}
 ];
 
 @NgModule({
