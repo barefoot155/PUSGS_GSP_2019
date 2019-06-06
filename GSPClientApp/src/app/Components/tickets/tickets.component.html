@@ -1,0 +1,52 @@
+<table class="table table-bordered" *ngIf="loggedIn === false">
+  <thead>
+      <tr class="success">
+          <th colspan="2">
+              Buy ticket
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+                Enter email (You will get your ticket there):
+          </td>
+          <td>
+                <input #email type="text" placeholder="Email..." required>                  
+          </td>
+      </tr>                 
+      <tr class="success">
+          <td colspan="2">
+              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(email)">Buy ticket</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered" *ngIf="loggedIn">
+      <thead>
+          <tr class="success">
+              <th colspan="2">
+                  Buy ticket
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Select ticket type:</td>
+              <td>
+                  <select #ticketType>
+                      <option value="0">Hourly ticket</option>
+                      <option value="1">Daily ticket</option>
+                      <option value="2">Mothly ticket</option>
+                      <option value="3">Annual ticket</option>
+                    </select>
+              </td>
+          </tr>
+          <tr class="success">
+              <td colspan="2">
+                  <button class="btn btn-success pull-right" type="submit" (click)="buyTicket(ticketType.value)">Buy ticket</button>
+              </td>
+          </tr>
+      </tbody>
+</table>

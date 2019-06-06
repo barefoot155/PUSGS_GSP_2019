@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PricesComponent } from './Components/prices/prices.component';
 import { PricelistServiceService } from 'src/app/Services/pricelist-service.service';
 import { UserDetailsComponent } from './Components/user-details/user-details.component';
+import { TicketsComponent } from './Components/tickets/tickets.component';
+import { TicketsServiceService } from 'src/app/Services/tickets-service.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { UserDetailsComponent } from './Components/user-details/user-details.com
     ScheduleComponent,
     NavbarComponent,
     PricesComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { UserDetailsComponent } from './Components/user-details/user-details.com
     AppRoutingModule,
     FormsModule
   ],
-  providers: [HttpService, LoginServiceService, RegisterServiceService, ScheduleServiceService, PricelistServiceService],
+  providers: [HttpService, LoginServiceService, RegisterServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

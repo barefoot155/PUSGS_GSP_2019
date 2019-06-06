@@ -263,9 +263,9 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906061254238_NewDbMigration.cs" />
-    <Compile Include="Migrations\201906061254238_NewDbMigration.Designer.cs">
-      <DependentUpon>201906061254238_NewDbMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201906061316065_NewDbMigration.cs" />
+    <Compile Include="Migrations\201906061316065_NewDbMigration.Designer.cs">
+      <DependentUpon>201906061316065_NewDbMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -410,8 +410,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061254238_NewDbMigration.resx">
-      <DependentUpon>201906061254238_NewDbMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906061316065_NewDbMigration.resx">
+      <DependentUpon>201906061316065_NewDbMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
