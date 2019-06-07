@@ -86,7 +86,8 @@ namespace WebApp.Persistence.Repository
                     Address = item.Address,
                     DateOfBirth = item.DateOfBirth,
                     PhoneNumber = item.PhoneNumber,
-                    CustomerType = item.Type
+                    CustomerType = item.Type,
+                    Status = item.Status
                 };
 
                 ret.Add(temp);

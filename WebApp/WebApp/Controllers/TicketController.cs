@@ -49,31 +49,38 @@ namespace WebApp.Controllers
         {
             var user = unitOfWork.Users.GetUserByUsername(username);
 
-            int pricelistId = unitOfWork.Pricelists.GetActivePricelistId();
-            int itemId = unitOfWork.Items.GetTicketIdForTicketType(ticketType);
-
-            float coeff = unitOfWork.Discounts.GetCoefficientForCustomerType(user.Type);
-            double price = unitOfWork.Pricelist_Items.GetPriceWithDiscount(pricelistId, itemId, coeff);
-            
-            int pricelistItemId = unitOfWork.Pricelist_Items.GetPricelist_ItemId(pricelistId, itemId);
-
-            Ticket ticket = unitOfWork.Tickets.BuyTicketVerified(price, pricelistItemId, user.Type, ticketType);
-
-            user.TicketId = ticket.Id;
-
-            bool updatedUser = unitOfWork.Users.UpdateUser(user);
-
-            if (updatedUser)
+            if (user.Status == VerificationStatus.Verified)
             {
+                int pricelistId = unitOfWork.Pricelists.GetActivePricelistId();
+                int itemId = unitOfWork.Items.GetTicketIdForTicketType(ticketType);
 
-                if (sendEmailViaWebApi(user.Email, "GSP Ticket", "\nTicket Id:" + ticket.Id + " \nPrice: " + ticket.Price))
-                    return Ok("Ticket sent to email");
+                float coeff = unitOfWork.Discounts.GetCoefficientForCustomerType(user.Type);
+                double price = unitOfWork.Pricelist_Items.GetPriceWithDiscount(pricelistId, itemId, coeff);
+
+                int pricelistItemId = unitOfWork.Pricelist_Items.GetPricelist_ItemId(pricelistId, itemId);
+
+                Ticket ticket = unitOfWork.Tickets.BuyTicketVerified(price, pricelistItemId, user.Type, ticketType);
+
+                user.TicketId = ticket.Id;
+
+                bool updatedUser = unitOfWork.Users.UpdateUser(user);
+
+                if (updatedUser)
+                {
+
+                    if (sendEmailViaWebApi(user.Email, "GSP Ticket", "\nTicket Id:" + ticket.Id + " \nPrice: " + ticket.Price))
+                        return Ok("Ticket sent to email");
+                    else
+                        return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Ticket is bought. Cannot send email." });
+                }
                 else
-                    return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Ticket is bought. Cannot send email." });
+                {
+                    return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Cannot add ticket to user." });
+                }
             }
             else
             {
-                return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Cannot add ticket to user." });
+                return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "User is not verified yet." });
             }
         }
 
