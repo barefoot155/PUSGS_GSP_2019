@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/Models/userData';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CustomerType } from 'src/app/Models/customerType';
+import { VerificationStatus } from 'src/app/Models/verificationStatus';
 
 @Component({
   selector: 'app-user-details',
@@ -33,4 +35,10 @@ export class UserDetailsComponent implements OnInit {
     );
   }
 
+  typetoString(type : CustomerType) : string{
+    return CustomerType[type];
+  }
+  statusToString(status : VerificationStatus) : string{
+    return VerificationStatus[status];
+  }
 }

@@ -38,6 +38,10 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "CustomerType")]
         public CustomerType CustomerType { get; set; }
+
+        [Required]
+        [Display(Name = "Status")]
+        public VerificationStatus Status { get; set; }
     }
 
     public class LoginBindingModel

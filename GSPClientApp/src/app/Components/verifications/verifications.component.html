@@ -5,14 +5,21 @@
                 All users in system                    
             </th>
         </tr>
+        <tr class="success">
+            <th style="text-align:center">Username</th>
+            <th style="text-align:center">Address</th>
+            <th style="text-align:center">Customer type</th>
+            <th style="text-align:center">Verification status</th>
+            <th style="text-align:center"></th>
+        </tr>
     </thead>
     <tbody class="success">
         <tr *ngFor="let user of users">
           <td style="text-align:center"> {{user.UserName}} </td>
           <td style="text-align:center"> {{user.Address}} zamijeniti sa dokumentom</td>
-          <td style="text-align:center"> {{user.CustomerType}} </td>
-          <td style="text-align:center"> {{user.Email}} zamijeniti sa verified </td>
-          <td><button class="btn btn-success">Verify</button></td>
+          <td style="text-align:center"> {{typetoString(user.CustomerType)}} </td>
+          <td style="text-align:center"> {{statusToString(user.Status)}}</td>
+          <td><button *ngIf="user.Status == 0" class="btn btn-success">Verify</button></td>
         </tr>
       </tbody>
   </table>

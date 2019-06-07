@@ -17,6 +17,12 @@
             </td>
         </tr>
         <tr>
+            <td>Verifications status:</td>
+            <td>
+              <label>{{statusToString(userDetails.Status)}}</label>
+            </td>
+        </tr>
+        <tr>
             <td>Email:</td>
             <td>
                 <input type="text" [(ngModel)]="userDetails.Email" value="{{userDetails.Email}}" (change)="onChange($event)" placeholder="Email..." required>
@@ -55,15 +61,13 @@
         <tr>
             <td>Customer type:</td>
             <td>
-                <label *ngIf="userDetails.CustomerType == 0">Student</label>
-                <label *ngIf="userDetails.CustomerType == 1">Pensioner</label>
-                <label *ngIf="userDetails.CustomerType == 2">Regular</label>
+                <label>{{typetoString(userDetails.CustomerType)}}</label>
             </td>
         </tr>
         
         <tr class="success">
             <td colspan="2">
-                  <button class="btn btn-success pull-right" *ngIf="isChanged" (click)="onSubmit()"> Save changes</button>
+                  <button class="btn btn-success pull-right" *ngIf="isChanged" (click)="onSubmit()">Save changes</button>
             </td>
         </tr>
     </tbody>

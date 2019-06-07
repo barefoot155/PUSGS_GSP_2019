@@ -1,3 +1,5 @@
+import { CustomerType } from 'src/app/Models/customerType';
+
 export class User{
     UserName : string;
     Password : string;
@@ -8,5 +10,5 @@ export class User{
     PhoneNumber : string;
     Address : string;
     DateOfBirth : string;
-    CustomerType : number;
+    CustomerType : CustomerType;
 }

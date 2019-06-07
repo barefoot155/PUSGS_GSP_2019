@@ -35,7 +35,8 @@ namespace WebApp.Controllers
                 Surname = registerBinding.Surname,
                 PhoneNumber = registerBinding.PhoneNumber,
                 PasswordHash = ApplicationUser.HashPassword(registerBinding.Password),
-                Type = registerBinding.CustomerType
+                Type = registerBinding.CustomerType,
+                Status = VerificationStatus.Unverified
             };
 
             if (!unitOfWork.Users.Register(user))

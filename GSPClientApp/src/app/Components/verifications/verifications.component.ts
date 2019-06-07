@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/Services/user-service.service';
 import { UserData } from 'src/app/Models/userData';
+import { VerificationStatus } from 'src/app/Models/verificationStatus';
+import { CustomerType } from 'src/app/Models/customerType';
 
 @Component({
   selector: 'app-verifications',
@@ -19,4 +21,11 @@ export class VerificationsComponent implements OnInit {
     });
   }
 
+  statusToString(status : VerificationStatus) : string{
+    return VerificationStatus[status];
+  }
+
+  typetoString(type : CustomerType) : string{
+    return CustomerType[type];
+  }
 }
