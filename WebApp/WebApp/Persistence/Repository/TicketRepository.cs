@@ -52,5 +52,19 @@ namespace WebApp.Persistence.Repository
             
             return ticket;
         }
+
+        public bool ValidateTicket(int ticketId)
+        {
+            //provjeri jos da li postoji karta uopste TODO
+            Ticket ticket = AppDbContext.Tickets.FirstOrDefault(t => t.Id == ticketId);
+
+            if(ticket.ExpirationDate >= DateTime.Now)
+            {
+                //TODO dodaj ostale uslove kada se karta cekira
+                return true;
+            }
+
+            return false;
+        }
     }
 }

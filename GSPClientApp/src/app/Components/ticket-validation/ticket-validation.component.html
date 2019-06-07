@@ -1,0 +1,40 @@
+<table class="table table-bordered">
+  <thead>
+      <tr class="success">
+          <th colspan="2">
+              Ticket validation
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+                Enter ticket ID:
+          </td>
+          <td>
+                <input #ticketId type="text" placeholder="Ticket ID..." required>
+          </td>
+      </tr>           
+      <tr class="success">
+          <td colspan="2">
+              <button class="btn btn-success pull-right" type="submit" (click)="isValid(ticketId.value)">Validate</button>             
+          </td>
+      </tr>
+      <tr class="success" *ngIf="valid && clicked">
+          <th>
+              Validation status:
+          </th>
+          <th>
+              Ticket is valid
+          </th>
+      </tr>
+      <tr class="danger" *ngIf="!valid && clicked">
+          <th>
+              Validation status:
+          </th>
+          <th>
+              Ticket is not valid
+          </th>
+      </tr>
+  </tbody>
+</table>

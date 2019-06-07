@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 using WebApp.Models;
 using WebApp.Persistence.UnitOfWork;
 
@@ -24,6 +25,14 @@ namespace WebApp.Controllers
         public TicketController(IUnitOfWork iUnitOfWork)
         {
             this.unitOfWork = iUnitOfWork;
+        }
+
+        [ResponseType(typeof(bool))]
+        [HttpGet]
+        [Route("ValidateTicket")]
+        public IHttpActionResult ValidateTicket(int ticketId)
+        {
+            return Ok(unitOfWork.Tickets.ValidateTicket(ticketId));
         }
 
         [HttpPost]

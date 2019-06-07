@@ -1,31 +1,13 @@
-<!--form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label>
-    Username or Email:
-    <input type="text" formControlName="UserName" required> 
-  </label>
-  <label>
-    Password:
-    <input type="password" formControlName="Password" required> 
-  </label>
-
-  <button type="submit">Submit</button>
-</form-->
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <table class="table table-bordered">
       <thead>
           <tr class="success">
               <th colspan="2">
                   Login
-                  <!-- <a href="Registracija.html" class="btn btn-success pull-right">
-                      Registrujte se
-                  </a> -->
               </th>
           </tr>
       </thead>
       <tbody>
-          <!-- <tr id="upozorenje" class="hidden">
-              <td colspan="2"><strong>Greska!</strong> Pogresno korisnicko ime ili lozinka.</td>                
-          </tr> -->
           <tr>
               <td>Username:</td>
               <td>
