@@ -20,5 +20,23 @@ namespace WebApp.Persistence.Repository
         {
             return AppDbContext.Pricelists.Single(pl => pl.IsActive).Id;
         }
+
+        public int AddNewPricelist(PricelistBindingModel pricelist)
+        {
+            var activePricelist = AppDbContext.Pricelists.Where(pl => pl.IsActive).First();
+
+            activePricelist.IsActive = false;
+            AppDbContext.SaveChanges();
+
+            Pricelist newPricelist = new Pricelist()
+            {
+                StartDate = pricelist.StartDate,
+                EndDate = pricelist.EndDate,
+                IsActive = true
+            };
+            AppDbContext.Pricelists.Add(newPricelist);
+            AppDbContext.SaveChanges();
+            return GetActivePricelistId();
+        }
     }
 }

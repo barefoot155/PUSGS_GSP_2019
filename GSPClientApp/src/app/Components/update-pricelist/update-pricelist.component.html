@@ -1,0 +1,52 @@
+<table *ngIf="activePricelist != undefined" class="table table-bordered">
+         <thead>
+             <tr class="success">
+                 <th colspan="2">
+                     Update active pricelist                    
+                 </th>
+             </tr>
+         </thead>         
+         <tbody>               
+              <tr>
+                     <td>Start date:</td>
+                     <td>
+                         <input type="text" [(ngModel)]="activePricelist.StartDate" value="{{activePricelist.StartDate}}" (change)="onChange($event)" placeholder="Start date..." required>
+                     </td>
+              </tr>
+              <tr>
+                     <td>End date:</td>
+                     <td>
+                        <input type="text" [(ngModel)]="activePricelist.EndDate" value="{{activePricelist.EndDate}}" (change)="onChange($event)" placeholder="End date..." required>
+                      </td>
+              </tr>
+              <tr>
+                  <td>Hourly ticket price:</td>
+                  <td>
+                      <input type="text" [(ngModel)]="activePricelist.HourlyPrice" value="{{activePricelist.HourlyPrice}}" (change)="onChange($event)" placeholder="Hourly price..." required>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Daily ticket price:</td>
+                  <td>
+                      <input type="text" [(ngModel)]="activePricelist.DailyPrice" value="{{activePricelist.DailyPrice}}" (change)="onChange($event)" placeholder="Daily price..." required>
+                  </td>
+              </tr>
+              <tr>
+                 <td>Monthly ticket price:</td>
+                 <td>
+                     <input type="text" [(ngModel)]="activePricelist.MonthlyPrice" value="{{activePricelist.MonthlyPrice}}" (change)="onChange($event)" placeholder="Monthly price..." required>
+                 </td>
+             </tr>
+             <tr>
+                 <td>Annual ticket price:</td>
+                 <td>
+                     <input type="text" [(ngModel)]="activePricelist.AnnualPrice" value="{{activePricelist.AnnualPrice}}" (change)="onChange($event)" placeholder="Annual price..." required>
+                 </td>
+             </tr>
+             <tr class="success">
+                   <td colspan="2">
+                         <button class="btn btn-success pull-right" type="submit" *ngIf="isChanged" (click)="updatePricelist()"> Update pricelist</button>
+                   </td>
+             </tr>
+       </tbody>    
+</table>

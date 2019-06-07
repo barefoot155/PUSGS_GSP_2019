@@ -1,0 +1,74 @@
+<form [formGroup]="addPricelistForm" (ngSubmit)="addPricelist()">
+ <table class="table table-bordered">
+      <thead>
+          <tr class="success">
+              <th colspan="2">
+                  Add new pricelist                    
+              </th>
+          </tr>
+      </thead>
+      
+      <tbody>
+            
+              <tr>
+                  <td>Start date:</td>
+                  <td>
+                      <input type="text" formControlName="StartDate" placeholder="Start date..." required>
+                  </td>
+              </tr>
+              <tr>
+                  <td>End date:</td>
+                  <td>
+                      <input type="text" formControlName="EndDate" placeholder="End date..." required>
+                  </td>
+              </tr>
+              <tr class="success">
+                <td colspan="2">
+                      <button class="btn btn-success pull-right" type="submit"> Add pricelist</button>
+                </td>
+            </tr>
+    </tbody>    
+</table>
+</form>
+<form [formGroup]="addPricelistItemForm" (ngSubmit)="addPricelistItem()">
+    <table class="table table-bordered" *ngIf="pricelistAdded">
+         <thead>
+             <tr class="success">
+                 <th colspan="2">
+                     Add new prices                    
+                 </th>
+             </tr>
+         </thead>         
+         <tbody>               
+                 <tr>
+                     <td>Hourly ticket price:</td>
+                     <td>
+                         <input type="text" formControlName="HourlyPrice" placeholder="Hourly price..." required>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>Daily ticket price:</td>
+                     <td>
+                         <input type="text" formControlName="DailyPrice" placeholder="Daily price..." required>
+                     </td>
+                 </tr>
+                 <tr>
+                    <td>Monthly ticket price:</td>
+                    <td>
+                        <input type="text" formControlName="MonthlyPrice" placeholder="Monthly price..." required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Annual ticket price:</td>
+                    <td>
+                        <input type="text" formControlName="AnnualPrice" placeholder="Annual price..." required>
+                    </td>
+                </tr>
+                 <tr class="success">
+                   <td colspan="2">
+                         <button class="btn btn-success pull-right" type="submit"> Add prices</button>
+                   </td>
+               </tr>
+       </tbody>    
+   </table>
+</form>       

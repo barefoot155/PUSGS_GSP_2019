@@ -95,9 +95,31 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "EndDate")]
         public DateTime EndDate { get; set; }
-        [Required]
+        
         [Display(Name = "IsActive")]
         public bool IsActive { get; set; }
+    }
+
+    public class ActivePricelistBindingModel
+    {
+        [Required]
+        [Display(Name = "StartDate")]
+        public DateTime StartDate { get; set; }
+        [Required]
+        [Display(Name = "EndDate")]
+        public DateTime EndDate { get; set; }
+        [Required]
+        [Display(Name = "HourlyPrice")]
+        public double HourlyPrice { get; set; }
+        [Required]
+        [Display(Name = "DailyPrice")]
+        public double DailyPrice { get; set; }
+        [Required]
+        [Display(Name = "MonthlyPrice")]
+        public double MonthlyPrice { get; set; }
+        [Required]
+        [Display(Name = "AnnualPrice")]
+        public double AnnualPrice { get; set; }
     }
 
     public class Pricelist_ItemBindingModel
@@ -111,6 +133,22 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "ItemId")]
         public double Price { get; set; }
+    }
+
+    public class PricelistItemBindingModel
+    {
+        [Required]
+        [Display(Name = "HourlyPrice")]
+        public double HourlyPrice { get; set; }
+        [Required]
+        [Display(Name = "DailyPrice")]
+        public double DailyPrice { get; set; }
+        [Required]
+        [Display(Name = "MonthlyPrice")]
+        public double MonthlyPrice { get; set; }
+        [Required]
+        [Display(Name = "AnnualPrice")]
+        public double AnnualPrice { get; set; }
     }
 
     public class TicketPriceBindingModel

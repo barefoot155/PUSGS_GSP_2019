@@ -12,5 +12,8 @@ namespace WebApp.Persistence.Repository
         double GetPriceWithDiscount(int pricelistId, int itemId, float coefficient);
         double GetPriceForTicketType(int pricelistId, int itemId);
         int GetPricelist_ItemId(int pricelistId, int itemId);
+        bool AddNewPricelistItem(PricelistItemBindingModel pricelistItem, int pricelistId);
+        ActivePricelistBindingModel GetActivePricelist(int pricelistId);
+        bool UpdatePricelist(ActivePricelistBindingModel pricelist);
     }
 }

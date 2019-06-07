@@ -15,7 +15,7 @@ export class UserDetailsComponent implements OnInit {
   userDetails : UserData;
   isChanged : boolean = false;
 
-  constructor(private loginService : LoginServiceService, private fb : FormBuilder) { }
+  constructor(private loginService : LoginServiceService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.loginService.getUserData(localStorage.getItem("username")).subscribe(

@@ -24,6 +24,8 @@ import { TokenInterceptor } from 'src/app/Interceptors/token.interceptor';
 import { HttpErrorInterceptor } from 'src/app/Interceptors/http-error.interceptor';
 import { VerificationsComponent } from './Components/verifications/verifications.component';
 import { UserServiceService } from 'src/app/Services/user-service.service';
+import { PricelistComponent } from './Components/pricelist/pricelist.component';
+import { UpdatePricelistComponent } from './Components/update-pricelist/update-pricelist.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { UserServiceService } from 'src/app/Services/user-service.service';
     UserDetailsComponent,
     TicketsComponent,
 	ChangePasswordComponent,
-    VerificationsComponent
+    VerificationsComponent,
+    PricelistComponent,
+    UpdatePricelistComponent
   ],
   imports: [
     BrowserModule,

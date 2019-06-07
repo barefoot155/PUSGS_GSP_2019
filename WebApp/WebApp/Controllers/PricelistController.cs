@@ -32,5 +32,14 @@ namespace WebApp.Controllers
 
             return Ok(priceForTicketType);
         }
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        [Route("AddNewPricelist")]
+        public IHttpActionResult AddNewPricelist(PricelistBindingModel pricelist)
+        {
+            int pricelistId = unitOfWork.Pricelists.AddNewPricelist(pricelist);
+            return Ok(pricelistId);
+        }
+
     }
 }
