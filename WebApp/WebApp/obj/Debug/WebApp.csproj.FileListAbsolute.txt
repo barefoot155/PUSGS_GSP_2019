@@ -301,7 +301,6 @@ C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\bin\Microsoft.Owin.Secu
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\bin\System.Web.Http.Owin.xml
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
-C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.AddDiscount.resources
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll.config
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.pdb
@@ -450,7 +449,6 @@ C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebAp
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\e341-2015\Desktop\PUSGS_GSP_2019_controller\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.pdb
-C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.RegisterMigration.resources
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll.config
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.dll
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\bin\WebApp.pdb
@@ -1053,3 +1051,6 @@ C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebAp
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserStatusMigration.resources
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.NewDbMigration.resources
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserStatusMigration.resources
+C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.NewDbMigration.resources
+C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserStatusMigration.resources
+C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources

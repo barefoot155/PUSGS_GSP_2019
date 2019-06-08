@@ -10,7 +10,6 @@ export class TicketsServiceService extends HttpService{
   
   buyTicketUnregistered(email : string):Observable<any>{
     //kupovina za neregistrovanog 
-
     return this.http.post<any>(this.specificUrl + `api/Ticket/BuyTicketUnregistered?email=${email}`,null);
   }
   buyTicketVerifiedUser(ticketType : number){
@@ -20,5 +19,15 @@ export class TicketsServiceService extends HttpService{
   }
   validateTicket(ticketId : number):Observable<any>{
     return this.http.get<any>(this.url + `api/Ticket/ValidateTicket?ticketId=${ticketId}`);
+  }
+  checkTicketId(ticketId : number):Observable<any>{
+    return this.http.get<any>(this.url + `api/Ticket/CheckTicketId?ticketId=${ticketId}`);
+  }
+  getUsersTicket():Observable<any>{
+    let username = localStorage.getItem('username');
+    return this.http.get<any>(this.url + `api/Ticket/GetUsersTicket?username=${username}`);
+  }
+  checkTicket(ticketId : number):Observable<any>{
+    return this.http.get<any>(this.url + `api/Ticket/CheckTicket?ticketId=${ticketId}`);
   }
 }

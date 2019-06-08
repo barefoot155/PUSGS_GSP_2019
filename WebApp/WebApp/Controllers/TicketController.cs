@@ -27,6 +27,41 @@ namespace WebApp.Controllers
             this.unitOfWork = iUnitOfWork;
         }
 
+        [ResponseType(typeof(TicketBindingModel))]
+        [HttpGet]
+        [Route("GetUsersTicket")]
+        public IHttpActionResult GetUsersTicket(string username)
+        {
+            Ticket ticket = unitOfWork.Users.GetUserByUsername(username).Ticket;
+            TicketBindingModel ticketBM = new TicketBindingModel()
+            {
+                CheckTime = ticket.CheckTime,
+                CustomerType = ticket.CustomerType,
+                ExpirationDate = ticket.ExpirationDate,
+                Price = ticket.Price,
+                TicketId = ticket.Id,
+                TicketType = ticket.TicketType,
+                IsChecked = ticket.IsChecked
+            };
+            return Ok(ticketBM);
+        }
+
+        [ResponseType(typeof(bool))]
+        [HttpGet]
+        [Route("CheckTicket")]
+        public IHttpActionResult CheckTicket(int ticketId)
+        {
+            return Ok(unitOfWork.Tickets.CheckTicket(ticketId));
+        }
+
+        [ResponseType(typeof(bool))]
+        [HttpGet]
+        [Route("CheckTicketId")]
+        public IHttpActionResult CheckTicketId(int ticketId)
+        {
+            return Ok(unitOfWork.Tickets.CheckTicketId(ticketId));
+        }
+
         [ResponseType(typeof(bool))]
         [HttpGet]
         [Route("ValidateTicket")]

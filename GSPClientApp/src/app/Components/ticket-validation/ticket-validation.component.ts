@@ -9,6 +9,7 @@ import { TicketsServiceService } from 'src/app/Services/tickets-service.service'
 export class TicketValidationComponent implements OnInit {
   valid : boolean = false;
   clicked : boolean = false;
+  unknownTicketId : boolean = false;
 
   constructor(private ticketService : TicketsServiceService) { }
 
@@ -16,15 +17,24 @@ export class TicketValidationComponent implements OnInit {
   }
 
   isValid(ticketId : number){
-    //provjeri da li je validna
+    this.unknownTicketId = false;
     this.clicked = true;
-
-    this.ticketService.validateTicket(ticketId).subscribe(
-      data =>
+    
+    this.ticketService.checkTicketId(ticketId).subscribe(
+      data => 
       {
-        this.valid = data;
-        console.log('sa:' + data);
+        if(data){
+          this.ticketService.validateTicket(ticketId).subscribe(
+            data =>
+            {
+              this.valid = data;
+            }
+          );
+        }else{
+          this.unknownTicketId = true;
+        }
       }
     );
+    
   }
 }

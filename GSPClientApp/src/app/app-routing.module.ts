@@ -14,6 +14,7 @@ import { PricelistComponent } from 'src/app/Components/pricelist/pricelist.compo
 import { UpdatePricelistComponent } from 'src/app/Components/update-pricelist/update-pricelist.component';
 import { TicketValidationComponent } from 'src/app/Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
+import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -27,7 +28,8 @@ const routes:Routes = [
   {path: 'addpricelist', component: PricelistComponent},
   {path: 'updatepricelist', component:UpdatePricelistComponent},
   {path: 'validation', component:TicketValidationComponent},
-  {path: 'editlines', component:EditLinesComponent}
+  {path: 'editlines', component:EditLinesComponent},
+  {path: 'checkTicket', component: CheckTicketComponent}
 ];
 
 @NgModule({

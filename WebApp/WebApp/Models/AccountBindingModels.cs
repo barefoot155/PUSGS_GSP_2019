@@ -187,6 +187,12 @@ namespace WebApp.Models
     public class TicketBindingModel
     {
         [Required]
+        [Display(Name = "TicketId")]
+        public int TicketId { get; set; }
+        [Required]
+        [Display(Name = "IsChecked")]
+        public bool IsChecked { get; set; }
+        [Required]
         [Display(Name = "TicketType")]
         public TicketType TicketType { get; set; }
         [Required]

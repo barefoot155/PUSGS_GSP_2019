@@ -28,6 +28,7 @@ import { PricelistComponent } from './Components/pricelist/pricelist.component';
 import { UpdatePricelistComponent } from './Components/update-pricelist/update-pricelist.component';
 import { TicketValidationComponent } from './Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
+import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditLinesComponent } from './Components/edit-lines/edit-lines.component
     PricelistComponent,
     UpdatePricelistComponent,
     TicketValidationComponent,
-    EditLinesComponent
+    EditLinesComponent,
+	CheckTicketComponent
   ],
   imports: [
     BrowserModule,

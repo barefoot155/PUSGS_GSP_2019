@@ -273,6 +273,10 @@
     <Compile Include="Migrations\201906061918289_UserStatusMigration.Designer.cs">
       <DependentUpon>201906061918289_UserStatusMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906082313395_CheckTicketMigration.cs" />
+    <Compile Include="Migrations\201906082313395_CheckTicketMigration.Designer.cs">
+      <DependentUpon>201906082313395_CheckTicketMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -421,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906061918289_UserStatusMigration.resx">
       <DependentUpon>201906061918289_UserStatusMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906082313395_CheckTicketMigration.resx">
+      <DependentUpon>201906082313395_CheckTicketMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

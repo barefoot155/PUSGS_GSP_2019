@@ -17,7 +17,7 @@
       </tr>           
       <tr class="success">
           <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="isValid(ticketId.value)">Validate</button>             
+              <button class="btn btn-success pull-right" type="submit" (click)="isValid(ticketId.value)">Submit</button>             
           </td>
       </tr>
       <tr class="success" *ngIf="valid && clicked">
@@ -28,7 +28,7 @@
               Ticket is valid
           </th>
       </tr>
-      <tr class="danger" *ngIf="!valid && clicked">
+      <tr class="danger" *ngIf="!valid && clicked && !unknownTicketId">
           <th>
               Validation status:
           </th>
@@ -36,5 +36,13 @@
               Ticket is not valid
           </th>
       </tr>
+      <tr class="danger" *ngIf="unknownTicketId && clicked">
+        <th>
+            Validation status:
+        </th>
+        <th>
+            Unknown ticket ID!
+        </th>
+    </tr>
   </tbody>
 </table>
