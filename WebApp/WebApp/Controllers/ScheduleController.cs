@@ -30,6 +30,15 @@ namespace WebApp.Controllers
             return Ok(ret);
         }
 
+        [ResponseType(typeof(IEnumerable<string>))]
+        [HttpGet]
+        [Route("GetAllLines")]
+        public IHttpActionResult GetAllLines()
+        {
+            List<string> ret = unitOfWork.Lines.GetAllLines();
+            return Ok(ret);
+        }
+
         [ResponseType(typeof(IEnumerable<Schedule>))]
         [HttpGet]
         [Route("GetSchedule")]

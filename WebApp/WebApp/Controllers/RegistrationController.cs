@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using WebApp.Models;
 using WebApp.Persistence.UnitOfWork;
@@ -45,6 +46,69 @@ namespace WebApp.Controllers
             }
 
             return Ok();
+        }
+
+        [Route("VerifyAppUser")]
+        [HttpGet]
+        public IHttpActionResult VerifyAppUser(string username)
+        {
+            if(unitOfWork.Users.SetVerificationStatus(username, VerificationStatus.Verified, out string email))
+            {
+                string subject = "Verification";
+                string body = "Your verification status has been changed to VERIFIED.";
+                sendEmailViaWebApi(email, subject, body);
+                return Ok("Verification succeed");
+            }
+            else
+            {
+                return BadRequest("Verification failed");
+            }
+        }
+
+        [Route("DeclineAppUser")]
+        [HttpGet]
+        public IHttpActionResult DeclineAppUser(string username)
+        {
+            if (unitOfWork.Users.SetVerificationStatus(username, VerificationStatus.Unverified, out string email))
+            {
+                string subject = "Verification";
+                string body = "Your verification status has been changed to UNVERIFIED.";
+                sendEmailViaWebApi(email, subject, body);
+                return Ok("Verification succeed");
+            }
+            else
+            {
+                return BadRequest("Verification failed");
+            }
+        }
+
+        private bool sendEmailViaWebApi(string email, string mailSubject, string mailBody)
+        {
+            MailMessage msg = new MailMessage();
+            SmtpClient client = new SmtpClient();
+            try
+            {
+                msg.Subject = mailSubject;
+                msg.Body = mailBody;
+                msg.From = new MailAddress("gsp.pusgs@gmail.com");
+                msg.To.Add(email);
+                msg.IsBodyHtml = true;
+                client.Host = "smtp.gmail.com";
+                NetworkCredential basicauthenticationinfo = new System.Net.NetworkCredential("gsp.pusgs@gmail.com", "Admin123!");
+                client.Port = int.Parse("587");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicauthenticationinfo;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Send(msg);
+            }
+            catch
+            {
+                //ne moze da posalje mejl
+                return false;
+            }
+
+            return true;
         }
     }
 }

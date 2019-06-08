@@ -3,6 +3,7 @@ import { UserServiceService } from 'src/app/Services/user-service.service';
 import { UserData } from 'src/app/Models/userData';
 import { VerificationStatus } from 'src/app/Models/verificationStatus';
 import { CustomerType } from 'src/app/Models/customerType';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verifications',
@@ -13,7 +14,11 @@ export class VerificationsComponent implements OnInit {
 
   users : UserData[];
 
-  constructor(private userService: UserServiceService) { }
+  constructor(private userService: UserServiceService, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+   }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe( data => {
@@ -27,5 +32,23 @@ export class VerificationsComponent implements OnInit {
 
   typetoString(type : CustomerType) : string{
     return CustomerType[type];
+  }
+
+  onVerify(username : string){
+    this.userService.verifyUser(username).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['/verifications']);
+    }
+    );
+  }
+
+  onDecline(username : string){
+    this.userService.declineUser(username).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['/verifications']);
+    }
+    );
   }
 }

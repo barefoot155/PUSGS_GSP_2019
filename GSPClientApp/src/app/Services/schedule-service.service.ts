@@ -21,4 +21,8 @@ export class ScheduleServiceService extends HttpService {
     getLinesByType(lineType: number) : Observable<any>{      
       return this.http.get<any>(this.specificUrlLines + `?lineType=${lineType}`);
     }
+
+    getAllLines() : Observable<string[]>{      
+      return this.http.get<string[]>(this.url + "api/Schedule/GetAllLines");
+    }
 }

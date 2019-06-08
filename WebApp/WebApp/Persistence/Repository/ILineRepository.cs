@@ -12,5 +12,6 @@ namespace WebApp.Persistence.Repository
         int GetLineIdByLineNumber(string lineNumber);
 
         List<string> GetLinesByLineType(LineType lineType);
+        List<string> GetAllLines();
     }
 }

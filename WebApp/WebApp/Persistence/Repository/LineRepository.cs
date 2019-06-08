@@ -35,5 +35,17 @@ namespace WebApp.Persistence.Repository
 
             return ret;
         }
+
+        public List<string> GetAllLines()
+        {
+            List<string> ret = new List<string>();
+
+            foreach (var item in AppDbContext.Lines.ToList())
+            {
+                ret.Add(item.Number);
+            }
+
+            return ret;
+        }
     }
 }

@@ -95,5 +95,23 @@ namespace WebApp.Persistence.Repository
 
             return ret;
         }
+
+        public bool SetVerificationStatus(string username, VerificationStatus status, out string email)
+        {
+            email = string.Empty;
+            try
+            {
+                ApplicationUser user = GetUserByUsername(username);
+                user.Status = status;
+                AppDbContext.SaveChanges();
+                email = user.Email;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace WebApp.Persistence.Repository
         bool UpdateUser(ApplicationUser updateUser);
         ApplicationUser GetUserByEmail(string email);
         IEnumerable<UserDataBindingModel> GetAllUsers();
+        bool SetVerificationStatus(string username, VerificationStatus status, out string email);
     }
 }

@@ -13,6 +13,7 @@ import { VerificationsComponent } from 'src/app/Components/verifications/verific
 import { PricelistComponent } from 'src/app/Components/pricelist/pricelist.component';
 import { UpdatePricelistComponent } from 'src/app/Components/update-pricelist/update-pricelist.component';
 import { TicketValidationComponent } from 'src/app/Components/ticket-validation/ticket-validation.component';
+import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -25,14 +26,15 @@ const routes:Routes = [
   {path: 'verifications', component: VerificationsComponent},
   {path: 'addpricelist', component: PricelistComponent},
   {path: 'updatepricelist', component:UpdatePricelistComponent},
-  {path: 'validation', component:TicketValidationComponent}
+  {path: 'validation', component:TicketValidationComponent},
+  {path: 'editlines', component:EditLinesComponent}
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   exports:[
     RouterModule

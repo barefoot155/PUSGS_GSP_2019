@@ -19,7 +19,8 @@
           <td style="text-align:center"> {{user.Address}} zamijeniti sa dokumentom</td>
           <td style="text-align:center"> {{typetoString(user.CustomerType)}} </td>
           <td style="text-align:center"> {{statusToString(user.Status)}}</td>
-          <td style="text-align:center"><button *ngIf="user.Status == 0" class="btn btn-success">Verify</button>&nbsp;&nbsp;&nbsp;<button *ngIf="user.Status == 0" class="btn btn-danger">Decline</button></td>
+          <td style="text-align:center"><button *ngIf="user.Status != 2" (click)="onVerify(user.UserName)" class="btn btn-success">Verify</button>
+            &nbsp;&nbsp;&nbsp;<button (click)="onDecline(user.UserName)" class="btn btn-danger">Decline</button></td>
         </tr>
       </tbody>
   </table>
