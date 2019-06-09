@@ -11,38 +11,28 @@ import { TicketModel } from 'src/app/Models/ticketModel';
 export class CheckTicketComponent implements OnInit {
 
   ticket : TicketModel;
+  valid : boolean = false;
 
   constructor(private ticketService : TicketsServiceService) { }
 
   ngOnInit() {
+    this.valid = false;
     this.ticketService.getUsersTicket().subscribe(
       data=>
       {
         this.ticket = data;
       });
   }
-
-  onSubmit(){
-    this.ticketService.checkTicket(this.ticket.TicketId).subscribe(
-      data => {
-        if(data)
-        {
-          console.log('cekirano');
-        }else{
-          console.log('ne moze se cekirati');
-        }
-      });
-  }
-
+  
   ticketTypeToString(ticketType : TicketType) : string{
     return TicketType[ticketType];
   }
 
-  ticketStatusToString(ticketStatus : boolean):string{
-    if(ticketStatus)
-    {
-      return "Checked";
-    }
-    return "Not checked";    
+  validationToString():string{
+    this.ticketService.validateTicket(this.ticket.TicketId).subscribe(
+      data => {
+        this.valid = data;
+      });
+    return this.valid ? "Valid ticket" : "Ticket expired";
   }
 }

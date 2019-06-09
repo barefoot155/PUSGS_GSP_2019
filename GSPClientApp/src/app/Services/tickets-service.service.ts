@@ -27,7 +27,4 @@ export class TicketsServiceService extends HttpService{
     let username = localStorage.getItem('username');
     return this.http.get<any>(this.url + `api/Ticket/GetUsersTicket?username=${username}`);
   }
-  checkTicket(ticketId : number):Observable<any>{
-    return this.http.get<any>(this.url + `api/Ticket/CheckTicket?ticketId=${ticketId}`);
-  }
 }

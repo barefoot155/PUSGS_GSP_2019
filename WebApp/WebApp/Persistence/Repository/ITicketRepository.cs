@@ -13,6 +13,5 @@ namespace WebApp.Persistence.Repository
         Ticket BuyTicketVerified(double price, int pricelistItemId, CustomerType customerType, TicketType ticketType);
         bool ValidateTicket(int ticketId);
         bool CheckTicketId(int ticketId);
-        bool CheckTicket(int ticketId);
     }
 }

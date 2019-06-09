@@ -45,15 +45,7 @@ namespace WebApp.Controllers
             };
             return Ok(ticketBM);
         }
-
-        [ResponseType(typeof(bool))]
-        [HttpGet]
-        [Route("CheckTicket")]
-        public IHttpActionResult CheckTicket(int ticketId)
-        {
-            return Ok(unitOfWork.Tickets.CheckTicket(ticketId));
-        }
-
+                
         [ResponseType(typeof(bool))]
         [HttpGet]
         [Route("CheckTicketId")]

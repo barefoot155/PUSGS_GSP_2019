@@ -24,21 +24,16 @@
         <td>{{ticketTypeToString(ticket.TicketType)}}</td>
       </tr>     
       <tr>
-        <td>Check status:</td>
-        <td>{{ticketStatusToString(ticket.IsChecked)}}</td>
+        <td>Ticket status:</td>
+        <th>{{validationToString()}}</th>
       </tr>    
-      <tr *ngIf="ticket.IsChecked">
+      <tr>
         <td>Check time:</td>
         <td>{{ticket.CheckTime}}</td>
       </tr> 
-      <tr *ngIf="ticket.IsChecked">
+      <tr>
         <td>Expiration date:</td>
         <td>{{ticket.ExpirationDate}}</td>
-      </tr>   
-      <tr class="success">
-          <td colspan="2">
-            <button *ngIf="!ticket.IsChecked" class="btn btn-success pull-right" type="submit" (click)="onSubmit()">Check ticket</button>
-          </td>
       </tr>
   </tbody>
 </table>
