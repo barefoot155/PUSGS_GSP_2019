@@ -35,6 +35,8 @@ import { AddStationComponent } from './Components/add-station/add-station.compon
 import { AddLineComponent } from './Components/add-line/add-line.component';
 import { StationServiceService } from 'src/app/Services/station-service.service';
 import { LineServiceService } from 'src/app/Services/line-service.service';
+import { UploadFileServiceService } from 'src/app/Services/upload-file-service.service';
+import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { LineServiceService } from 'src/app/Services/line-service.service';
 	UpdateSchedulesComponent,
 	AddScheduleComponent,
 	AddStationComponent,
-	AddLineComponent
+	AddLineComponent,
+    UploadDocumentComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { LineServiceService } from 'src/app/Services/line-service.service';
   providers: [HttpService, LoginServiceService, RegisterServiceService,StationServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService,
 			        PasswordChangeServiceService, LineServiceService,
               UserServiceService,
+			  UploadFileServiceService,
               {
                 provide: HTTP_INTERCEPTORS, 
                 useClass: TokenInterceptor, 

@@ -1055,3 +1055,5 @@ C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrat
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserStatusMigration.resources
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources
+C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources
+C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserDbMigration.resources

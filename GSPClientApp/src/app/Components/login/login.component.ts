@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
 import { LoginModel } from 'src/app/Models/loginModel';
 import { UserData } from 'src/app/Models/userData';
+import { UserServiceService } from 'src/app/Services/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   loggedUser : UserData;
 
-  constructor(private fb : FormBuilder, private loginService : LoginServiceService) { }
+  constructor(private fb : FormBuilder, private loginService : LoginServiceService, private userService: UserServiceService) { }
 
   ngOnInit() {
   }
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
 
   getUserData()
   {
-    this.loginService.getUserData(localStorage.getItem("username")).subscribe(
+    this.userService.getUserData(localStorage.getItem("username")).subscribe(
       data => {this.loggedUser = data;
       console.log(this.loggedUser)}
     );

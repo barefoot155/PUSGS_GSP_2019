@@ -113,5 +113,27 @@ namespace WebApp.Persistence.Repository
                 return false;
             }
         }
+        public bool AddUserDocument(string username, string docPath)
+        {
+            foreach (ApplicationUser user in AppDbContext.Users.ToList())
+            {
+                if (user.UserName == username)
+                {
+                    user.DocumentPath = docPath;
+                    user.Status = VerificationStatus.Processing;
+                    AppDbContext.SaveChanges();
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public string GetUserDocument(string username)
+        {
+            return AppDbContext.Users.Single(x => x.UserName == username).DocumentPath;
+        }
+
     }
 }

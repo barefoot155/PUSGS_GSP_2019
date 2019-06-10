@@ -43,6 +43,9 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "Status")]
         public VerificationStatus Status { get; set; }
+
+        [Display(Name = "DocumentPath")]
+        public string DocumentPath { get; set; }
     }
 
     public class LoginBindingModel

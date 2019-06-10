@@ -279,6 +279,10 @@
     <Compile Include="Migrations\201906082313395_CheckTicketMigration.Designer.cs">
       <DependentUpon>201906082313395_CheckTicketMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906101538343_UserDbMigration.cs" />
+    <Compile Include="Migrations\201906101538343_UserDbMigration.Designer.cs">
+      <DependentUpon>201906101538343_UserDbMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -387,7 +391,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\DocsRepository\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -430,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906082313395_CheckTicketMigration.resx">
       <DependentUpon>201906082313395_CheckTicketMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906101538343_UserDbMigration.resx">
+      <DependentUpon>201906101538343_UserDbMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

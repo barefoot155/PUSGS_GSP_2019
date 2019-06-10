@@ -23,26 +23,11 @@ export class LoginServiceService extends HttpService {
     return this.http.post(this.specificUrl, params, httpOptions);
   }
 
-  getUserData(username : string) : Observable<UserData>
-  {
-    return this.http.get<UserData>(this.url + `api/Login/GetUserData?username=${username}`);
-  }
-
   logout(){
     localStorage.setItem('username',undefined);
     localStorage.setItem('jwt',undefined);
     localStorage.setItem('role',undefined);
 
     console.log('Logout succeed.');
-  }
-
-  updateUserData(data : UserData) : Observable<any> {
-    let httpOptions = {
-      headers:{
-        "Content-type":"application/json"
-      }
-    }
-    //let params = `username=${data.UserName}&password=${data.Password}`;
-    return this.http.patch<any>(this.url + "api/Login/UpdateUserData", data, httpOptions);
   }
 }

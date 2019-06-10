@@ -11,4 +11,5 @@ export class UserData{
     DateOfBirth : string;
     CustomerType : CustomerType;
     Status : VerificationStatus;
+	DocumentPath : string;
 }

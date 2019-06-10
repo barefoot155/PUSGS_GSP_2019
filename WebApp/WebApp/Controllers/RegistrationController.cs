@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
+using System.Web;
 using System.Web.Http;
 using WebApp.Models;
 using WebApp.Persistence.UnitOfWork;
@@ -48,16 +51,60 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [Route("PostDocument")]
+        public IHttpActionResult PostDocument(string username)
+        {
+            HttpPostedFile temp = HttpContext.Current.Request.Files["myFile"];
+            string pathRepo = HttpContext.Current.Server.MapPath("~/App_Data/DocsRepository/");
+
+            try
+            {
+                string docPath = string.Concat(pathRepo, username, "_", temp.FileName);
+                temp.SaveAs(docPath);
+                unitOfWork.Users.AddUserDocument(username, docPath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace + ex.Message);
+                return BadRequest("input file is not valid");
+            }
+
+            return Ok("Image uploaded successfuly.");
+        }
+
+        [Route("GetDocument")]
+        public IHttpActionResult GetDocument(string username)
+        {
+            string filePath = unitOfWork.Users.GetUserDocument(username);
+
+            using (FileStream stream = new FileStream(filePath, FileMode.Open))
+            {
+                StreamContent content = new StreamContent(stream);
+                content.Headers.ContentLength = stream.Length;
+                content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                {
+                    FileName = Path.GetFileName(filePath)
+                };
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = content;
+                return ResponseMessage(response);
+            }
+        }
+
         [Route("VerifyAppUser")]
         [HttpGet]
         public IHttpActionResult VerifyAppUser(string username)
         {
-            if(unitOfWork.Users.SetVerificationStatus(username, VerificationStatus.Verified, out string email))
+            if (unitOfWork.Users.SetVerificationStatus(username, VerificationStatus.Verified, out string email))
             {
                 string subject = "Verification";
                 string body = "Your verification status has been changed to VERIFIED.";
-                sendEmailViaWebApi(email, subject, body);
-                return Ok("Verification succeed");
+                if (sendEmailViaWebApi(email, subject, body))
+                    return Ok("Verification succeed. Email sent.");
+                else
+                    return Ok("Verification succeed. Could not send email.");
             }
             else
             {
@@ -73,8 +120,10 @@ namespace WebApp.Controllers
             {
                 string subject = "Verification";
                 string body = "Your verification status has been changed to UNVERIFIED.";
-                sendEmailViaWebApi(email, subject, body);
-                return Ok("Verification succeed");
+                if (sendEmailViaWebApi(email, subject, body))
+                    return Ok("Verification succeed. Email sent.");
+                else
+                    return Ok("Verification succeed. Could not send email.");
             }
             else
             {
@@ -102,9 +151,9 @@ namespace WebApp.Controllers
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Send(msg);
             }
-            catch
+            catch (Exception ex)
             {
-                //ne moze da posalje mejl
+                Console.WriteLine(ex.StackTrace + ex.Message);
                 return false;
             }
 

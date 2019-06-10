@@ -1,0 +1,34 @@
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th colspan="2">
+                Upload document                    
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>Customer type:</td>
+          <td>
+              <div #customerType>
+                <input type="radio" name="custType" value="0" [checked]="customerType == 0"> Student
+                <input type="radio" name="custType" value="1" [checked]="customerType == 1"> Pensioner
+                <input type="radio" name="custType" value="2" [checked]="customerType == 2"> Regular
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td>Evidence document:</td>
+          <td>
+              <input style="display: none" type="file" (change)="onFileChanged($event)" accept="image/*" #fileInput>
+              <button (click)="fileInput.click()">Select File</button>&nbsp;&nbsp;
+              <img [src]="imageSrc" height="60" width="55"/>
+          </td>
+      </tr>
+      <tr class="success">
+          <td colspan="2">
+                <button [disabled]="!selectedFile" class="btn btn-success pull-right" (click)="onSubmit(customerType.value)">Attach file</button>
+          </td>
+      </tr>
+    </tbody>
+</table>
