@@ -1,5 +1,4 @@
-<form [formGroup]="addScheduleForm" (ngSubmit)="onSubmit()">
-  <table class="table table-bordered" *ngIf="options">
+<table class="table table-bordered" *ngIf="options">
       <thead>
           <tr class="success">
               <th colspan="2">
@@ -11,7 +10,8 @@
           <tr>
               <td>Line number:</td>
               <td>                
-                  <select formControlName="LineNumber">
+                  <select #lineNumber (change)="onSelectionChangeNumber($event)">
+                      <option value="">-- Please Select --</option>
                       <option *ngFor="let option of options;" [value]="option">
                           {{option}}
                       </option>
@@ -21,33 +21,28 @@
           <tr>
               <td>Day type:</td>
               <td>
-                <select formControlName="DayType">
+                <select #dayType (change)="onSelectionChangeDay($event)">
+                  <option value="">-- Please Select --</option>
                   <option value="0">Workday</option>
                   <option value="1">Saturday</option>
                   <option value="2">Sunday</option>                  
                 </select>
               </td>
           </tr>
-          <tr class="success">
-              <td colspan="2">
-                  <button class="btn btn-success pull-right" type="submit">Add line</button>
-              </td>
-          </tr>
       </tbody>
   </table>
-</form>
 
-<table class="table table-bordered">
+<table class="table table-bordered" *ngIf="selectedNumber && selectedDay">
     <thead>
         <tr class="success">
             <th colspan="2">
-                Add new schedule
+                Add new times for schedule
             </th>
         </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Add times:</td>
+        <td>Add times (manually):</td>
         <td>
           <input #newTimes type="text" name="newTimes" placeholder="Add times in format: hh:mm;">
         </td>

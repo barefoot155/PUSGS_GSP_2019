@@ -3,6 +3,7 @@ import { HttpService } from 'src/app/Services/http.service';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { ScheduleModel } from 'src/app/Models/scheduleModel';
+import { AddScheduleModel } from 'src/app/Models/addSchedule';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,14 @@ export class ScheduleServiceService extends HttpService {
 
     getAllLines() : Observable<string[]>{      
       return this.http.get<string[]>(this.url + "api/Schedule/GetAllLines");
+    }
+
+    addNewSchedule(schedule : AddScheduleModel) : Observable<any>{
+      let httpOptions = {
+        headers:{
+          "Content-type":"application/json"
+        }
+      }
+      return this.http.post<any>(this.url + "api/Schedule/AddNewSchedule",schedule,httpOptions);
     }
 }

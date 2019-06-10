@@ -86,6 +86,25 @@ namespace WebApp.Models
         public List<string> Stations { get; set; }
     }
 
+    public class AddScheduleBindingModel
+    {
+        [Required]
+        [Display(Name = "Number")]
+        public string Number { get; set; }
+
+        [Required]
+        [Display(Name = "DayType")]
+        public DayType DayType { get; set; }
+
+        [Required]
+        [Display(Name = "CheckedTimes")]
+        public List<string> CheckedTimes { get; set; }
+
+        [Required]
+        [Display(Name = "NewTimes")]
+        public string NewTimes { get; set; }
+    }
+
     public class LocationBindingModel
     {
         [Required]

@@ -56,5 +56,13 @@ namespace WebApp.Controllers
             }
             return Ok(schTimes);
         }
+
+        [HttpPost]
+        [Route("AddNewSchedule")]
+        public IHttpActionResult AddNewSchedule(AddScheduleBindingModel schedule)
+        {
+            //TODO 
+            return Ok();
+        }
     }
 }

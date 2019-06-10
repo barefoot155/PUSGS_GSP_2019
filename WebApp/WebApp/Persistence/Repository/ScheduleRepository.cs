@@ -21,5 +21,19 @@ namespace WebApp.Persistence.Repository
             List<Schedule> temp = AppDbContext.Schedules.ToList();
             return AppDbContext.Schedules.Where(s => s.LineId == lineId && s.Day == day).ToList();
         }
+
+        public bool AddNewSchedule(ScheduleBindingModel scheduleBM)
+        {
+            try
+            {
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

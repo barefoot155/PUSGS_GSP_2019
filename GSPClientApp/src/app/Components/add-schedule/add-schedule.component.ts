@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleServiceService } from 'src/app/Services/schedule-service.service';
 import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { CheckboxModel } from 'src/app/Models/checkboxModel';
+import { AddScheduleModel } from 'src/app/Models/addSchedule';
 
 @Component({
   selector: 'app-add-schedule',
@@ -9,30 +10,19 @@ import { CheckboxModel } from 'src/app/Models/checkboxModel';
   styleUrls: ['./add-schedule.component.css']
 })
 export class AddScheduleComponent implements OnInit {
-  formTimes: FormGroup;
-  times = [];
   
   options : string[];
   currentTimes : CheckboxModel[] = [];
-  newTimes : string[];
+  newTimesChecked : string[];
+  newSchedule : AddScheduleModel;
+
+  selectedNumber : string;
+  selectedDay : number;
   
-  addScheduleForm = this.fb.group({
-    LineNumber : ['', Validators.required],
-    DayType : ['', Validators.required]
-  });
-  
-  constructor(private scheduleService : ScheduleServiceService, private fb : FormBuilder) {
-    this.formTimes = this.fb.group({
-        times: new FormArray([]) 
-    });
-    this.addCheckboxes();
+  constructor(private scheduleService : ScheduleServiceService) {
+    
    }
-   private addCheckboxes() {
-    this.times.map((o, i) => {
-      const control = new FormControl(i === 0); // if first item set to true, else false
-      (this.formTimes.controls.orders as FormArray).push(control);
-    });
-  }
+   
   ngOnInit() {
     this.scheduleService.getAllLines().subscribe(
       data =>{
@@ -40,7 +30,7 @@ export class AddScheduleComponent implements OnInit {
       });
   }
   onSubmit(){
-    this.scheduleService.getScheduleForLine(this.addScheduleForm.value.LineNumber,this.addScheduleForm.value.DayType).subscribe(
+    this.scheduleService.getScheduleForLine(this.selectedNumber,this.selectedDay).subscribe(
       data=>{
         for(var i=0; i<data.length; i++){
           this.currentTimes.push({value : data[i], isChecked: true})
@@ -50,7 +40,34 @@ export class AddScheduleComponent implements OnInit {
   AddTimes(newTimes : string){
     console.log(newTimes);
     let checkedTimes = this.currentTimes.filter((ch) => { return ch.isChecked }).map((ch) => { return ch.value });
-    console.log(checkedTimes);
-    
+    console.log(checkedTimes);    
+
+    this.newSchedule = new AddScheduleModel();
+
+    this.newSchedule.Number = this.selectedNumber;
+    this.newSchedule.DayType = this.selectedDay;
+    this.newSchedule.NewTimes = newTimes;
+    this.newSchedule.CheckedTimes = checkedTimes;
+
+    this.scheduleService.addNewSchedule(this.newSchedule).subscribe(
+      data => {
+        console.log('added')
+    });
+  }
+
+  onSelectionChangeNumber(event){
+    this.selectedNumber = event.target.value;
+    if(this.selectedNumber && this.selectedDay)
+    {
+      this.onSubmit();
+    }
+  }
+
+  onSelectionChangeDay(event){
+    this.selectedDay = event.target.value;
+    if(this.selectedNumber && this.selectedDay)
+    {
+      this.onSubmit();
+    }
   }
 }
