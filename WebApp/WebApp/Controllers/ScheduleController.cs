@@ -66,5 +66,34 @@ namespace WebApp.Controllers
             unitOfWork.Schedules.AddNewSchedule(schedule, lineId);
             return Ok();
         }
+
+        [ResponseType(typeof(LineBindingModel))]
+        [HttpGet]
+        [Route("GetLineData")]
+        public IHttpActionResult GetLineData(string lineNumber)
+        {
+            Line line = unitOfWork.Lines.GetLineByLineNumber(lineNumber);
+            LineBindingModel lineBindingModel = new LineBindingModel() { Number = line.Number, LineType = line.LineType };
+            lineBindingModel.Stations = new List<string>();
+            lineBindingModel.Stations.Add("prvastanica");
+            lineBindingModel.Stations.Add("drugastanica");
+            lineBindingModel.Stations.Add("trecastanica");
+            foreach (Station station in line.Stations)
+            {
+                lineBindingModel.Stations.Add(station.Name);
+            }
+
+            return Ok(lineBindingModel);
+        }
+
+        [ResponseType(typeof(List<string>))]
+        [HttpGet]
+        [Route("GetAllStations")]
+        public IHttpActionResult GetAllStations()
+        {
+            List<string> stations = unitOfWork.Stations.GetAllStationNames();
+
+            return Ok(stations);
+        }
     }
 }

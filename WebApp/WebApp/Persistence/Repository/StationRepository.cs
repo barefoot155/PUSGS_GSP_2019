@@ -41,5 +41,17 @@ namespace WebApp.Persistence.Repository
                 return false;
             }
         }
+
+        public List<string> GetAllStationNames()
+        {
+            List<string> ret = new List<string>();
+
+            foreach (Station station in AppDbContext.Stations.ToList())
+            {
+                ret.Add(station.Name);
+            }
+
+            return ret;
+        }
     }
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { ScheduleModel } from 'src/app/Models/scheduleModel';
 import { AddScheduleModel } from 'src/app/Models/addSchedule';
+import { LineModel } from '../Models/lineModel';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,16 @@ export class ScheduleServiceService extends HttpService {
 
     getAllLines() : Observable<string[]>{      
       return this.http.get<string[]>(this.url + "api/Schedule/GetAllLines");
+    }
+
+    getLineDetails(lineNumber: string) : Observable<LineModel>
+    {
+      return this.http.get<LineModel>(this.url + `api/Schedule/GetLineData?lineNumber=${lineNumber}`);
+    }
+
+    getAllStations() : Observable<string[]>
+    {
+      return this.http.get<string[]>(this.url + "api/Schedule/GetAllStations");
     }
 
     addNewSchedule(schedule : AddScheduleModel) : Observable<any>{

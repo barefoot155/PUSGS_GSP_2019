@@ -48,6 +48,11 @@ namespace WebApp.Persistence.Repository
             return ret;
         }
 
+        public Line GetLineByLineNumber(string lineNumber)
+        {
+            return AppDbContext.Lines.FirstOrDefault(line => line.Number == lineNumber);
+        }
+
         public bool AddNewLine(LineBindingModel line)
         {
             try

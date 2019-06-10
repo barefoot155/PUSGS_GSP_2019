@@ -1,3 +1,42 @@
-<select #lineNumber>
+<select #lineNumber (change)='onSelectionChanged($event)'>
+  <option>--select line number--</option>
   <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
 </select>
+<table *ngIf="lineData" class="table table-bordered">
+  <thead>
+      <tr class="success">
+          <th colspan="2">
+              Line details                    
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Line id:</td>
+          <td>
+            <label>{{lineData.Id}}</label>
+          </td>
+      </tr>
+      <tr>
+        <td>Line number</td>
+        <td>
+            <input type="text" [(ngModel)]="lineData.Number" value="{{lineData.Number}}" placeholder="Line number..." required>
+        </td>
+      </tr>
+      <tr>
+          <td>Stations:</td>
+          <td>
+            <div #stations *ngFor='let station of allStations'>
+              <input type="checkbox" [checked]="IsInList(station)" [value]="station">{{station}}<br/>
+            </div>
+          </td>
+      </tr>
+      
+      <tr class="success">
+          <td colspan="2">
+                <button class="btn btn-success pull-right" (click)="onSubmit()">Save changes</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
