@@ -9,5 +9,6 @@ namespace WebApp.Persistence.Repository
 {
     public interface IStationRepository : IRepository<Station, int>
     {
+        bool AddNewStation(StationBindingModel station);
     }
 }

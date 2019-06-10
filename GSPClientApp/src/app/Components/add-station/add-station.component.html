@@ -1,0 +1,42 @@
+<form [formGroup]="addStationForm" (ngSubmit)="onSubmit()">
+  <table class="table table-bordered">
+      <thead>
+          <tr class="success">
+              <th colspan="2">
+                  Add new station
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Name:</td>
+              <td>
+                  <input type="text" formControlName="Name" placeholder="Name..." required>
+              </td>
+          </tr>
+          <tr>
+              <td>Address:</td>
+              <td>
+                  <input type="text" formControlName="Address" placeholder="Address..." required>
+              </td>
+          </tr>
+          <tr>
+              <td>Latitude:</td>
+              <td>
+                  <input type="text" formControlName="Lat" placeholder="Latitude..." required>
+              </td>
+          </tr>
+          <tr>
+              <td>Longitude:</td>
+              <td>
+                  <input type="text" formControlName="Lon" placeholder="Longitude..." required>
+              </td>
+          </tr>
+          <tr class="success">
+              <td colspan="2">
+                  <button class="btn btn-success pull-right" type="submit">Add station</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</form>

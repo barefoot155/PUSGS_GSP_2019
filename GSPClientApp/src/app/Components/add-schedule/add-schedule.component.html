@@ -1,0 +1,69 @@
+<form [formGroup]="addScheduleForm" (ngSubmit)="onSubmit()">
+  <table class="table table-bordered" *ngIf="options">
+      <thead>
+          <tr class="success">
+              <th colspan="2">
+                  Add new schedule
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Line number:</td>
+              <td>                
+                  <select formControlName="LineNumber">
+                      <option *ngFor="let option of options;" [value]="option">
+                          {{option}}
+                      </option>
+          </select>
+              </td>
+          </tr>
+          <tr>
+              <td>Day type:</td>
+              <td>
+                <select formControlName="DayType">
+                  <option value="0">Workday</option>
+                  <option value="1">Saturday</option>
+                  <option value="2">Sunday</option>                  
+                </select>
+              </td>
+          </tr>
+          <tr class="success">
+              <td colspan="2">
+                  <button class="btn btn-success pull-right" type="submit">Add line</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th colspan="2">
+                Add new schedule
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Add times:</td>
+        <td>
+          <input #newTimes type="text" name="newTimes" placeholder="Add times in format: hh:mm;">
+        </td>
+      </tr>   
+      <tr>
+          <td></td>
+          <td>           
+            <div *ngFor="let ch of currentTimes">     
+                  <input [(ngModel)]="ch.isChecked" type="checkbox" value={{ch.value}} id={{ch.value}}  name="num">{{ch.value}}
+            </div>
+          </td>
+        </tr>   
+      <tr class="success">
+          <td colspan="2">
+              <button class="btn btn-success pull-right" type="submit" (click)="AddTimes(newTimes.value)">Add times</button>
+          </td>
+      </tr>  
+    </tbody>
+</table>

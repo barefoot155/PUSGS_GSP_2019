@@ -47,5 +47,27 @@ namespace WebApp.Persistence.Repository
 
             return ret;
         }
+
+        public bool AddNewLine(LineBindingModel line)
+        {
+            try
+            {
+                Line l = new Line()
+                {
+                    LineType = line.LineType,
+                    Number = line.Number,
+                    //TODO dodati stations
+                };
+
+                AppDbContext.Lines.Add(l);
+                AppDbContext.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

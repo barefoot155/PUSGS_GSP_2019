@@ -10,7 +10,7 @@ import { ScheduleModel } from 'src/app/Models/scheduleModel';
 })
 export class ScheduleComponent implements OnInit {
   
-  schedules : ScheduleModel[];
+  schedules : string[];
   lines : string[];
   scheduleTableHeader : string;
   selectedLineType : number;

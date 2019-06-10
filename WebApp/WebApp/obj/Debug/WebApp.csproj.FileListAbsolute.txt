@@ -1054,3 +1054,4 @@ C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Mi
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.NewDbMigration.resources
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserStatusMigration.resources
 C:\Users\BosaBratic\Desktop\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources
+C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources

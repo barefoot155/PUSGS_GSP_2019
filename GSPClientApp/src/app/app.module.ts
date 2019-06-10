@@ -29,6 +29,12 @@ import { UpdatePricelistComponent } from './Components/update-pricelist/update-p
 import { TicketValidationComponent } from './Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
 import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
+import { UpdateSchedulesComponent } from './Components/update-schedules/update-schedules.component';
+import { AddScheduleComponent } from './Components/add-schedule/add-schedule.component';
+import { AddStationComponent } from './Components/add-station/add-station.component';
+import { AddLineComponent } from './Components/add-line/add-line.component';
+import { StationServiceService } from 'src/app/Services/station-service.service';
+import { LineServiceService } from 'src/app/Services/line-service.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,11 @@ import { CheckTicketComponent } from './Components/check-ticket/check-ticket.com
     UpdatePricelistComponent,
     TicketValidationComponent,
     EditLinesComponent,
-	CheckTicketComponent
+	CheckTicketComponent,
+	UpdateSchedulesComponent,
+	AddScheduleComponent,
+	AddStationComponent,
+	AddLineComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +65,8 @@ import { CheckTicketComponent } from './Components/check-ticket/check-ticket.com
     AppRoutingModule,
     FormsModule
   ],
-  providers: [HttpService, LoginServiceService, RegisterServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService,
-			        PasswordChangeServiceService, 
+  providers: [HttpService, LoginServiceService, RegisterServiceService,StationServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService,
+			        PasswordChangeServiceService, LineServiceService,
               UserServiceService,
               {
                 provide: HTTP_INTERCEPTORS, 

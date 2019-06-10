@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WebApp.Models
 {
@@ -74,7 +75,15 @@ namespace WebApp.Models
     {
         [Required]
         [Display(Name = "Number")]
-        public short Number { get; set; }
+        public string Number { get; set; }
+
+        [Required]
+        [Display(Name = "LineType")]
+        public LineType LineType { get; set; }
+
+        [Required]
+        [Display(Name = "Stations")]
+        public List<string> Stations { get; set; }
     }
 
     public class LocationBindingModel
@@ -171,6 +180,16 @@ namespace WebApp.Models
         public int LineId { get; set; }
     }
 
+    public class ScheduleTimesBindingModel
+    {
+        [Required]
+        [Display(Name = "Day")]
+        public DayType Day { get; set; }
+        [Required]
+        [Display(Name = "LineId")]
+        public int LineId { get; set; }
+    }
+
     public class StationBindingModel
     {
         [Required]
@@ -180,8 +199,11 @@ namespace WebApp.Models
         [Display(Name = "Address")]
         public string Address { get; set; }
         [Required]
-        [Display(Name = "LocationId")]
-        public int LocationId { get; set; }
+        [Display(Name = "Lat")]
+        public double Lat { get; set; }
+        [Required]
+        [Display(Name = "Lon")]
+        public double Lon { get; set; }
     }
 
     public class TicketBindingModel

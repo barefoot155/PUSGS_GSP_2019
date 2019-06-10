@@ -15,6 +15,10 @@ import { UpdatePricelistComponent } from 'src/app/Components/update-pricelist/up
 import { TicketValidationComponent } from 'src/app/Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
 import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
+import { UpdateSchedulesComponent } from 'src/app/Components/update-schedules/update-schedules.component';
+import { AddStationComponent } from 'src/app/Components/add-station/add-station.component';
+import { AddLineComponent } from 'src/app/Components/add-line/add-line.component';
+import { AddScheduleComponent } from 'src/app/Components/add-schedule/add-schedule.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -29,7 +33,10 @@ const routes:Routes = [
   {path: 'updatepricelist', component:UpdatePricelistComponent},
   {path: 'validation', component:TicketValidationComponent},
   {path: 'editlines', component:EditLinesComponent},
-  {path: 'checkTicket', component: CheckTicketComponent}
+  {path: 'checkTicket', component: CheckTicketComponent},
+  {path: 'addline', component: AddLineComponent},
+  {path: 'addstation', component : AddStationComponent},
+  {path: 'addschedule', component : AddScheduleComponent}
 ];
 
 @NgModule({

@@ -39,14 +39,22 @@ namespace WebApp.Controllers
             return Ok(ret);
         }
 
-        [ResponseType(typeof(IEnumerable<Schedule>))]
+        [ResponseType(typeof(IEnumerable<string>))]
         [HttpGet]
         [Route("GetSchedule")]
         public IHttpActionResult GetSchedule(string lineNumber, DayType dayType)
         {
             int lineId = unitOfWork.Lines.GetLineIdByLineNumber(lineNumber);
-            var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId, dayType);
-            return Ok(schs);
+            var schs = unitOfWork.Schedules.GetSchedulesByLineId(lineId, dayType).ToList();
+            List<string> schTimes = new List<string>();
+            if (schs.Count ==0)
+                return Ok(schTimes);
+            var times = schs[0].Times;
+            foreach (var item in times)
+            {
+                schTimes.Add(item.Time);
+            }
+            return Ok(schTimes);
         }
     }
 }

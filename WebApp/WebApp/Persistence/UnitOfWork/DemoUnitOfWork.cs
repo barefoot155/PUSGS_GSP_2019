@@ -30,7 +30,7 @@ namespace WebApp.Persistence.UnitOfWork
         public IPricelist_ItemRepository Pricelist_Items { get; set; }
         [Dependency]
         public IScheduleRepository Schedules { get; set; }
-        //[Dependency]
+        [Dependency]
         public IStationRepository Stations { get; set; }
         [Dependency]
         public ITicketRepository Tickets { get; set; }
