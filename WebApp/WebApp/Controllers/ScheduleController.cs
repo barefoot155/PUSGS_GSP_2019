@@ -62,6 +62,8 @@ namespace WebApp.Controllers
         public IHttpActionResult AddNewSchedule(AddScheduleBindingModel schedule)
         {
             //TODO 
+            int lineId = unitOfWork.Lines.GetLineIdByLineNumber(schedule.Number);
+            unitOfWork.Schedules.AddNewSchedule(schedule, lineId);
             return Ok();
         }
     }
