@@ -20,6 +20,7 @@ import { AddStationComponent } from 'src/app/Components/add-station/add-station.
 import { AddLineComponent } from 'src/app/Components/add-line/add-line.component';
 import { AddScheduleComponent } from 'src/app/Components/add-schedule/add-schedule.component';
 import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
+import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -38,7 +39,8 @@ const routes:Routes = [
   {path: 'addline', component: AddLineComponent},
   {path: 'addstation', component : AddStationComponent},
   {path: 'addschedule', component : AddScheduleComponent},
-  {path: 'document', component: UploadDocumentComponent}
+  {path: 'document', component: UploadDocumentComponent},
+  {path: 'lines', component: LinesMapComponent}
 ];
 
 @NgModule({

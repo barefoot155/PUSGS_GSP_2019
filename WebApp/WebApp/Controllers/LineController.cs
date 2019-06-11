@@ -47,5 +47,21 @@ namespace WebApp.Controllers
                 return BadRequest("Line not found.");
             }
         }
+
+        [HttpGet]
+        [ResponseType(typeof(List<StationBindingModel>))]
+        [Route("GetStationsByLineNumber")]
+        public IHttpActionResult GetStationsByLineNumber(string lineNumber)
+        {
+            var stations = unitOfWork.Lines.GetAllStationsByLineNumber(lineNumber);
+            List<StationBindingModel> ret = new List<StationBindingModel>();
+
+            foreach (var item in stations)
+            {
+                ret.Add(new StationBindingModel() { Address = item.Address, Lat = item.Location.Lat, Lon = item.Location.Lon, Name = item.Name });
+            }
+
+            return Ok(ret);
+        }
     }
 }

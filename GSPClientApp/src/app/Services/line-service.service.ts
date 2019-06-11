@@ -19,4 +19,8 @@ export class LineServiceService extends HttpService{
   updateLine(lineData: LineModel) : Observable<any>{
     return this.http.patch(this.url + "api/Line/UpdateLine", lineData);
   }
+  
+  getAllStationsByLineNumber(lineNumber : string):Observable<any>{
+    return this.http.get<any>(this.url + `api/Line/GetStationsByLineNumber?lineNumber=${lineNumber}`);    
+  }
 }

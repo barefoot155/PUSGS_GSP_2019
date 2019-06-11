@@ -103,5 +103,15 @@ namespace WebApp.Persistence.Repository
         {
             return AppDbContext.Stations.Single(s => s.Name == station);
         }
+
+        public List<Station> GetAllStationsByLineNumber(string lineNumber)
+        {
+            Line line = AppDbContext.Lines.FirstOrDefault(l => l.Number == lineNumber);
+
+            if (line == null)
+                return new List<Station>();
+
+            return line.Stations;
+        }
     }
 }

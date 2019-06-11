@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -37,6 +38,7 @@ import { StationServiceService } from 'src/app/Services/station-service.service'
 import { LineServiceService } from 'src/app/Services/line-service.service';
 import { UploadFileServiceService } from 'src/app/Services/upload-file-service.service';
 import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
+import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.component';
 
 @NgModule({
   declarations: [
@@ -59,14 +61,16 @@ import { UploadDocumentComponent } from 'src/app/Components/upload-document/uplo
 	AddScheduleComponent,
 	AddStationComponent,
 	AddLineComponent,
-    UploadDocumentComponent
+    UploadDocumentComponent,
+	LinesMapComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+	AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'})
   ],
   providers: [HttpService, LoginServiceService, RegisterServiceService,StationServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService,
 			        PasswordChangeServiceService, LineServiceService,
