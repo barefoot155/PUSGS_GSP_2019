@@ -12,10 +12,18 @@
   <!-- Kreiramo mapu -->
    <agm-map [latitude]="startLat" [longitude]="startLon" [zoom]="15"><!-- (mapClick)="placeMarker($event)"-->  
 
-    <agm-marker *ngFor="let m of stations" [latitude]="m.Lat" [longitude]="m.Lon" [title]="m.Name" [iconUrl]="busImgIcon" label="">
+    <agm-polyline [strokeColor]="polyline.color">
+      <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
+      </agm-polyline-point>
+    </agm-polyline>
+
+    <agm-marker *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polyline.icon">
+    </agm-marker>
+
+    <agm-marker *ngFor="let m of stations" [latitude]="m.Lat" [longitude]="m.Lon" [title]="m.Name" [iconUrl]="busImgIcon" label="" (markerClick)="clickedMarker(infoWindow)">
 
       <!-- Svakom markeru dodajemo info-window (Nije obavezno!)-->
-      <agm-info-window [latitude]="m.Lat" [longitude]="m.Lon" >
+      <agm-info-window #infoWindow [latitude]="m.Lat" [longitude]="m.Lon" >
 
         <!-- U info-window stavljamo html -->
         <span style="font-size: 20px;font-family:'Times New Roman'">{{m.Name}}</span>
@@ -24,14 +32,6 @@
         <span style="font-family:'Times New Roman'; font-size: 18px; color:gray;"><strong>{{m.Lat}},&nbsp;{{m.Lon}}</strong></span>
       </agm-info-window>
     </agm-marker>
-
-    <agm-polyline [strokeColor]="polyline.color">
-        <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
-        </agm-polyline-point>
-   </agm-polyline>
-
-   <!-- <agm-marker *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polyline.icon">
-   </agm-marker> -->
 
  </agm-map>
 </div>

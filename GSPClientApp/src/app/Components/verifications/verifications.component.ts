@@ -4,6 +4,7 @@ import { UserData } from 'src/app/Models/userData';
 import { VerificationStatus } from 'src/app/Models/verificationStatus';
 import { CustomerType } from 'src/app/Models/customerType';
 import { Router } from '@angular/router';
+import { UploadFileServiceService } from 'src/app/Services/upload-file-service.service';
 
 @Component({
   selector: 'app-verifications',
@@ -13,8 +14,9 @@ import { Router } from '@angular/router';
 export class VerificationsComponent implements OnInit {
 
   users : UserData[];
+  imgSrc : string;
 
-  constructor(private userService: UserServiceService, private router: Router) {
+  constructor(private userService: UserServiceService, private router: Router, private fileServis: UploadFileServiceService) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -49,6 +51,14 @@ export class VerificationsComponent implements OnInit {
         console.log(data);
         this.router.navigate(['/verifications']);
     }
+    );
+  }
+
+  downloadDocument(username: string) {
+    this.fileServis.downloadFile(username).subscribe(
+      data => {
+        this.imgSrc = 'data:image/png;base64,' + data;
+      }
     );
   }
 }

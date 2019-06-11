@@ -72,25 +72,30 @@ namespace WebApp.Controllers
             return Ok("Image uploaded successfuly.");
         }
 
-        [Route("GetDocument")]
-        public IHttpActionResult GetDocument(string username)
+        [Route("DownloadFile")]
+        [HttpGet]
+        public IHttpActionResult DownloadFile(string username)
         {
             string filePath = unitOfWork.Users.GetUserDocument(username);
 
-            using (FileStream stream = new FileStream(filePath, FileMode.Open))
-            {
-                StreamContent content = new StreamContent(stream);
-                content.Headers.ContentLength = stream.Length;
-                content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-                content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                {
-                    FileName = Path.GetFileName(filePath)
-                };
+            FileInfo fileInfo = new FileInfo(filePath);
+            string type = fileInfo.Extension.Split('.')[1];
+            byte[] data = new byte[fileInfo.Length];
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                response.Content = content;
-                return ResponseMessage(response);
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            using (FileStream fs = fileInfo.OpenRead())
+            {
+                fs.Read(data, 0, data.Length);
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new ByteArrayContent(data);
+                response.Content.Headers.ContentLength = data.Length;
+
             }
+
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/png");
+
+            return Ok(data);
         }
 
         [Route("VerifyAppUser")]

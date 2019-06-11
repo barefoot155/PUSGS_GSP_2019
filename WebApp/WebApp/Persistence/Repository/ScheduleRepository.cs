@@ -26,8 +26,6 @@ namespace WebApp.Persistence.Repository
         {
             try
             {
-                
-
                 var sc = AppDbContext.Schedules.FirstOrDefault(s => s.Day == scheduleBM.DayType && s.LineId == lineId);
 
                 List<string> newTimes = ParseTimesFromString(scheduleBM.NewTimes);
@@ -38,32 +36,30 @@ namespace WebApp.Persistence.Repository
                 {
                     //kreiraj novi sch jer ne postoji za taj dan                    
 
-                    Schedule schedule = new Schedule() { Day = scheduleBM.DayType, LineId = lineId};
-                    AppDbContext.Schedules.Add(schedule);
+                    sc = new Schedule() { Day = scheduleBM.DayType, LineId = lineId, Times = new List<ScheduleTime>() };
+                    AppDbContext.Schedules.Add(sc);
                     AppDbContext.SaveChanges();
                 }
-                else
+                
+                //azuriraj postojeci
+                foreach (var item in sc.Times)
                 {
-                    //azuriraj postojeci
-                    foreach (var item in sc.Times)
-                    {
-                        if (!scheduleBM.CheckedTimes.Contains(item.Time))
-                        {                            
-                            AppDbContext.ScheduleTimes.Remove(item);
-                            AppDbContext.SaveChanges();
-                        }
-                    }
-
-                    foreach (var item in newTimes)
-                    {
-                        AppDbContext.ScheduleTimes.Add(new ScheduleTime() { Time = item, ScheduleId = sc.Id });
+                    if (!scheduleBM.CheckedTimes.Contains(item.Time))
+                    {                            
+                        AppDbContext.ScheduleTimes.Remove(item);
                         AppDbContext.SaveChanges();
                     }
                 }
 
+                foreach (var item in newTimes)
+                {
+                    AppDbContext.ScheduleTimes.Add(new ScheduleTime() { Time = item, ScheduleId = sc.Id });
+                    AppDbContext.SaveChanges();
+                }
+
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }

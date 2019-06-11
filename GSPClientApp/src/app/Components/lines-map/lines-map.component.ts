@@ -24,40 +24,41 @@ export class LinesMapComponent implements OnInit {
   stations : StationModel[] = [];
   busImgIcon : any = {url:"assets/Images/busicon.png", scaledSize: {width: 50, height: 50}};
 
-  
+  previous : any;
+
   ngOnInit() {
     this.scheduleService.getAllLines().subscribe(
       data =>{
         this.options = data;
       });
 
-    this.markerInfo = new MarkerInfo(new GeoLocation(45.242268, 19.842954), 
-    "assets/Images/ftn.png",
-    "Jugodrvo" , "" , "http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka");
-
     this.polyline = new Polyline([], 'blue', { url:"assets/Images/busicon.png", scaledSize: {width: 50, height: 50}});
   }
   constructor(private ngZone: NgZone, private lineService : LineServiceService, private scheduleService : ScheduleServiceService){
   }
 
-  // placeMarker($event){
-  //   this.polyline.addLocation(new GeoLocation($event.coords.lat, $event.coords.lng))
-  //   console.log(this.polyline)
-  // }
-
   getStationsByLineNumber(lineNumber : string){
     this.lineService.getAllStationsByLineNumber(lineNumber).subscribe(
       data =>{
         console.log(data);
+        this.stations = data;
         for(var i=0; i<this.stations.length; ++i){
           console.log(i);
           this.polyline.addLocation(new GeoLocation(this.stations[i].Lat, this.stations[i].Lon));
         }
-        this.stations = data;
       });
   }
   onSelectionChangeNumber(event){
+    this.stations = [];
+    this.polyline.path = [];
     this.getStationsByLineNumber(event.target.value);
-     
+  }
+
+  clickedMarker(infoWindow){
+    if(this.previous)
+    {
+      this.previous.close();
+    }
+    this.previous = infoWindow;
   }
 }
