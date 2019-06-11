@@ -13,6 +13,7 @@
           </td>
           <td>
                 <select #lineType (change)='onOptionSelected($event)'>
+                        <option value="">-- Please select --</option>
                         <option value="0">Urban</option>
                         <option value="1">Suburban</option>
                 </select>
@@ -24,6 +25,7 @@
             </td>
             <td>
                 <select #lineNumber>
+                        <option value="">-- Please Select --</option>
                         <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
                 </select>
             </td>

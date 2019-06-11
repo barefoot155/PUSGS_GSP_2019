@@ -33,17 +33,24 @@ namespace WebApp.Controllers
         public IHttpActionResult GetUsersTicket(string username)
         {
             Ticket ticket = unitOfWork.Users.GetUserByUsername(username).Ticket;
-            TicketBindingModel ticketBM = new TicketBindingModel()
+            if (ticket != null)
             {
-                CheckTime = ticket.CheckTime,
-                CustomerType = ticket.CustomerType,
-                ExpirationDate = ticket.ExpirationDate,
-                Price = ticket.Price,
-                TicketId = ticket.Id,
-                TicketType = ticket.TicketType,
-                IsChecked = ticket.IsChecked
-            };
-            return Ok(ticketBM);
+                TicketBindingModel ticketBM = new TicketBindingModel()
+                {
+                    CheckTime = ticket.CheckTime,
+                    CustomerType = ticket.CustomerType,
+                    ExpirationDate = ticket.ExpirationDate,
+                    Price = ticket.Price,
+                    TicketId = ticket.Id,
+                    TicketType = ticket.TicketType,
+                    IsChecked = ticket.IsChecked
+                };
+                return Ok(ticketBM);
+            }
+            else
+            {
+                return Ok(new TicketBindingModel());
+            }
         }
                 
         [ResponseType(typeof(bool))]

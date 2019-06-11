@@ -1,5 +1,5 @@
 <select #lineNumber (change)='onSelectionChanged($event)'>
-  <option>--select line number--</option>
+  <option>-- Please Select --</option>
   <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
 </select>
 <table *ngIf="lineData" class="table table-bordered">

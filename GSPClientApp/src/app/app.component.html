@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
-<a routerLink="/login"><button class="btn btn-success pull-left" > Login </button></a>
-<a routerLink="/registration"><button class="btn btn-primary pull-left" > Registration </button></a>
+
+<a routerLink="/login" *ngIf="!IsLoggedIn()"><button class="btn btn-success pull-left" > Login </button></a>
+<a routerLink="/registration" *ngIf="!IsLoggedIn()"><button class="btn btn-primary pull-left" > Registration </button></a>
+
 <router-outlet></router-outlet>

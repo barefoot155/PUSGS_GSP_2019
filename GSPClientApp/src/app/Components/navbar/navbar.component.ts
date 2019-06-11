@@ -16,4 +16,16 @@ export class NavbarComponent implements OnInit {
   logoutClick(){
     this.loginService.logout();
   }
+
+  isAdmin(){
+    return localStorage.getItem('role') == "Admin";
+  }
+
+  isAppUser(){
+    return localStorage.getItem('role') == "AppUser";    
+  }
+
+  isController(){
+    return localStorage.getItem('role') == "Controller";    
+  }
 }

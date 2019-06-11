@@ -1,6 +1,11 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <table class="table table-bordered">
+  <table class="table table-bordered" *ngIf="!loginClicked">
       <thead>
+            <!-- <tr class="success">
+                    <th colspan="2">
+                            <a routerLink="/login" (click)="LoginClicked()"><button class="btn btn-primary pull-right"> Login </button></a>
+                    </th>
+              </tr> -->
           <tr class="success">
               <th colspan="2">
                   Registration                    

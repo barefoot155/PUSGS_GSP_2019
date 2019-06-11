@@ -4,6 +4,7 @@ import { LoginServiceService } from 'src/app/Services/login-service.service';
 import { LoginModel } from 'src/app/Models/loginModel';
 import { UserData } from 'src/app/Models/userData';
 import { UserServiceService } from 'src/app/Services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,12 @@ export class LoginComponent implements OnInit {
 
   loggedUser : UserData;
 
-  constructor(private fb : FormBuilder, private loginService : LoginServiceService, private userService: UserServiceService) { }
+  constructor(private fb : FormBuilder, private loginService : LoginServiceService, private userService: UserServiceService, private router : Router) { }
 
   ngOnInit() {
+    if(this.isLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit()
@@ -55,5 +59,9 @@ export class LoginComponent implements OnInit {
       data => {this.loggedUser = data;
       console.log(this.loggedUser)}
     );
+  }
+
+  isLoggedIn(){
+    return localStorage.getItem('username') != undefined;
   }
 }

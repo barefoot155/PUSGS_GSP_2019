@@ -24,9 +24,9 @@ export class LoginServiceService extends HttpService {
   }
 
   logout(){
-    localStorage.setItem('username',undefined);
-    localStorage.setItem('jwt',undefined);
-    localStorage.setItem('role',undefined);
+    localStorage.removeItem('username');
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('role');
 
     console.log('Logout succeed.');
   }

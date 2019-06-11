@@ -32,6 +32,9 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb : FormBuilder, private registerService : RegisterServiceService, private router:Router, private fileUploadService : UploadFileServiceService) { }
 
   ngOnInit() {
+    if(this.isLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit()
@@ -60,5 +63,9 @@ export class RegistrationComponent implements OnInit {
       data => console.log(data),
       error => console.log(error)
     );
+  }
+
+  isLoggedIn(){
+    return localStorage.getItem('username') != undefined;
   }
 }
