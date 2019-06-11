@@ -73,7 +73,7 @@ namespace WebApp.Controllers
         public IHttpActionResult GetLineData(string lineNumber)
         {
             Line line = unitOfWork.Lines.GetLineByLineNumber(lineNumber);
-            LineBindingModel lineBindingModel = new LineBindingModel() { Number = line.Number, LineType = line.LineType };
+            LineBindingModel lineBindingModel = new LineBindingModel() { Id = line.Id, Number = line.Number, LineType = line.LineType };
             lineBindingModel.Stations = new List<string>();
             lineBindingModel.Stations.Add("prvastanica");
             lineBindingModel.Stations.Add("drugastanica");

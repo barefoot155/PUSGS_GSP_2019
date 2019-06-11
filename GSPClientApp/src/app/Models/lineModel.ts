@@ -1,7 +1,8 @@
 import { LineType } from './lineType';
 
 export class LineModel{
-    Number : number;
+    Id : number;
+    Number : string;
     LineType : LineType;
     Stations : any[];
 }

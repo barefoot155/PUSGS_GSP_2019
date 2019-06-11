@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { LineServiceService } from 'src/app/Services/line-service.service';
+import { ScheduleServiceService } from 'src/app/Services/schedule-service.service';
+import { LineType } from 'src/app/Models/lineType';
+import { LineModel } from 'src/app/Models/lineModel';
 
 @Component({
   selector: 'app-add-line',
@@ -8,20 +11,50 @@ import { LineServiceService } from 'src/app/Services/line-service.service';
   styleUrls: ['./add-line.component.css']
 })
 export class AddLineComponent implements OnInit {
-  addLineForm = this.fb.group({
-    Number : ['', Validators.required],
-    LineType : ['', Validators.required]
-  });
-  constructor(private fb : FormBuilder, private lineService : LineServiceService) { }
+
+  allStations : string[];
+  lineType : LineType =  LineType.Urban;
+  lineNumber : string;
+  selectedStations : string[] = [];
+
+  constructor(private lineService : LineServiceService, private scheduleService : ScheduleServiceService) { }
 
   ngOnInit() {
+    this.getAllStations();
   }
 
   //TODO dodaj biranje stanica
   onSubmit(){
-    this.lineService.addNewLine(this.addLineForm.value).subscribe(
+    let lineData = new LineModel();
+    lineData.Number = this.lineNumber;
+    lineData.LineType = this.lineType;
+    lineData.Stations = this.selectedStations;
+    this.lineService.addNewLine(lineData).subscribe(
       data =>{
         console.log(data);
     });
+  }
+
+  getAllStations(){
+    this.scheduleService.getAllStations().subscribe(
+      data => this.allStations = data
+    );
+  }
+
+  onStationChange(event){
+    let checked = event.target.checked;
+    let station = event.target.value;
+
+    if(checked)
+    {
+      this.selectedStations.push(station);
+    }
+    else
+    {
+      const index: number = this.selectedStations.indexOf(station);
+      if (index !== -1) {
+          this.selectedStations.splice(index, 1);
+      }
+    }
   }
 }

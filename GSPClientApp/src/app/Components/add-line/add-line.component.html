@@ -1,39 +1,39 @@
-<form [formGroup]="addLineForm" (ngSubmit)="onSubmit()">
-  <table class="table table-bordered">
-      <thead>
-          <tr class="success">
-              <th colspan="2">
-                  Add new line
-              </th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>Number:</td>
-              <td>
-                  <input type="text" formControlName="Number" placeholder="Enter line number..." required>
-              </td>
-          </tr>
-          <tr>
-              <td>Line type:</td>
-              <td>
-                <select formControlName="LineType">
-                  <option value="0">Urban</option>
-                  <option value="1">Suburban</option>
-                </select>
-              </td>
-          </tr>   
-          <tr>
-            <td>Add stations:</td>
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th colspan="2">
+                Add new line
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Number:</td>
             <td>
-              Dodaj checkbox
+                <input type="text" [(ngModel)]="lineNumber" value="{{lineNumber}}" placeholder="Enter line number..." required>
             </td>
-        </tr>        
-          <tr class="success">
-              <td colspan="2">
-                  <button class="btn btn-success pull-right" type="submit">Add line</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</form>
+        </tr>
+        <tr>
+            <td>Line type:</td>
+            <td>
+            <select [(ngModel)]="lineType" [value]="lineType">
+                <option value="0">Urban</option>
+                <option value="1">Suburban</option>
+            </select>
+            </td>
+        </tr>   
+        <tr>
+        <td>Add stations:</td>
+        <td>
+            <div #stations *ngFor='let station of allStations'>
+                <input type="checkbox" (change)="onStationChange($event)" [value]="station">{{station}}<br/>
+            </div>
+        </td>
+    </tr>        
+        <tr class="success">
+            <td colspan="2">
+                <button class="btn btn-success pull-right" (click)="onSubmit()">Add line</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

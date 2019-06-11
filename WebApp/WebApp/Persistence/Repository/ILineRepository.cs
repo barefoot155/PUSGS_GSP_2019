@@ -15,5 +15,6 @@ namespace WebApp.Persistence.Repository
         List<string> GetAllLines();
         bool AddNewLine(LineBindingModel line);
         Line GetLineByLineNumber(string lineNumber);
+        bool UpdateLine(LineBindingModel line);
     }
 }

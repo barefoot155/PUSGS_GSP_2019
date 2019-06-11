@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleServiceService } from 'src/app/Services/schedule-service.service';
 import { LineModel } from 'src/app/Models/lineModel';
+import { LineServiceService } from 'src/app/Services/line-service.service';
 
 @Component({
   selector: 'app-edit-lines',
@@ -14,8 +15,9 @@ export class EditLinesComponent implements OnInit {
   lineData : LineModel = null;
   allStations : string[];
   IsChecked : boolean = false;
+  selectedStations : string[] = [];
 
-  constructor(private scheduleService : ScheduleServiceService) { }
+  constructor(private scheduleService : ScheduleServiceService, private lineService: LineServiceService) { }
 
   ngOnInit() {
     this.scheduleService.getAllLines().subscribe(
@@ -51,9 +53,27 @@ export class EditLinesComponent implements OnInit {
     return this.IsChecked;
   }
 
+  onStationChange(event){
+    let checked = event.target.checked;
+    let station = event.target.value;
+
+    if(checked)
+    {
+      this.selectedStations.push(station);
+    }
+    else
+    {
+      const index: number = this.selectedStations.indexOf(station);
+      if (index !== -1) {
+          this.selectedStations.splice(index, 1);
+      }
+    }
+  }
+
   onSubmit()
   {
-
+    this.lineData.Stations = this.selectedStations;
+    this.lineService.updateLine(this.lineData).subscribe(data => console.log(data));
   }
 
 }

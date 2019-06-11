@@ -21,10 +21,31 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [ResponseType(typeof(bool))]
-        public IHttpActionResult AddNewStation(LineBindingModel line)
+        [Route("AddNewLine")]
+        public IHttpActionResult AddNewLine(LineBindingModel line)
         {
-            return Ok(unitOfWork.Lines.AddNewLine(line));
+            if(unitOfWork.Lines.AddNewLine(line))
+            {
+                return Ok("Line added.");
+            }
+            else
+            {
+                return BadRequest("Error. Line not added.");
+            }
+        }
+
+        [HttpPatch]
+        [Route("UpdateLine")]
+        public IHttpActionResult UpdateLine(LineBindingModel lineModel)
+        {
+            if(unitOfWork.Lines.UpdateLine(lineModel))
+            {
+                return Ok("Line updated.");
+            }
+            else
+            {
+                return BadRequest("Line not found.");
+            }
         }
     }
 }

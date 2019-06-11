@@ -74,5 +74,34 @@ namespace WebApp.Persistence.Repository
                 return false;
             }
         }
+
+        public bool UpdateLine(LineBindingModel line)
+        {
+
+            foreach (Line lineItem in AppDbContext.Lines.ToList())
+            {
+                if(lineItem.Id == line.Id)
+                {
+                    lineItem.Number = line.Number;
+                    lineItem.LineType = line.LineType;
+                    lineItem.Stations = new List<Station>();
+                    foreach (string station in line.Stations)
+                    {
+                        lineItem.Stations.Add(GetStationByName(station));
+                    }
+
+                    AppDbContext.SaveChanges();
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Station GetStationByName(string station)
+        {
+            return AppDbContext.Stations.Single(s => s.Name == station);
+        }
     }
 }

@@ -24,10 +24,19 @@
         </td>
       </tr>
       <tr>
+        <td>Line type:</td>
+        <td>
+          <select [(ngModel)]="lineData.LineType" [value]="lineData.LineType">
+            <option value="0">Urban</option>
+            <option value="1">Suburban</option>
+          </select>
+        </td>
+    </tr>
+      <tr>
           <td>Stations:</td>
           <td>
             <div #stations *ngFor='let station of allStations'>
-              <input type="checkbox" [checked]="IsInList(station)" [value]="station">{{station}}<br/>
+              <input type="checkbox" [checked]="IsInList(station)" (change)="onStationChange($event)" [value]="station">{{station}}<br/>
             </div>
           </td>
       </tr>
