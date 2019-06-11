@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th colspan="2">
+                Your document                    
+            </th>
+        </tr>
+        <tr class="success">
+            <td>Customer type</td>
+            <td>
+              {{typeToString(customerType)}}
+            </td>
+        </tr>
+    </thead>
+    <tbody *ngIf="customerType != 2">
+      <tr>
+          <td>Evidence document:</td>
+          <td>
+              <input style="display: none" type="file" (change)="onFileChanged($event)" accept="image/*" #fileInput>
+              <button (click)="fileInput.click()">Select File</button>&nbsp;&nbsp;
+              <img [src]="imageSrc" height="60" width="55"/>
+          </td>
+      </tr>
+      <tr class="success">
+          <td colspan="2">
+                <button [disabled]="!selectedFile" class="btn btn-success pull-right" (click)="onSubmit()">Upload file</button>
+          </td>
+      </tr>
+    </tbody>
+</table>
+

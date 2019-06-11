@@ -135,5 +135,9 @@ namespace WebApp.Persistence.Repository
             return AppDbContext.Users.Single(x => x.UserName == username).DocumentPath;
         }
 
+        public CustomerType GetCustomerType(string username)
+        {
+            return AppDbContext.Users.Single(u => u.UserName == username).Type;
+        }
     }
 }

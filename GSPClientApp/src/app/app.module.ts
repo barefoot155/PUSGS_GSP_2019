@@ -39,6 +39,8 @@ import { LineServiceService } from 'src/app/Services/line-service.service';
 import { UploadFileServiceService } from 'src/app/Services/upload-file-service.service';
 import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
 import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.component';
+import { AuthGuard } from 'src/app/Interceptors/auth.guard';
+import { UpdateDocumentComponent } from './Components/update-document/update-document.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.compon
 	AddStationComponent,
 	AddLineComponent,
     UploadDocumentComponent,
-	LinesMapComponent
+  LinesMapComponent,
+  UpdateDocumentComponent
   ],
   imports: [
     BrowserModule,

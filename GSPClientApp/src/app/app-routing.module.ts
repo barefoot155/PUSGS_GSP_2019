@@ -21,6 +21,10 @@ import { AddLineComponent } from 'src/app/Components/add-line/add-line.component
 import { AddScheduleComponent } from 'src/app/Components/add-schedule/add-schedule.component';
 import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
 import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.component';
+import { AppUserGuard } from 'src/app/Interceptors/appUser.guard';
+import { ControllerGuard } from 'src/app/Interceptors/controller.guard';
+import { AuthGuard } from 'src/app/Interceptors/auth.guard';
+import { UpdateDocumentComponent } from 'src/app/Components/update-document/update-document.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -28,18 +32,18 @@ const routes:Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'pricelist', component: PricesComponent},
   {path: 'userdata', component: UserDetailsComponent},
-  {path: 'buyticket', component: TicketsComponent},
+  {path: 'buyticket', component: TicketsComponent, canActivate: [AppUserGuard]},
   {path: 'passwordchange', component: ChangePasswordComponent},
-  {path: 'verifications', component: VerificationsComponent},
-  {path: 'addpricelist', component: PricelistComponent},
-  {path: 'updatepricelist', component:UpdatePricelistComponent},
-  {path: 'validation', component:TicketValidationComponent},
-  {path: 'editlines', component:EditLinesComponent},
-  {path: 'checkTicket', component: CheckTicketComponent},
-  {path: 'addline', component: AddLineComponent},
-  {path: 'addstation', component : AddStationComponent},
-  {path: 'addschedule', component : AddScheduleComponent},
-  {path: 'document', component: UploadDocumentComponent},
+  {path: 'verifications', component: VerificationsComponent, canActivate: [ControllerGuard]},
+  {path: 'addpricelist', component: PricelistComponent, canActivate: [AuthGuard]},
+  {path: 'updatepricelist', component:UpdatePricelistComponent, canActivate: [AuthGuard]},
+  {path: 'validation', component:TicketValidationComponent, canActivate: [ControllerGuard]},
+  {path: 'editlines', component:EditLinesComponent, canActivate: [AuthGuard]},
+  {path: 'checkTicket', component: CheckTicketComponent, canActivate: [ControllerGuard]},
+  {path: 'addline', component: AddLineComponent, canActivate: [AuthGuard]},
+  {path: 'addstation', component : AddStationComponent, canActivate: [AuthGuard]},
+  {path: 'addschedule', component : AddScheduleComponent, canActivate: [AuthGuard]},
+  {path: 'document', component: UpdateDocumentComponent, canActivate: [AppUserGuard]},
   {path: 'lines', component: LinesMapComponent}
 ];
 

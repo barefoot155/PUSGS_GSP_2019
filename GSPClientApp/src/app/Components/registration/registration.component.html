@@ -1,11 +1,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <table class="table table-bordered" *ngIf="!loginClicked">
       <thead>
-            <!-- <tr class="success">
-                    <th colspan="2">
-                            <a routerLink="/login" (click)="LoginClicked()"><button class="btn btn-primary pull-right"> Login </button></a>
-                    </th>
-              </tr> -->
           <tr class="success">
               <th colspan="2">
                   Registration                    
@@ -72,7 +67,7 @@
           </tr>
           <tr>
               <td colspan="2">
-                  <a class="navbar-brand glyphicon glyphicon-chevron-down pull-left" id="document" (click)="optionsClick()">More options</a>
+                <button class="btn btn-default glyphicon glyphicon-arrow-down" type="button" id="document" (click)="optionsClick()">More options</button>
               </td>
           </tr>
           

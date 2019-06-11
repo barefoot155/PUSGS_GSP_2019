@@ -23,6 +23,14 @@ namespace WebApp.Controllers
             this.unitOfWork = iUnitOfWork;
         }
 
+        [Route("GetCustomerType")]
+        public IHttpActionResult GetCustomerType(string username)
+        {
+            CustomerType type = unitOfWork.Users.GetCustomerType(username);
+
+            return Ok(type);
+        }
+
         [Route("PostRegistration")]
         public IHttpActionResult PostRegistration(RegisterBindingModel registerBinding)
         {

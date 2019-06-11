@@ -18,5 +18,6 @@ namespace WebApp.Persistence.Repository
         bool SetVerificationStatus(string username, VerificationStatus status, out string email);
         bool AddUserDocument(string username, string docPath);
         string GetUserDocument(string username);
+        CustomerType GetCustomerType(string username);
     }
 }

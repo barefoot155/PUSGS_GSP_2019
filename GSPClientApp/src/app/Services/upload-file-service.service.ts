@@ -22,4 +22,9 @@ export class UploadFileServiceService extends HttpService {
     let headers = new HttpHeaders({'Content-Type' : 'application/json'});
     return this.http.get(this.url + specificUrl + `?username=${username}`);
   } 
+
+  getCustomerType(username: string) : Observable<CustomerType>
+  {
+    return this.http.get<CustomerType>(this.url + `api/Registration/GetCustomerType?username=${username}`);
+  }
 }
