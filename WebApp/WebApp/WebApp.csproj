@@ -255,6 +255,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PricelistController.cs" />
     <Compile Include="Controllers\PricelistItemController.cs" />
+    <Compile Include="Controllers\RealTimeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StationController.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Migrations\201905222056072_InitialMigration.cs" />
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>

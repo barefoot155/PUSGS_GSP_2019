@@ -14,7 +14,6 @@ import { ScheduleServiceService } from 'src/app/Services/schedule-service.servic
 })
 export class LinesMapComponent implements OnInit {
 
-  markerInfo: MarkerInfo;
   public polyline: Polyline;
   public zoom: number;
   startLat : number = 45.242268;

@@ -42,6 +42,9 @@ import { AuthGuard } from 'src/app/Interceptors/auth.guard';
 import { UpdateDocumentComponent } from './Components/update-document/update-document.component';
 import { EditStationsComponent } from './Components/edit-stations/edit-stations.component';
 import { ViewDocumentComponent } from './Components/view-document/view-document.component';
+import { RealTimeComponent } from './Components/real-time/real-time.component';
+import { ClickService } from 'src/app/Services/click-service.service';
+import { RealTimeServiceService } from 'src/app/Services/real-time-service.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,8 @@ import { ViewDocumentComponent } from './Components/view-document/view-document.
   LinesMapComponent,
   UpdateDocumentComponent,
   EditStationsComponent,
-  ViewDocumentComponent
+  ViewDocumentComponent,
+  RealTimeComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,7 @@ import { ViewDocumentComponent } from './Components/view-document/view-document.
   ],
   providers: [HttpService, LoginServiceService, RegisterServiceService,StationServiceService, ScheduleServiceService, PricelistServiceService, TicketsServiceService,
 			        PasswordChangeServiceService, LineServiceService,
-              UserServiceService,
+              UserServiceService,ClickService, RealTimeServiceService,
 			  UploadFileServiceService,
               {
                 provide: HTTP_INTERCEPTORS, 

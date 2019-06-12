@@ -1,0 +1,32 @@
+<div>
+  Select line number:
+  <select #lineNumber (change)="onSelectionChangeNumber($event)">
+    <option value="">-- Please Select --</option>
+    <option *ngFor="let option of options;" [value]="option">
+        {{option}}
+    </option>
+  </select>
+</div>
+
+<div>
+  <!-- Kreiramo mapu -->
+   <agm-map [latitude]="startLat" [longitude]="startLon" [zoom]="zoom"> 
+
+    <agm-polyline [strokeColor]="polyline.color">
+      <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
+      </agm-polyline-point>
+    </agm-polyline>
+
+    <agm-marker *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polyline.icon">
+    </agm-marker>
+
+    <agm-marker *ngFor="let m of stations" [latitude]="m.Lat" [longitude]="m.Lon" [title]="m.Name" [iconUrl]="busImgIcon" label="">
+
+    </agm-marker>
+
+    <agm-marker *ngIf="latitude && longitude" [latitude]="latitude" [longitude]="longitude" [iconUrl]="autobusImgIcon" label="">
+      
+    </agm-marker>
+
+ </agm-map>
+</div>

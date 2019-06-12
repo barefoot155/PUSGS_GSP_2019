@@ -26,6 +26,7 @@ import { AuthGuard } from 'src/app/Interceptors/auth.guard';
 import { UpdateDocumentComponent } from 'src/app/Components/update-document/update-document.component';
 import { EditStationsComponent } from 'src/app/Components/edit-stations/edit-stations.component';
 import { ViewDocumentComponent } from 'src/app/Components/view-document/view-document.component';
+import { RealTimeComponent } from 'src/app/Components/real-time/real-time.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -47,7 +48,8 @@ const routes:Routes = [
   {path: 'addschedule', component : AddScheduleComponent, canActivate: [AuthGuard]},
   {path: 'document', component: UpdateDocumentComponent, canActivate: [AppUserGuard]},
   {path: 'lines', component: LinesMapComponent},
-  {path: 'viewimage', component: ViewDocumentComponent}
+  {path: 'viewimage', component: ViewDocumentComponent},
+  {path: 'realtime', component : RealTimeComponent}
 ];
 
 @NgModule({

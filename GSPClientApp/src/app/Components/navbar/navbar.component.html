@@ -28,8 +28,8 @@
                 <li><a class="navbar-brand" id="dodajLiniju" data-toggle="modal" *ngIf="isAdmin()" routerLink="/addline">Add line</a></li>                 
                 <li><a class="navbar-brand" id="linija" data-toggle="modal" *ngIf="isAdmin()" routerLink="/editlines">Edit lines</a></li> 
                 <li><a class="navbar-brand" id="mrezaLinija" data-toggle="modal" routerLink="/lines">Lines</a></li>
-                <li><a class="navbar-brand" id="trenutneLokacije" data-toggle="modal" data-target="#myloc" href="#">Current locations</a></li>   
-                
+                <li><a class="navbar-brand" id="trenutneLokacije" data-toggle="modal" routerLink="/realtime">Current locations</a></li>  
+                                
                 <li *ngIf="isAdmin() || isController() || isAppUser()" class="dropdown">
                   <a id="korisnik" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User options<span class="caret"></span></a>
                   <ul class="dropdown-content">
