@@ -23,13 +23,13 @@
             </td>
         </tr>   
         <tr>
-        <td>Add stations:</td>
-        <td>
-            <div #stations *ngFor='let station of allStations'>
-                <input type="checkbox" (change)="onStationChange($event)" [value]="station">{{station}}<br/>
-            </div>
-        </td>
-    </tr>        
+            <td>Add stations:</td>
+            <td>
+                <div #stations *ngFor='let station of allStations'>
+                    <input type="checkbox" (change)="onStationChange($event)" [value]="station">{{station}}<br/>
+                </div>
+            </td>
+        </tr>        
         <tr class="success">
             <td colspan="2">
                 <button class="btn btn-success pull-right" (click)="onSubmit()">Add line</button>

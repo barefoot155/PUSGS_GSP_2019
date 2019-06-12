@@ -22,6 +22,7 @@ namespace WebApp.Controllers
 
         [ResponseType(typeof(double))]
         [Route("GetPricelist")]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult GetPricelist(TicketType ticketType)
         {
             int pricelistId = unitOfWork.Pricelists.GetActivePricelistId();
@@ -35,6 +36,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [ResponseType(typeof(int))]
         [Route("AddNewPricelist")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddNewPricelist(PricelistBindingModel pricelist)
         {
             int pricelistId = unitOfWork.Pricelists.AddNewPricelist(pricelist);

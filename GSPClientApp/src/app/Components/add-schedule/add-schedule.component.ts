@@ -3,6 +3,7 @@ import { ScheduleServiceService } from 'src/app/Services/schedule-service.servic
 import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { CheckboxModel } from 'src/app/Models/checkboxModel';
 import { AddScheduleModel } from 'src/app/Models/addSchedule';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-schedule',
@@ -19,9 +20,11 @@ export class AddScheduleComponent implements OnInit {
   selectedNumber : string;
   selectedDay : number;
   
-  constructor(private scheduleService : ScheduleServiceService) {
-    
-   }
+  constructor(private scheduleService : ScheduleServiceService, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
    
   ngOnInit() {
     this.scheduleService.getAllLines().subscribe(
@@ -69,5 +72,14 @@ export class AddScheduleComponent implements OnInit {
     {
       this.onSubmit();
     }
+  }
+
+  removeSchedule(){
+    this.scheduleService.removeSchedule(this.selectedNumber, this.selectedDay).subscribe(
+      data =>{ 
+        console.log(data);
+        this.router.navigate(['/addschedule']);
+      }
+    );
   }
 }

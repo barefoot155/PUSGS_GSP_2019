@@ -15,7 +15,6 @@ import { UpdatePricelistComponent } from 'src/app/Components/update-pricelist/up
 import { TicketValidationComponent } from 'src/app/Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
 import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
-import { UpdateSchedulesComponent } from 'src/app/Components/update-schedules/update-schedules.component';
 import { AddStationComponent } from 'src/app/Components/add-station/add-station.component';
 import { AddLineComponent } from 'src/app/Components/add-line/add-line.component';
 import { AddScheduleComponent } from 'src/app/Components/add-schedule/add-schedule.component';
@@ -26,6 +25,7 @@ import { ControllerGuard } from 'src/app/Interceptors/controller.guard';
 import { AuthGuard } from 'src/app/Interceptors/auth.guard';
 import { UpdateDocumentComponent } from 'src/app/Components/update-document/update-document.component';
 import { EditStationsComponent } from 'src/app/Components/edit-stations/edit-stations.component';
+import { ViewDocumentComponent } from 'src/app/Components/view-document/view-document.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -46,7 +46,8 @@ const routes:Routes = [
   {path: 'editStation', component : EditStationsComponent, canActivate: [AuthGuard]},
   {path: 'addschedule', component : AddScheduleComponent, canActivate: [AuthGuard]},
   {path: 'document', component: UpdateDocumentComponent, canActivate: [AppUserGuard]},
-  {path: 'lines', component: LinesMapComponent}
+  {path: 'lines', component: LinesMapComponent},
+  {path: 'viewimage', component: ViewDocumentComponent}
 ];
 
 @NgModule({

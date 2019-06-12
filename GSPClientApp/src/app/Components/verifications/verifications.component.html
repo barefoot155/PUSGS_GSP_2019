@@ -16,7 +16,7 @@
     <tbody class="success">
         <tr *ngFor="let user of users">
           <td style="text-align:center"> {{user.UserName}} </td>
-          <td style="text-align:center"><a (click)="downloadDocument(user.UserName)">document</a><img [src]="imgSrc" height="60" width="60"/></td>
+          <td style="text-align:center"><a (click)="downloadDocument(user.UserName)">document</a></td>
           <td style="text-align:center"> {{typetoString(user.CustomerType)}} </td>
           <td style="text-align:center"> {{statusToString(user.Status)}}</td>
           <td style="text-align:center"><button [disabled]="user.Status == 2" (click)="onVerify(user.UserName)" class="btn btn-success">Verify</button>

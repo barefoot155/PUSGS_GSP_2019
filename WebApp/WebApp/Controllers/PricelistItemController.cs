@@ -21,6 +21,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(string))]
         [Route("AddNewPricelistItem")]
         public IHttpActionResult AddNewPricelistItem(PricelistItemBindingModel pricelist)
@@ -33,6 +34,7 @@ namespace WebApp.Controllers
         [HttpGet]
         [ResponseType(typeof(ActivePricelistBindingModel))]
         [Route("GetActivePricelist")]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult GetActivePricelist()
         {
             ActivePricelistBindingModel pricelist = unitOfWork.Pricelist_Items.GetActivePricelist(unitOfWork.Pricelists.GetActivePricelistId());
@@ -41,6 +43,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Route("UpdatePricelist")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdatePricelist(ActivePricelistBindingModel updatedPricelist)
         {
             if(unitOfWork.Pricelist_Items.UpdatePricelist(updatedPricelist))

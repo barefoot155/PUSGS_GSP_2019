@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EditStationsComponent implements OnInit {
 
-  stations : StationModel[] = [];
+  stations : string[];
   selectedStation : StationModel;
   isConflict : boolean = false;
 
@@ -64,5 +64,12 @@ export class EditStationsComponent implements OnInit {
         this.onSubmit();
         this.router.navigate(['/editStation']); 
       })
+  }
+
+  removeStation(){
+    this.stationService.removeStationByName(this.selectedStation.Name).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/editStation']);
+    });
   }
 }

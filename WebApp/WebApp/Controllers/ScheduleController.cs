@@ -59,12 +59,27 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Route("AddNewSchedule")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddNewSchedule(AddScheduleBindingModel schedule)
         {
-            //TODO 
             int lineId = unitOfWork.Lines.GetLineIdByLineNumber(schedule.Number);
             unitOfWork.Schedules.AddNewSchedule(schedule, lineId);
             return Ok();
+        }
+
+        [HttpDelete]
+        [Route("RemoveSchedule")]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult RemoveSchedule(string lineNumber, DayType day)
+        {
+            if(unitOfWork.Schedules.RemoveSchedule(lineNumber, day))
+            {
+                return Ok("Schedule removed");
+            }
+            else
+            {
+                return BadRequest("Conflict occured while accessing db");
+            }
         }
 
         [ResponseType(typeof(LineBindingModel))]
@@ -75,9 +90,6 @@ namespace WebApp.Controllers
             Line line = unitOfWork.Lines.GetLineByLineNumber(lineNumber);
             LineBindingModel lineBindingModel = new LineBindingModel() { Id = line.Id, Number = line.Number, LineType = line.LineType };
             lineBindingModel.Stations = new List<string>();
-            lineBindingModel.Stations.Add("prvastanica");
-            lineBindingModel.Stations.Add("drugastanica");
-            lineBindingModel.Stations.Add("trecastanica");
             foreach (Station station in line.Stations)
             {
                 lineBindingModel.Stations.Add(station.Name);

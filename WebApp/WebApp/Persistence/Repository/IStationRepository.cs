@@ -13,5 +13,6 @@ namespace WebApp.Persistence.Repository
         List<string> GetAllStationNames();
         StationBindingModel GetStationByName(string name);
         Task<bool> UpdateStation(StationBindingModel station);
+        bool RemoveStation(string stationName);
     }
 }

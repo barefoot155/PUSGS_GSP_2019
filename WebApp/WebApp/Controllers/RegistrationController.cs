@@ -81,6 +81,7 @@ namespace WebApp.Controllers
         }
 
         [Route("DownloadFile")]
+        [Authorize(Roles = "AppUser, Controller")]
         [HttpGet]
         public IHttpActionResult DownloadFile(string username)
         {
@@ -113,6 +114,7 @@ namespace WebApp.Controllers
         }
 
         [Route("VerifyAppUser")]
+        [Authorize(Roles = "Controller")]
         [HttpGet]
         public IHttpActionResult VerifyAppUser(string username)
         {
@@ -132,6 +134,7 @@ namespace WebApp.Controllers
         }
 
         [Route("DeclineAppUser")]
+        [Authorize(Roles = "Controller")]
         [HttpGet]
         public IHttpActionResult DeclineAppUser(string username)
         {

@@ -90,6 +90,8 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "Stations")]
         public List<string> Stations { get; set; }
+        
+        public byte[] RowVersion { get; set; }
     }
 
     public class AddScheduleBindingModel

@@ -38,9 +38,12 @@
     </tr>
       
       <tr class="success" *ngIf="!isConflict">
-          <td colspan="2">
-                <button class="btn btn-success pull-right" (click)="onSubmit()">Save changes</button>
-          </td>
+        <td>
+            <button class="btn btn-danger pull-left" (click)="removeStation()">Remove station</button>
+        </td>
+        <td>
+            <button class="btn btn-success pull-right" (click)="onSubmit()">Save changes</button>
+        </td>
       </tr>
       <tr class="success" *ngIf="isConflict">
         <td colspan="2">

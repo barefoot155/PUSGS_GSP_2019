@@ -30,6 +30,7 @@ namespace WebApp.Controllers
 
         [ResponseType(typeof(UserDataBindingModel))]
         [Route("GetUserData")]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult GetUserData(string username)
         {
             ApplicationUser user = unitOfWork.Users.GetUserByUsername(username);
@@ -52,6 +53,7 @@ namespace WebApp.Controllers
 
         [Route("UpdateUserData")]
         [HttpPatch]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult UpdateUserData(UserDataBindingModel updateUserData)
         {
             ApplicationUser user = unitOfWork.Users.GetUserByUsername(updateUserData.UserName);
@@ -72,6 +74,7 @@ namespace WebApp.Controllers
         [Route("GetAllUsers")]
         [ResponseType(typeof(IEnumerable<UserDataBindingModel>))]
         [HttpGet]
+        [Authorize(Roles = "Controller")]
         public IHttpActionResult GetAllUsers()
         {
             List<UserDataBindingModel> ret = unitOfWork.Users.GetAllUsers().ToList();

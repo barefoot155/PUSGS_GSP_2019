@@ -10,6 +10,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Line")]
     public class LineController : ApiController
     {
@@ -22,6 +23,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Route("AddNewLine")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddNewLine(LineBindingModel line)
         {
             if(unitOfWork.Lines.AddNewLine(line))
@@ -36,6 +38,7 @@ namespace WebApp.Controllers
 
         [HttpPatch]
         [Route("UpdateLine")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateLine(LineBindingModel lineModel)
         {
             if(unitOfWork.Lines.UpdateLine(lineModel))
@@ -51,6 +54,7 @@ namespace WebApp.Controllers
         [HttpGet]
         [ResponseType(typeof(List<StationBindingModel>))]
         [Route("GetStationsByLineNumber")]
+        [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult GetStationsByLineNumber(string lineNumber)
         {
             var stations = unitOfWork.Lines.GetAllStationsByLineNumber(lineNumber);
@@ -62,6 +66,21 @@ namespace WebApp.Controllers
             }
 
             return Ok(ret);
+        }
+
+        [HttpDelete]
+        [Route("RemoveLine")]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult RemoveLine(int lineId)
+        {
+            if(unitOfWork.Lines.RemoveLine(lineId))
+            {
+                return Ok("Line removed");
+            }
+            else
+            {
+                return BadRequest("Conflict occured while accessing db");
+            }
         }
     }
 }

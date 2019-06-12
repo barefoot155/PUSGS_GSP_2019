@@ -23,4 +23,9 @@ export class LineServiceService extends HttpService{
   getAllStationsByLineNumber(lineNumber : string):Observable<any>{
     return this.http.get<any>(this.url + `api/Line/GetStationsByLineNumber?lineNumber=${lineNumber}`);    
   }
+
+  removeLineById(lineId: number) : Observable<any>
+  {
+    return this.http.delete(this.url + `api/Line/RemoveLine?lineId=${lineId}`);
+  }
 }

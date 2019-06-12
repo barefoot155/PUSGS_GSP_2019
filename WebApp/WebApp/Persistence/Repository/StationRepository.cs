@@ -106,5 +106,23 @@ namespace WebApp.Persistence.Repository
                 return false;
             }
         }
+
+        public bool RemoveStation(string stationName)
+        {
+            try
+            {
+                Station stationToRemove = AppDbContext.Stations.Single(st => st.Name == stationName);
+                AppDbContext.Stations.Remove(stationToRemove);
+
+                AppDbContext.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //conflict
+                return false;
+            }
+        }
     }
 }

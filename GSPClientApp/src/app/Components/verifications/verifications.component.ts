@@ -14,7 +14,6 @@ import { UploadFileServiceService } from 'src/app/Services/upload-file-service.s
 export class VerificationsComponent implements OnInit {
 
   users : UserData[];
-  imgSrc : string;
 
   constructor(private userService: UserServiceService, private router: Router, private fileServis: UploadFileServiceService) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -57,7 +56,11 @@ export class VerificationsComponent implements OnInit {
   downloadDocument(username: string) {
     this.fileServis.downloadFile(username).subscribe(
       data => {
-        this.imgSrc = 'data:image/png;base64,' + data;
+        this.fileServis.imgSrc = 'data:image/png;base64,' + data;
+        this.router.navigate(['/viewimage']);
+      },
+      error => {
+        this.fileServis.imgSrc = 'assets/Images/no_photo.png';
       }
     );
   }

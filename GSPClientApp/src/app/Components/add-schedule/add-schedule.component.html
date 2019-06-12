@@ -15,7 +15,7 @@
                       <option *ngFor="let option of options;" [value]="option">
                           {{option}}
                       </option>
-          </select>
+                    </select>
               </td>
           </tr>
           <tr>
@@ -56,9 +56,12 @@
           </td>
         </tr>   
       <tr class="success">
-          <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="AddTimes(newTimes.value)">Add times</button>
-          </td>
+        <td>
+            <button class="btn btn-danger pull-left" (click)="removeSchedule()">Remove schedule</button>
+        </td>
+        <td>
+            <button class="btn btn-success pull-right" type="submit" (click)="AddTimes(newTimes.value)">Add times</button>
+        </td>
       </tr>  
     </tbody>
 </table>

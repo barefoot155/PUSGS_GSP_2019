@@ -30,7 +30,6 @@ import { UpdatePricelistComponent } from './Components/update-pricelist/update-p
 import { TicketValidationComponent } from './Components/ticket-validation/ticket-validation.component';
 import { EditLinesComponent } from './Components/edit-lines/edit-lines.component';
 import { CheckTicketComponent } from './Components/check-ticket/check-ticket.component';
-import { UpdateSchedulesComponent } from './Components/update-schedules/update-schedules.component';
 import { AddScheduleComponent } from './Components/add-schedule/add-schedule.component';
 import { AddStationComponent } from './Components/add-station/add-station.component';
 import { AddLineComponent } from './Components/add-line/add-line.component';
@@ -42,6 +41,7 @@ import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.compon
 import { AuthGuard } from 'src/app/Interceptors/auth.guard';
 import { UpdateDocumentComponent } from './Components/update-document/update-document.component';
 import { EditStationsComponent } from './Components/edit-stations/edit-stations.component';
+import { ViewDocumentComponent } from './Components/view-document/view-document.component';
 
 @NgModule({
   declarations: [
@@ -60,14 +60,14 @@ import { EditStationsComponent } from './Components/edit-stations/edit-stations.
     TicketValidationComponent,
     EditLinesComponent,
 	CheckTicketComponent,
-	UpdateSchedulesComponent,
 	AddScheduleComponent,
 	AddStationComponent,
 	AddLineComponent,
     UploadDocumentComponent,
   LinesMapComponent,
   UpdateDocumentComponent,
-  EditStationsComponent
+  EditStationsComponent,
+  ViewDocumentComponent
   ],
   imports: [
     BrowserModule,

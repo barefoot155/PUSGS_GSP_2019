@@ -11,5 +11,6 @@ namespace WebApp.Persistence.Repository
     {
         IEnumerable<Schedule> GetSchedulesByLineId(int lineId, DayType day);
         bool AddNewSchedule(AddScheduleBindingModel scheduleBM, int lineId);
+        bool RemoveSchedule(string lineNumber, DayType day);
     }
 }

@@ -11,6 +11,7 @@ export class UploadFileServiceService extends HttpService {
 
   selectedFile: File;
   customerType : CustomerType = CustomerType.Regular;
+  imgSrc: string;
 
   postFile(uploadData: FormData, username: string): Observable<any> {
     const endpoint = this.url + `api/Registration/PostDocument?username=${username}`;

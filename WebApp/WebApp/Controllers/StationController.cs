@@ -24,6 +24,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [ResponseType(typeof(bool))]
         [Route("AddNewStation")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddNewStation(StationBindingModel station)
         {            
             return Ok(unitOfWork.Stations.AddNewStation(station));
@@ -47,6 +48,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Route("UpdateStation")]
+        [Authorize(Roles = "Admin")]
         public async Task<IHttpActionResult> UpdateStation(StationBindingModel station)
         {
             bool retVal = await unitOfWork.Stations.UpdateStation(station);
@@ -57,5 +59,19 @@ namespace WebApp.Controllers
                 return BadRequest();
         }
 
+        [HttpDelete]
+        [Route("RemoveStation")]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult RemoveStation(string stationName)
+        {
+            if (unitOfWork.Stations.RemoveStation(stationName))
+            {
+                return Ok("Station removed");
+            }
+            else
+            {
+                return BadRequest("Conflict occured while accessing db");
+            }
+        }
     }    
 }

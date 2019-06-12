@@ -11,10 +11,7 @@ namespace WebApp.Persistence.Repository
     {
         protected ApplicationDbContext AppDbContext { get { return context as ApplicationDbContext; } }
 
-        public LineRepository(DbContext context) : base(context)
-        {
-
-        }
+        public LineRepository(DbContext context) : base(context){ }
 
         public int GetLineIdByLineNumber(string lineNumber)
         {            
@@ -61,15 +58,26 @@ namespace WebApp.Persistence.Repository
                 {
                     LineType = line.LineType,
                     Number = line.Number,
-                    //TODO dodati stations
+                    Stations = new List<Station>()
                 };
 
-                AppDbContext.Lines.Add(l);
-                AppDbContext.SaveChanges();
+                foreach (Station item in AppDbContext.Stations.ToList())
+                {
+                    if(line.Stations.Contains(item.Name))
+                    {
+                        l.Stations.Add(item);
+                    }
+                }
+
+                if (!AppDbContext.Lines.Any(x => x.Number == line.Number))
+                {
+                    AppDbContext.Lines.Add(l);
+                    AppDbContext.SaveChanges();
+                }
 
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -112,6 +120,24 @@ namespace WebApp.Persistence.Repository
                 return new List<Station>();
 
             return line.Stations;
+        }
+
+        public bool RemoveLine(int lineId)
+        {
+            try
+            {
+                Line lineToRemove = AppDbContext.Lines.Single(l => l.Id == lineId);
+                AppDbContext.Lines.Remove(lineToRemove);
+
+                AppDbContext.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //conflict
+                return false;
+            }
         }
     }
 }

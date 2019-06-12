@@ -32,4 +32,9 @@ export class StationServiceService extends HttpService {
     }    
     return this.http.post<any>(this.url + 'api/Station/UpdateStation', station, httpOptions);
   }
+
+  removeStationByName(stationName: string) : Observable<any>
+  {
+    return this.http.delete(this.url + `api/Station/RemoveStation?stationName=${stationName}`);
+  }
 }

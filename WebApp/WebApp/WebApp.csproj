@@ -287,6 +287,10 @@
     <Compile Include="Migrations\201906121045178_RowVersion.Designer.cs">
       <DependentUpon>201906121045178_RowVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906121748259_ConcurrencyCheckMigration.cs" />
+    <Compile Include="Migrations\201906121748259_ConcurrencyCheckMigration.Designer.cs">
+      <DependentUpon>201906121748259_ConcurrencyCheckMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -444,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906121045178_RowVersion.resx">
       <DependentUpon>201906121045178_RowVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121748259_ConcurrencyCheckMigration.resx">
+      <DependentUpon>201906121748259_ConcurrencyCheckMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

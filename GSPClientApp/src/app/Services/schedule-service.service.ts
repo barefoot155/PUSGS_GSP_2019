@@ -5,6 +5,7 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { ScheduleModel } from 'src/app/Models/scheduleModel';
 import { AddScheduleModel } from 'src/app/Models/addSchedule';
 import { LineModel } from '../Models/lineModel';
+import { DayType } from 'src/app/Models/dayType';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,10 @@ export class ScheduleServiceService extends HttpService {
         }
       }
       return this.http.post<any>(this.url + "api/Schedule/AddNewSchedule",schedule,httpOptions);
+    }
+
+    removeSchedule(lineNumber: string, day: DayType)
+    {
+      return this.http.delete(this.url + `api/Schedule/RemoveSchedule?lineNumber=${lineNumber}&day=${day}`);
     }
 }

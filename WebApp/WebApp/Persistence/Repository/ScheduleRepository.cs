@@ -26,7 +26,7 @@ namespace WebApp.Persistence.Repository
         {
             try
             {
-                var sc = AppDbContext.Schedules.FirstOrDefault(s => s.Day == scheduleBM.DayType && s.LineId == lineId);
+                Schedule sc = AppDbContext.Schedules.FirstOrDefault(s => s.Day == scheduleBM.DayType && s.LineId == lineId);
 
                 List<string> newTimes = ParseTimesFromString(scheduleBM.NewTimes);
 
@@ -68,6 +68,24 @@ namespace WebApp.Persistence.Repository
         private List<string> ParseTimesFromString(string newTimes)
         {
             return newTimes.Split(';').ToList();
+        }
+
+        public bool RemoveSchedule(string lineNumber, DayType day)
+        {
+            try
+            {
+                int lineId = AppDbContext.Lines.Single(l => l.Number == lineNumber).Id;
+                Schedule schedule = AppDbContext.Schedules.Single(s => s.Day == day && s.LineId == lineId);
+                AppDbContext.Schedules.Remove(schedule);
+
+                AppDbContext.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
