@@ -23,6 +23,7 @@
                 <li><a class="navbar-brand" id="karta" data-toggle="modal" *ngIf="!isAdmin() && !isController()" routerLink="/buyticket">Buy ticket</a></li>                 
                 <li><a class="navbar-brand" id="redVoznji" data-toggle="modal" routerLink="/schedules">Schedule</a></li>
                 <li><a class="navbar-brand" id="dodajStanicu" data-toggle="modal" *ngIf="isAdmin()" routerLink="/addstation">Add station</a></li> 
+                <li><a class="navbar-brand" id="dodajStanicu" data-toggle="modal" *ngIf="isAdmin()" routerLink="/editStation">Edit station</a></li>                 
                 <li><a class="navbar-brand" id="dodajRedVoznje" data-toggle="modal" *ngIf="isAdmin()" routerLink="/addschedule">Add schedule</a></li> 
                 <li><a class="navbar-brand" id="dodajLiniju" data-toggle="modal" *ngIf="isAdmin()" routerLink="/addline">Add line</a></li>                 
                 <li><a class="navbar-brand" id="linija" data-toggle="modal" *ngIf="isAdmin()" routerLink="/editlines">Edit lines</a></li> 

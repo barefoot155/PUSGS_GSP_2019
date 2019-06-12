@@ -283,6 +283,10 @@
     <Compile Include="Migrations\201906101538343_UserDbMigration.Designer.cs">
       <DependentUpon>201906101538343_UserDbMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906121045178_RowVersion.cs" />
+    <Compile Include="Migrations\201906121045178_RowVersion.Designer.cs">
+      <DependentUpon>201906121045178_RowVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -437,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906101538343_UserDbMigration.resx">
       <DependentUpon>201906101538343_UserDbMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121045178_RowVersion.resx">
+      <DependentUpon>201906121045178_RowVersion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

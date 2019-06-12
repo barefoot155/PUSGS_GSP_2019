@@ -21,6 +21,15 @@ export class UpdateDocumentComponent implements OnInit {
     this.uploadFileService.getCustomerType(username).subscribe(
       data => this.customerType = data
     );
+
+    this.uploadFileService.downloadFile(username).subscribe(
+      data => {
+        this.imageSrc = 'data:image/png;base64,' + data;
+      },
+      error =>{
+        this.imageSrc = 'assets/Images/no_photo.png';
+      }
+    );
   }
 
   onFileChanged(event) {
@@ -32,11 +41,11 @@ export class UpdateDocumentComponent implements OnInit {
   }
 
   onSubmit(){
-    let username = localStorage.username;
-    this.uploadFileService.downloadFile(username).subscribe(
-      data => {
-        this.imageSrc = 'data:image/png;base64,' + data;
-      }
+    const uploadData = new FormData();
+    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+    this.uploadFileService.postFile(uploadData, localStorage.username).subscribe(
+      data => console.log(data),
+      error => console.log(error)
     );
   }
 

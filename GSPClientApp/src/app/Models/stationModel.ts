@@ -3,4 +3,5 @@ export class StationModel{
     Address : string;
     Lon : number;
     Lat : number;
+    RowVersion : any[];
 }

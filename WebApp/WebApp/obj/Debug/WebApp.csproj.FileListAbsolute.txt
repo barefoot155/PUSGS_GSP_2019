@@ -1060,3 +1060,4 @@ C:\Users\e341-2015\Downloads\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebAp
 C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserDbMigration.resources
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.CheckTicketMigration.resources
 C:\Users\Obren\Documents\GitHub\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.UserDbMigration.resources
+C:\Users\e370-2015\Desktop\najnoviji\PUSGS_GSP_2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.RowVersion.resources

@@ -17,22 +17,17 @@ export class UploadDocumentComponent implements OnInit {
   
     ngOnInit() {
       this.imageSrc = 'assets/Images/no_photo.png';
-      this.customerType = this.uploadFileService.customerType;
     }
   
     onFileChanged(event) {
-      this.uploadFileService.selectedFile = event.target.files[0];
       this.selectedFile = event.target.files[0];
       const reader = new FileReader();
       reader.onload = e => this.imageSrc = reader.result as string;
       reader.readAsDataURL(this.selectedFile);
     }
   
-    onSubmit(value : CustomerType){
-      this.uploadFileService.customerType = value;
-    }
-  
-    custTypeEvent(type : CustomerType){
-      return false;
-    }
+    onSubmit(){
+      this.uploadFileService.customerType = this.customerType;
+      this.uploadFileService.selectedFile = this.selectedFile;
+    }    
   }

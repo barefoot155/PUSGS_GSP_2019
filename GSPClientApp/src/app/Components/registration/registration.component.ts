@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UploadDocumentComponent } from 'src/app/Components/upload-document/upload-document.component';
 import { CustomerType } from 'src/app/Models/customerType';
 import { UploadFileServiceService } from 'src/app/Services/upload-file-service.service';
+import { User } from 'src/app/Models/user';
 
 @Component({
   selector: 'app-registration',
@@ -27,7 +28,6 @@ export class RegistrationComponent implements OnInit {
 
   moreOptionsActive : boolean = false;
   file : File = null;
-  customerType : CustomerType;
 
   constructor(private fb : FormBuilder, private registerService : RegisterServiceService, private router:Router, private fileUploadService : UploadFileServiceService) { }
 
@@ -35,15 +35,19 @@ export class RegistrationComponent implements OnInit {
     if(this.isLoggedIn()){
       this.router.navigate(['/']);
     }
+
+    this.fileUploadService.selectedFile = null;
   }
 
   onSubmit()
   {
     this.file = this.fileUploadService.selectedFile;
-    this.customerType = this.fileUploadService.customerType;
 
-    this.registerService.register(this.registerForm.value).subscribe(data => {
-      if(this.file != null){
+    let user = this.registerForm.value as User;
+    user.CustomerType = this.fileUploadService.customerType;
+
+    this.registerService.register(user).subscribe(data => {
+      if(this.file != null && user.CustomerType!=CustomerType.Regular){
         this.uploadFileToServer();
       }
       console.log('Registration succeed.');

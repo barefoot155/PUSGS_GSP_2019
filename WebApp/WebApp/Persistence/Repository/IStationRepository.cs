@@ -11,5 +11,7 @@ namespace WebApp.Persistence.Repository
     {
         bool AddNewStation(StationBindingModel station);
         List<string> GetAllStationNames();
+        StationBindingModel GetStationByName(string name);
+        Task<bool> UpdateStation(StationBindingModel station);
     }
 }

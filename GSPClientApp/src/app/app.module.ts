@@ -41,6 +41,7 @@ import { UploadDocumentComponent } from 'src/app/Components/upload-document/uplo
 import { LinesMapComponent } from 'src/app/Components/lines-map/lines-map.component';
 import { AuthGuard } from 'src/app/Interceptors/auth.guard';
 import { UpdateDocumentComponent } from './Components/update-document/update-document.component';
+import { EditStationsComponent } from './Components/edit-stations/edit-stations.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { UpdateDocumentComponent } from './Components/update-document/update-doc
 	AddLineComponent,
     UploadDocumentComponent,
   LinesMapComponent,
-  UpdateDocumentComponent
+  UpdateDocumentComponent,
+  EditStationsComponent
   ],
   imports: [
     BrowserModule,

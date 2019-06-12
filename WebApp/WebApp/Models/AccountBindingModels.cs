@@ -229,6 +229,8 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "Lon")]
         public double Lon { get; set; }
+        [Required]
+        public byte[] RowVersion { get; set; }
     }
 
     public class TicketBindingModel

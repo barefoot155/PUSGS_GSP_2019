@@ -10,14 +10,14 @@
         <tr>
             <td>Customer type:</td>
             <td>
-                <div #customerType>
-                    <input type="radio" name="custType" value="0"> Student
-                    <input type="radio" name="custType" value="1"> Pensioner
-                    <input type="radio" name="custType" value="2" checked> Regular
+                <div>
+                    <input type="radio" name="custType" [value]="0" [(ngModel)]="customerType"> Student
+                    <input type="radio" name="custType" [value]="1" [(ngModel)]="customerType"> Pensioner
+                    <input type="radio" name="custType" [value]="2" [(ngModel)]="customerType" checked> Regular
                 </div>
             </td>
         </tr>
-        <tr *ngIf="custTypeEvent(customerType.value)">
+        <tr *ngIf="customerType != 2">
             <td>Evidence document:</td>
             <td>
                 <input style="display: none" type="file" (change)="onFileChanged($event)" accept="image/*" #fileInput>
@@ -27,7 +27,7 @@
         </tr>
         <tr class="success">
             <td colspan="2">
-                    <button [disabled]="!selectedFile" class="btn btn-success pull-right" (click)="onSubmit(customerType.value)">Attach file</button>
+                    <button class="btn btn-success pull-right" (click)="onSubmit()">Attach file</button>
             </td>
         </tr>
     </tbody>

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
@@ -52,6 +56,55 @@ namespace WebApp.Persistence.Repository
             }
 
             return ret;
+        }
+
+        public StationBindingModel GetStationByName(string name)
+        {
+            Station station = AppDbContext.Stations.FirstOrDefault(s => s.Name == name);
+
+            if (station != null)
+            {
+
+                StationBindingModel stationBM = new StationBindingModel() { Name = station.Name, Address = station.Address, Lat = station.Location.Lat, Lon = station.Location.Lon, RowVersion = station.RowVersion };
+
+                return stationBM;
+            }
+            else
+            {
+                return new StationBindingModel();
+            }
+        }
+
+        public async Task<bool> UpdateStation(StationBindingModel station)
+        {
+            try
+            {
+                Station st = await AppDbContext.Stations.FirstOrDefaultAsync(s=>s.Name == station.Name);
+                if(st != null)
+                {
+                    st.Location.Lat = station.Lat;
+                    st.Location.Lon = station.Lon;
+                    st.Address = station.Address;
+                    byte[] a = st.RowVersion;
+                    
+                    if (a.SequenceEqual(station.RowVersion))
+                    {
+                        AppDbContext.Entry(st).State = EntityState.Modified;
+                        await AppDbContext.SaveChangesAsync();
+                    }
+                    else
+                        throw new DbUpdateConcurrencyException();
+                    
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(DbUpdateConcurrencyException concEx)
+            {
+                return false;
+            }
         }
     }
 }

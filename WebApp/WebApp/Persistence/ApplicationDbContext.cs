@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using WebApp.Models;
+using System.Reflection.Emit;
 
 namespace WebApp.Persistence
 {
@@ -30,5 +31,6 @@ namespace WebApp.Persistence
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

@@ -86,24 +86,30 @@ namespace WebApp.Controllers
         {
             string filePath = unitOfWork.Users.GetUserDocument(username);
 
-            FileInfo fileInfo = new FileInfo(filePath);
-            string type = fileInfo.Extension.Split('.')[1];
-            byte[] data = new byte[fileInfo.Length];
-
-            HttpResponseMessage response = new HttpResponseMessage();
-
-            using (FileStream fs = fileInfo.OpenRead())
+            if (!string.IsNullOrWhiteSpace(filePath))
             {
-                fs.Read(data, 0, data.Length);
-                response.StatusCode = HttpStatusCode.OK;
-                response.Content = new ByteArrayContent(data);
-                response.Content.Headers.ContentLength = data.Length;
 
+                FileInfo fileInfo = new FileInfo(filePath);
+                string type = fileInfo.Extension.Split('.')[1];
+                byte[] data = new byte[fileInfo.Length];
+
+                HttpResponseMessage response = new HttpResponseMessage();
+
+                using (FileStream fs = fileInfo.OpenRead())
+                {
+                    fs.Read(data, 0, data.Length);
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Content = new ByteArrayContent(data);
+                    response.Content.Headers.ContentLength = data.Length;
+
+                }
+
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/png");
+
+                return Ok(data);
             }
 
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/png");
-
-            return Ok(data);
+            return NotFound();
         }
 
         [Route("VerifyAppUser")]

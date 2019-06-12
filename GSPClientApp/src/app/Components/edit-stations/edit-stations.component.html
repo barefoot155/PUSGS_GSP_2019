@@ -1,0 +1,56 @@
+<select #stationName (change)='onSelectionChanged($event)'>
+  <option>-- Please Select --</option>
+  <option *ngFor='let s of stations' [value]="s">{{s}}</option>
+</select>
+
+<table *ngIf="selectedStation" class="table table-bordered">
+  <thead>
+      <tr class="success">
+          <th colspan="2">
+              Edit station                    
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Station name:</td>
+          <td>
+            <label>{{selectedStation.Name}}</label>
+          </td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td>
+            <input type="text" [(ngModel)]="selectedStation.Address" value="{{selectedStation.Address}}" placeholder="Address..." required>
+        </td>
+      </tr>
+      <tr>
+        <td>Lat:</td>
+        <td>
+          <input type="text" [(ngModel)]="selectedStation.Lat" value="{{selectedStation.Lat}}" placeholder="Latitude..." required>
+        </td>
+    </tr>
+    <tr>
+        <td>Lon:</td>
+        <td>
+          <input type="text" [(ngModel)]="selectedStation.Lon" value="{{selectedStation.Lon}}" placeholder="Longitude..." required>
+        </td>
+    </tr>
+      
+      <tr class="success" *ngIf="!isConflict">
+          <td colspan="2">
+                <button class="btn btn-success pull-right" (click)="onSubmit()">Save changes</button>
+          </td>
+      </tr>
+      <tr class="success" *ngIf="isConflict">
+        <td colspan="2">
+              <button class="btn btn-success pull-right" (click)="discardChanges()">Discard local changes</button>
+        </td>
+    </tr>
+    <tr class="success" *ngIf="isConflict">
+      <td colspan="2">
+            <button class="btn btn-success pull-right" (click)="overwrite()">Overwrite</button>
+      </td>
+  </tr>
+  </tbody>
+</table>
