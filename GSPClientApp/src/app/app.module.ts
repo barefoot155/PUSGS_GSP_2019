@@ -45,6 +45,7 @@ import { ViewDocumentComponent } from './Components/view-document/view-document.
 import { RealTimeComponent } from './Components/real-time/real-time.component';
 import { ClickService } from 'src/app/Services/click-service.service';
 import { RealTimeServiceService } from 'src/app/Services/real-time-service.service';
+import { HomePageComponent } from './Components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { RealTimeServiceService } from 'src/app/Services/real-time-service.servi
   UpdateDocumentComponent,
   EditStationsComponent,
   ViewDocumentComponent,
-  RealTimeComponent
+  RealTimeComponent,
+  HomePageComponent
   ],
   imports: [
     BrowserModule,

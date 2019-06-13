@@ -1,11 +1,6 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <table class="table table-bordered" *ngIf="!registerClicked && !isLoggedIn()">
       <thead>
-          <!-- <tr class="success">
-                <th colspan="2">
-                        <a routerLink="/registration" (click)="RegisterClicked()"><button class="btn btn-primary pull-right"> Registration </button></a>
-                </th>
-          </tr> -->
           <tr class="success">
               <th colspan="2">
                   Login
@@ -27,9 +22,14 @@
           </tr>
           <tr class="success">
               <td colspan="2">
-                  <button class="btn btn-success pull-right" type="submit">Login</button>
+                  <button [disabled]="!loginForm.valid" class="btn btn-success pull-right" type="submit">Login</button>
               </td>
           </tr>
+          <tr class="warning" *ngIf="message != ''">
+                <th style="text-align:center" colspan="2">
+                    <label>{{message}}</label>
+                </th>
+            </tr>
       </tbody>
   </table>
 </form>

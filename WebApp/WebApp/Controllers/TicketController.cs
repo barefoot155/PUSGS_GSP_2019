@@ -53,20 +53,32 @@ namespace WebApp.Controllers
             }
         }
                 
-        [ResponseType(typeof(bool))]
         [HttpGet]
         [Route("CheckTicketId")]
         public IHttpActionResult CheckTicketId(int ticketId)
         {
-            return Ok(unitOfWork.Tickets.CheckTicketId(ticketId));
+            if(unitOfWork.Tickets.CheckTicketId(ticketId))
+            {
+                return Ok();
+            }
+            else
+            {
+                return Ok("Unknown ticket ID!");
+            }
         }
 
-        [ResponseType(typeof(bool))]
         [HttpGet]
         [Route("ValidateTicket")]
         public IHttpActionResult ValidateTicket(int ticketId)
         {
-            return Ok(unitOfWork.Tickets.ValidateTicket(ticketId));
+            if(unitOfWork.Tickets.ValidateTicket(ticketId))
+            {
+                return Ok("Ticket is valid");
+            }
+            else
+            {
+                return Ok("Ticket is not valid");
+            }
         }
 
         [HttpPost]
@@ -80,10 +92,10 @@ namespace WebApp.Controllers
 
             Ticket ticket = unitOfWork.Tickets.BuyTicketUnregistred(priceForTicketType, pricelistItemId);
 
-            if (sendEmailViaWebApi(email, "GSP Ticket","\nTicket Id:"+ticket.Id+" \nPrice: " + ticket.Price))
+            if (sendEmailViaWebApi(email, "GSP Ticket", "\nTicket Id:" + ticket.Id + " \nPrice: " + ticket.Price))
                 return Ok("Ticket sent to email");
             else
-                return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Ticket is bought. Cannot send email at the moment." });
+                return Ok("Ticket is bought. Cannot send email at the moment.");
         }
        
         [HttpPost]
@@ -114,16 +126,19 @@ namespace WebApp.Controllers
                     if (sendEmailViaWebApi(user.Email, "GSP Ticket", "\nTicket Id:" + ticket.Id + " \nPrice: " + ticket.Price))
                         return Ok("Ticket sent to email");
                     else
-                        return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Ticket is bought. Cannot send email." });
+                        return Ok("Ticket is bought. Cannot send email.");
+                        //return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode., ReasonPhrase = "Ticket is bought. Cannot send email." });
                 }
                 else
                 {
-                    return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "Cannot add ticket to user." });
+                    return Ok("Cannot add ticket to user.");
+                    //return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = "Cannot add ticket to user." });
                 }
             }
             else
             {
-                return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.Forbidden, ReasonPhrase = "User is not verified yet." });
+                return Ok("User is not verified yet.");
+                //return ResponseMessage(new HttpResponseMessage() { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = "User is not verified yet." });
             }
         }
 

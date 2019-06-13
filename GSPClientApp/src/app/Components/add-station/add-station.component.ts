@@ -11,18 +11,21 @@ export class AddStationComponent implements OnInit {
   addStationForm = this.fb.group({
     Name : ['', Validators.required],
     Address : ['', Validators.required],
-    Lat : [''],
-    Lon : ['']
+    Lat : ['', [Validators.required, Validators.pattern]],
+    Lon : ['', [Validators.required, Validators.pattern]]
   });
+
+  message : string = "";
   constructor(private fb : FormBuilder, private stationService : StationServiceService) { }
 
   ngOnInit() {
+    this.message = "";
   }
 
   onSubmit(){
     this.stationService.addNewStation(this.addStationForm.value).subscribe(
       data => {
-          console.log(data);
+          this.message = data;
     });
   }
 }

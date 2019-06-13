@@ -31,7 +31,7 @@
                 <li><a class="navbar-brand" id="trenutneLokacije" data-toggle="modal" routerLink="/realtime">Current locations</a></li>  
                                 
                 <li *ngIf="isAdmin() || isController() || isAppUser()" class="dropdown">
-                  <a id="korisnik" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User options<span class="caret"></span></a>
+                  <a id="korisnik" style="cursor:pointer;" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User options<span class="caret"></span></a>
                   <ul class="dropdown-content">
                       <li><a id="prikaziPodatke" routerLink="/userdata">Personal data</a></li>
                       <li *ngIf="isAppUser()"><a id="prikaziKartu" routerLink="/checkTicket">My ticket</a></li>

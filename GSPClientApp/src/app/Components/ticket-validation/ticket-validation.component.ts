@@ -10,28 +10,31 @@ export class TicketValidationComponent implements OnInit {
   valid : boolean = false;
   clicked : boolean = false;
   unknownTicketId : boolean = false;
+  message: string = "";
+  ticketId : number;
 
   constructor(private ticketService : TicketsServiceService) { }
 
   ngOnInit() {
+    this.message = "";
   }
 
-  isValid(ticketId : number){
-    this.unknownTicketId = false;
-    this.clicked = true;
+  isValid(){
+    // this.unknownTicketId = false;
+    // this.clicked = true;
     
-    this.ticketService.checkTicketId(ticketId).subscribe(
+    this.ticketService.checkTicketId(this.ticketId).subscribe(
       data => 
       {
-        if(data){
-          this.ticketService.validateTicket(ticketId).subscribe(
+        if(!data){
+          this.ticketService.validateTicket(this.ticketId).subscribe(
             data =>
             {
-              this.valid = data;
+              this.message = data;
             }
           );
         }else{
-          this.unknownTicketId = true;
+          this.message = data;
         }
       }
     );

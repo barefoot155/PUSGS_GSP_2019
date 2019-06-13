@@ -14,37 +14,37 @@
           <tr>
               <td>Username:</td>
               <td>
-                  <input type="text" formControlName="UserName" placeholder="Username..." required>
+                  <input type="text" formControlName="UserName" placeholder="Username...">
               </td>
           </tr>
           <tr>
               <td>Email:</td>
               <td>
-                  <input type="text" formControlName="Email" placeholder="Email..." required>
+                  <input type="text" formControlName="Email" placeholder="Email...">
               </td>
           </tr>
           <tr>
               <td>Password:</td>
               <td>
-                  <input type="password" formControlName="Password" placeholder="Password..." required>
+                  <input type="password" formControlName="Password" placeholder="Password...">
               </td>
           </tr>
           <tr>
               <td>Confirm password:</td>
               <td>
-                  <input type="password" formControlName="ConfirmPassword" placeholder="Confirm password..." required>
+                  <input type="password" formControlName="ConfirmPassword" placeholder="Confirm password...">
               </td>
           </tr>
           <tr>
               <td>Name:</td>
               <td>
-                  <input type="text" id="txtIme" pattern="^[A-Za-z]*$" formControlName="Name" placeholder="Name..."> 
+                  <input type="text" title="letters only" id="txtIme" pattern="^[A-Za-z]*$" formControlName="Name" placeholder="Name..."> 
               </td>
           </tr>
           <tr>
               <td>Surname:</td>
               <td>
-                  <input type="text" formControlName="Surname" placeholder="Surname...">
+                  <input type="text" title="letters only" formControlName="Surname" pattern="^[A-Za-z]*$" placeholder="Surname...">
               </td>
           </tr>
           <tr>
@@ -56,13 +56,13 @@
           <tr>
               <td>Phone number:</td>
               <td>
-                  <input type="text" formControlName="PhoneNumber" placeholder="Phone number..."> 
+                  <input type="text" title="input format: xxx/xxxxxxx" pattern="^[0-9]{3}\/[0-9]{7}$" formControlName="PhoneNumber" placeholder="xxx/xxxxxxx"> 
               </td>
           </tr>
           <tr>
               <td>Date of birth:</td>
               <td>
-                  <input type="text" formControlName="DateOfBirth" placeholder="Date of birth..."> 
+                  <input type="text" title="input format: mm.dd.yyyy." pattern="(0[1-9]|1[0-2])\.(0[1-9]|1\d|2\d|3[01])\.((19|20)\d{2})\.$" formControlName="DateOfBirth" placeholder="mm.dd.yyyy."> 
               </td>
           </tr>
           <tr>
@@ -73,7 +73,7 @@
           
           <tr class="success">
               <td colspan="2">
-                    <button class="btn btn-success pull-right" type="submit"> Register</button>
+                    <button [disabled]="!registerForm.valid" class="btn btn-success pull-right" type="submit"> Register</button>
               </td>
           </tr>
       </tbody>

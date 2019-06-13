@@ -45,22 +45,13 @@ export class RealTimeServiceService {
             observer.complete(); 
         });  
       });
-  }
-
-  public registerForClickEvents(): void {  
-    
-    this.proxy.on('userClicked', (data: string) => {  
-        console.log('received notification: ' + data);  
-        this.notificationReceived.emit(data);  
-    }); 
-  }  
+  } 
 
   public registerForTimerEvents() : Observable<string> {
       
     return Observable.create((observer) => {
 
-        this.proxy.on('setRealTime', (data: string) => {  
-            console.log('received time: ' + data);  
+        this.proxy.on('setRealTime', (data: string) => {               
             observer.next(data);
         });  
     });      

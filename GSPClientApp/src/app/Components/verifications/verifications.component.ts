@@ -61,6 +61,7 @@ export class VerificationsComponent implements OnInit {
       },
       error => {
         this.fileServis.imgSrc = 'assets/Images/no_photo.png';
+        this.router.navigate(['/viewimage']);
       }
     );
   }

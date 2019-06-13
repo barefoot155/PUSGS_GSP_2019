@@ -22,12 +22,18 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [ResponseType(typeof(bool))]
         [Route("AddNewStation")]
         [Authorize(Roles = "Admin")]
         public IHttpActionResult AddNewStation(StationBindingModel station)
         {            
-            return Ok(unitOfWork.Stations.AddNewStation(station));
+            if(unitOfWork.Stations.AddNewStation(station))
+            {
+                return Ok("Station added");
+            }
+            else
+            {
+                return Ok("Error while adding station");
+            }
         }
 
         [HttpGet]

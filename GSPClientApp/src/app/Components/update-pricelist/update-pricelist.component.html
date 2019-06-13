@@ -45,8 +45,13 @@
              </tr>
              <tr class="success">
                    <td colspan="2">
-                         <button class="btn btn-success pull-right" type="submit" *ngIf="isChanged" (click)="updatePricelist()"> Update pricelist</button>
+                         <button class="btn btn-success pull-right" type="submit" [disabled]="!isChanged" (click)="updatePricelist()"> Update pricelist</button>
                    </td>
              </tr>
+             <tr class="warning" *ngIf="message != ''">
+                    <th style="text-align:center" colspan="2">
+                        <label>{{message}}</label>
+                    </th>
+            </tr>
        </tbody>    
 </table>

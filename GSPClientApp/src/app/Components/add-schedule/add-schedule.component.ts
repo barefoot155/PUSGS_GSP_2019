@@ -16,7 +16,6 @@ export class AddScheduleComponent implements OnInit {
   currentTimes : CheckboxModel[] = [];
   newTimesChecked : string[];
   newSchedule : AddScheduleModel;
-
   selectedNumber : string;
   selectedDay : number;
   

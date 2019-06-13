@@ -12,7 +12,7 @@ import { ClickService } from 'src/app/Services/click-service.service';
   selector: 'app-real-time',
   templateUrl: './real-time.component.html',
   styleUrls: ['./real-time.component.css'],
-  styles: ['agm-map {height: 500px; width: 700px;}']
+  styles: ['agm-map {height: 700px; width: 1200px;}']
 })
 export class RealTimeComponent implements OnInit {
 
@@ -54,9 +54,7 @@ export class RealTimeComponent implements OnInit {
 
     //za hub
     this.checkConnection();
-    //this.subscribeForNotifications();
     this.subscribeForTime();
-    //this.realTimeService.registerForClickEvents();
   }
 
   getStationsByLineNumber(lineNumber : string){
@@ -67,10 +65,7 @@ export class RealTimeComponent implements OnInit {
           this.polyline.addLocation(new GeoLocation(this.stations[i].Lat, this.stations[i].Lon));
         }
         console.log(this.stations);
-        this.clickService.click(this.stations).subscribe(
-          data=>{
-            console.log('clicked');
-          });
+        this.clickService.click(this.stations).subscribe();
       });
   }
 
@@ -101,13 +96,12 @@ export class RealTimeComponent implements OnInit {
        if(this.isChanged){
           this.latitude = time.split("-")[0];
           this.longitude = time.split("-")[1];
-          console.log('lat i lon:' + this.longitude + " " + this.latitude);
+          
        }else{
           this.latitude = "";
           this.longitude = "";
        }
-    });  
-    console.log(this.time);
+    });      
   }  
 
   public startTimer() {    
@@ -118,22 +112,4 @@ export class RealTimeComponent implements OnInit {
     this.realTimeService.StopTimer();
     this.time = "";
   }
-
-  // public onClick() {
-  //   if (this.isConnected) {
-  //     this.http.click().subscribe(data => console.log(data));
-  //   }
-  // }
-
-  // private subscribeForNotifications () {
-  //   this.realTimeService.notificationReceived.subscribe(e => this.onNotification(e));
-  // }
-
-  // public onNotification(notif: string) {
-
-  //    this.ngZone.run(() => { 
-  //      this.notifications.push(notif);  
-  //      console.log(this.notifications);
-  //   });  
-  // }
 }

@@ -16,13 +16,13 @@ export class RegistrationComponent implements OnInit {
 
   registerForm = this.fb.group({
     UserName : ['', Validators.required],
-    Email : ['', Validators.required],
+    Email : ['', [Validators.required, Validators.email]],
     Password : ['', Validators.required],
     ConfirmPassword : ['', Validators.required],
-    Name : [''],
-    Surname : [''],
-    PhoneNumber : [''],
-    DateOfBirth : [''],
+    Name : ['', Validators.pattern],
+    Surname : ['', Validators.pattern],
+    PhoneNumber : ['', Validators.pattern],
+    DateOfBirth : ['', Validators.pattern],
     Address : ['']
   });
 
@@ -45,15 +45,17 @@ export class RegistrationComponent implements OnInit {
 
     let user = this.registerForm.value as User;
     user.CustomerType = this.fileUploadService.customerType;
-
-    this.registerService.register(user).subscribe(data => {
-      if(this.file != null && user.CustomerType!=CustomerType.Regular){
-        this.uploadFileToServer();
-      }
-      console.log('Registration succeed.');
-      
-      this.router.navigate(['/login']);
-    });
+    if(this.checkPassword(user.Password, user.ConfirmPassword))
+    {
+      this.registerService.register(user).subscribe(data => {
+        if(this.file != null && user.CustomerType!=CustomerType.Regular){
+          this.uploadFileToServer();
+        }
+        console.log('Registration succeed.');
+        
+        this.router.navigate(['/login']);
+      });
+    }
   }
 
   optionsClick(){
@@ -71,5 +73,9 @@ export class RegistrationComponent implements OnInit {
 
   isLoggedIn(){
     return localStorage.getItem('username') != undefined;
+  }
+
+  checkPassword(pass: string, confirmPass: string) : boolean{
+    return pass == confirmPass;
   }
 }

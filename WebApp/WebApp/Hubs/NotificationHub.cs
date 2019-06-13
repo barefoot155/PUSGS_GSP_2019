@@ -28,8 +28,8 @@ namespace WebApp.Hubs
         private static List<StationBindingModel> stations = new List<StationBindingModel>();
 
         private static Timer timer = new Timer();
-        private double cntLat = 45.241258;
-        private double cntLon = 19.831091;
+        //private double cntLat = 45.241258;
+        //private double cntLon = 19.831091;
         private static int cnt = 0;
 
         public NotificationHub()

@@ -11,32 +11,37 @@
           <tr>
               <td>Name:</td>
               <td>
-                  <input type="text" formControlName="Name" placeholder="Name..." required>
+                  <input type="text" formControlName="Name" placeholder="Name...">
               </td>
           </tr>
           <tr>
               <td>Address:</td>
               <td>
-                  <input type="text" formControlName="Address" placeholder="Address..." required>
+                  <input type="text" formControlName="Address" placeholder="Address...">
               </td>
           </tr>
           <tr>
               <td>Latitude:</td>
               <td>
-                  <input type="text" formControlName="Lat" placeholder="Latitude..." required>
+                  <input type="text" formControlName="Lat" pattern="^[0-9\.]*$"  placeholder="Latitude...">
               </td>
           </tr>
           <tr>
               <td>Longitude:</td>
               <td>
-                  <input type="text" formControlName="Lon" placeholder="Longitude..." required>
+                  <input type="text" formControlName="Lon" pattern="^[0-9\.]*$" placeholder="Longitude...">
               </td>
           </tr>
           <tr class="success">
               <td colspan="2">
-                  <button class="btn btn-success pull-right" type="submit">Add station</button>
+                  <button [disabled]="!addStationForm.valid" class="btn btn-success pull-right" type="submit">Add station</button>
               </td>
           </tr>
+          <tr class="warning" *ngIf="message != ''">
+                <th style="text-align:center" colspan="2">
+                    <label>{{message}}</label>
+                </th>
+        </tr>
       </tbody>
   </table>
 </form>

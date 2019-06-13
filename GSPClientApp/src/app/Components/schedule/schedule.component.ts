@@ -14,27 +14,52 @@ export class ScheduleComponent implements OnInit {
   lines : string[];
   scheduleTableHeader : string;
   selectedLineType : number;
+  isEnabledSubmit : boolean = false;
+  isEnabledSubmit1 : boolean = false;
+
   constructor(private scheduleService : ScheduleServiceService) { }
 
   ngOnInit() {
+    this.isEnabledSubmit = false;
+    this.isEnabledSubmit1 = false;
   }
 
   onSubmit(lineNumber : string, dayType:number){
-
-    this.scheduleService.getScheduleForLine(lineNumber,dayType).subscribe(data => {
-      console.log(data);
-      this.schedules = data;
-      this.scheduleTableHeader = `Line number ${lineNumber}`;
-    });
+    if(lineNumber != "-- Please select --")
+    {
+      this.scheduleService.getScheduleForLine(lineNumber,dayType).subscribe(data => {
+        this.schedules = data;
+        this.scheduleTableHeader = `Line number ${lineNumber}`;
+      });
+    }
   }
 
   onOptionSelected(event){
-    let lineType = event.target.value;
-    this.selectedLineType = lineType;
-    console.log(lineType);
+    if(event.target.value != "-- Please select --")
+    {
+      this.isEnabledSubmit1 = true;
+      let lineType = event.target.value;
+      this.selectedLineType = lineType;
 
-    this.scheduleService.getLinesByType(lineType).subscribe(data => {      
-      this.lines = data;
-    });
+      this.scheduleService.getLinesByType(lineType).subscribe(data => {      
+        this.lines = data;
+        this.isEnabledSubmit = false;
+      });
+    }
+    else{
+      this.isEnabledSubmit1 = false;
+      this.isEnabledSubmit = false;
+      this.lines = [];
+    }
+ }
+
+ onLineSelected(event){
+  if(event.target.value != "-- Please select --")
+  {
+    this.isEnabledSubmit = true;
+  }
+  else{
+    this.isEnabledSubmit = false;
+  }
  }
 }

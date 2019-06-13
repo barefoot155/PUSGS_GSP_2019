@@ -31,13 +31,13 @@
         <tr>
             <td>Name:</td>
             <td>
-                <input type="text" [(ngModel)]="userDetails.Name" value="{{userDetails.Name}}" (change)="onChange($event)" pattern="^[A-Za-z]*$" placeholder="Name..."> 
+                <input type="text" title="letters only" [(ngModel)]="userDetails.Name" value="{{userDetails.Name}}" (change)="onChange($event)" pattern="^[A-Za-z]*$" placeholder="Name..."> 
             </td>
         </tr>
         <tr>
             <td>Surname:</td>
             <td>
-                <input type="text" [(ngModel)]="userDetails.Surname" value="{{userDetails.Surname}}" (change)="onChange($event)" placeholder="Surname...">
+                <input type="text" title="letters only" [(ngModel)]="userDetails.Surname" value="{{userDetails.Surname}}" (change)="onChange($event)" placeholder="Surname...">
             </td>
         </tr>
         <tr>
@@ -49,13 +49,13 @@
         <tr>
             <td>Phone number:</td>
             <td>
-                <input type="text" [(ngModel)]="userDetails.PhoneNumber" value="{{userDetails.PhoneNumber}}" (change)="onChange($event)" placeholder="Phone number..."> 
+                <input type="text" title="input format: xxx/xxxxxxx" [(ngModel)]="userDetails.PhoneNumber" value="{{userDetails.PhoneNumber}}" (change)="onChange($event)" placeholder="xxx/xxxxxxx"> 
             </td>
         </tr>
         <tr>
             <td>Date of birth:</td>
             <td>
-                <input type="text" [(ngModel)]="userDetails.DateOfBirth" value="{{userDetails.DateOfBirth}}" (change)="onChange($event)" placeholder="Date of birth..."> 
+                <input type="text" title="input format: mm.dd.yyyy." [(ngModel)]="userDetails.DateOfBirth" value="{{userDetails.DateOfBirth}}" (change)="onChange($event)" placeholder="mm.dd.yyyy."> 
             </td>
         </tr>
         <tr>
@@ -67,7 +67,7 @@
         
         <tr class="success">
             <td colspan="2">
-                  <button class="btn btn-success pull-right" *ngIf="isChanged" (click)="onSubmit()">Save changes</button>
+                  <button class="btn btn-success pull-right" [disabled]="!isChanged" (click)="onSubmit()">Save changes</button>
             </td>
         </tr>
     </tbody>

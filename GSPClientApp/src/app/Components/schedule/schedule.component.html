@@ -13,7 +13,7 @@
           </td>
           <td>
                 <select #lineType (change)='onOptionSelected($event)'>
-                        <option value="">-- Please select --</option>
+                        <option>-- Please select --</option>
                         <option value="0">Urban</option>
                         <option value="1">Suburban</option>
                 </select>
@@ -24,8 +24,8 @@
                   Select line number:
             </td>
             <td>
-                <select #lineNumber>
-                        <option value="">-- Please Select --</option>
+                <select #lineNumber (change)='onLineSelected($event)'>
+                        <option>-- Please select --</option>
                         <option *ngFor='let lineNum of lines' [value]="lineNum">{{lineNum}}</option>
                 </select>
             </td>
@@ -44,7 +44,7 @@
       </tr>      
       <tr class="success">
           <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineNumber.value, dayType.value)">Submit</button>
+              <button [disabled]="!isEnabledSubmit || !isEnabledSubmit1" class="btn btn-success pull-right" type="submit" (click)="onSubmit(lineNumber.value, dayType.value)">Submit</button>
           </td>
       </tr>
   </tbody>

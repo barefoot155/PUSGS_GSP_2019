@@ -22,7 +22,7 @@ namespace WebApp.Controllers
 
         [ResponseType(typeof(double))]
         [Route("GetPricelist")]
-        [Authorize(Roles = "Admin, AppUser, Controller")]
+        [AllowAnonymous]
         public IHttpActionResult GetPricelist(TicketType ticketType)
         {
             int pricelistId = unitOfWork.Pricelists.GetActivePricelistId();

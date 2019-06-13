@@ -7,42 +7,23 @@
       </tr>
   </thead>
   <tbody>
-      <tr>
-          <td>
+        <tr>
+            <td>
                 Enter ticket ID:
-          </td>
-          <td>
-                <input #ticketId type="text" placeholder="Ticket ID..." required>
-          </td>
-      </tr>           
-      <tr class="success">
-          <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="isValid(ticketId.value)">Submit</button>             
-          </td>
-      </tr>
-      <tr class="success" *ngIf="valid && clicked">
-          <th>
-              Validation status:
-          </th>
-          <th>
-              Ticket is valid
-          </th>
-      </tr>
-      <tr class="danger" *ngIf="!valid && clicked && !unknownTicketId">
-          <th>
-              Validation status:
-          </th>
-          <th>
-              Ticket is not valid
-          </th>
-      </tr>
-      <tr class="danger" *ngIf="unknownTicketId && clicked">
-        <th>
-            Validation status:
-        </th>
-        <th>
-            Unknown ticket ID!
-        </th>
-    </tr>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="ticketId" [value]="ticketId" placeholder="Ticket ID..." required>
+            </td>
+        </tr>           
+        <tr class="success">
+            <td colspan="2">
+                <button [disabled]="!ticketId" class="btn btn-success pull-right" type="submit" (click)="isValid()">Submit</button>             
+            </td>
+        </tr>
+        <tr class="warning" *ngIf="message != ''">
+            <th style="text-align:center" colspan="2">
+                <label>{{message}}</label>
+            </th>
+        </tr>
   </tbody>
 </table>

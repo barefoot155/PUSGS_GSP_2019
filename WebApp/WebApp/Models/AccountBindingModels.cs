@@ -22,7 +22,7 @@ namespace WebApp.Models
 
         [Required]
         [Display(Name = "DateOfBirth")]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         [Display(Name = "Address")]

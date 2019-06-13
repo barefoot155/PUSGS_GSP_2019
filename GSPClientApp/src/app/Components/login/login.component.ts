@@ -17,11 +17,12 @@ export class LoginComponent implements OnInit {
     Password : ['', Validators.required]
   });
 
-  loggedUser : UserData;
+  message: string = "";
 
   constructor(private fb : FormBuilder, private loginService : LoginServiceService, private userService: UserServiceService, private router : Router) { }
 
   ngOnInit() {
+    this.message = "";
     if(this.isLoggedIn()){
       this.router.navigate(['/']);
     }
@@ -40,24 +41,14 @@ export class LoginComponent implements OnInit {
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
 
       let role = decodedJwtData.role;
-      console.log('Role:' + role);
 
       localStorage.setItem('jwt', jwt);
       localStorage.setItem('username', this.loginForm.value.UserName);
       localStorage.setItem('role', role);
     
-      this.getUserData();
-      
+      this.router.navigate(['/']);
     }, 
-      err=>console.log('Login failed. Invalid username or password.')
-    );
-  }
-
-  getUserData()
-  {
-    this.userService.getUserData(localStorage.getItem("username")).subscribe(
-      data => {this.loggedUser = data;
-      console.log(this.loggedUser)}
+      err=> this.message = "Username or password is incorrect!"
     );
   }
 

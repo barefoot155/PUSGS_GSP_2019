@@ -27,6 +27,7 @@ import { UpdateDocumentComponent } from 'src/app/Components/update-document/upda
 import { EditStationsComponent } from 'src/app/Components/edit-stations/edit-stations.component';
 import { ViewDocumentComponent } from 'src/app/Components/view-document/view-document.component';
 import { RealTimeComponent } from 'src/app/Components/real-time/real-time.component';
+import { HomePageComponent } from 'src/app/Components/home-page/home-page.component';
 
 const routes:Routes = [
   {path: 'schedules', component: ScheduleComponent},
@@ -34,7 +35,7 @@ const routes:Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'pricelist', component: PricesComponent},
   {path: 'userdata', component: UserDetailsComponent},
-  {path: 'buyticket', component: TicketsComponent, canActivate: [AppUserGuard]},
+  {path: 'buyticket', component: TicketsComponent},
   {path: 'passwordchange', component: ChangePasswordComponent},
   {path: 'verifications', component: VerificationsComponent, canActivate: [ControllerGuard]},
   {path: 'addpricelist', component: PricelistComponent, canActivate: [AuthGuard]},
@@ -49,7 +50,8 @@ const routes:Routes = [
   {path: 'document', component: UpdateDocumentComponent, canActivate: [AppUserGuard]},
   {path: 'lines', component: LinesMapComponent},
   {path: 'viewimage', component: ViewDocumentComponent},
-  {path: 'realtime', component : RealTimeComponent}
+  {path: 'realtime', component : RealTimeComponent},
+  {path: '', component : HomePageComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { MarkerInfo } from 'src/app/Models/marker-info';
 import { Polyline } from 'src/app/Models/polyline';
 import { GeoLocation } from 'src/app/Models/geolocation';
 import { LineServiceService } from 'src/app/Services/line-service.service';
@@ -10,12 +9,12 @@ import { ScheduleServiceService } from 'src/app/Services/schedule-service.servic
   selector: 'app-lines-map',
   templateUrl: './lines-map.component.html',
   styleUrls: ['./lines-map.component.css'],
-  styles: ['agm-map {height: 500px; width: 700px;}'] //postavljamo sirinu i visinu mape
+  styles: ['agm-map {height: 700px; width: 1200px;}'] //postavljamo sirinu i visinu mape
 })
 export class LinesMapComponent implements OnInit {
 
   public polyline: Polyline;
-  public zoom: number;
+  public zoom: number = 15;
   startLat : number = 45.242268;
   startLon : number = 19.842954;
 
@@ -37,15 +36,15 @@ export class LinesMapComponent implements OnInit {
   }
 
   getStationsByLineNumber(lineNumber : string){
-    this.lineService.getAllStationsByLineNumber(lineNumber).subscribe(
-      data =>{
-        console.log(data);
-        this.stations = data;
-        for(var i=0; i<this.stations.length; ++i){
-          console.log(i);
-          this.polyline.addLocation(new GeoLocation(this.stations[i].Lat, this.stations[i].Lon));
-        }
-      });
+    if(lineNumber != "-- Please select --"){
+      this.lineService.getAllStationsByLineNumber(lineNumber).subscribe(
+        data =>{
+          this.stations = data;
+          for(var i=0; i<this.stations.length; ++i){
+            this.polyline.addLocation(new GeoLocation(this.stations[i].Lat, this.stations[i].Lon));
+          }
+        });
+    }
   }
   onSelectionChangeNumber(event){
     this.stations = [];

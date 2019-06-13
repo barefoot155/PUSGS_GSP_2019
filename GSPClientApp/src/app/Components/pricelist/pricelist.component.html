@@ -13,18 +13,18 @@
               <tr>
                   <td>Start date:</td>
                   <td>
-                      <input type="text" formControlName="StartDate" placeholder="Start date..." required>
+                      <input type="text" title="input format: mm.dd.yyyy." pattern="^(0[1-9]|1[0-2])\.(0[1-9]|1\d|2\d|3[01])\.((19|20)\d{2})\.$" formControlName="StartDate" placeholder="mm.dd.yyyy.">
                   </td>
               </tr>
               <tr>
                   <td>End date:</td>
                   <td>
-                      <input type="text" formControlName="EndDate" placeholder="End date..." required>
+                      <input type="text" title="input format: mm.dd.yyyy." pattern="^(0[1-9]|1[0-2])\.(0[1-9]|1\d|2\d|3[01])\.((19|20)\d{2})\.$" formControlName="EndDate" placeholder=" mm.dd.yyyy.">
                   </td>
               </tr>
               <tr class="success">
                 <td colspan="2">
-                      <button class="btn btn-success pull-right" type="submit" [disabled]="pricelistAdded"> Add pricelist</button>
+                      <button class="btn btn-success pull-right" type="submit" [disabled]="pricelistAdded || !addPricelistForm.valid"> Add pricelist</button>
                 </td>
             </tr>
     </tbody>    
@@ -43,30 +43,30 @@
                  <tr>
                      <td>Hourly ticket price:</td>
                      <td>
-                         <input type="text" formControlName="HourlyPrice" placeholder="Hourly price..." required>
+                         <input type="text" formControlName="HourlyPrice" title="Decimal values only" pattern="^\d+$" placeholder="Hourly price..." required>
                      </td>
                  </tr>
                  <tr>
                      <td>Daily ticket price:</td>
                      <td>
-                         <input type="text" formControlName="DailyPrice" placeholder="Daily price..." required>
+                         <input type="text" formControlName="DailyPrice" title="Decimal values only" pattern="^\d+$" placeholder="Daily price..." required>
                      </td>
                  </tr>
                  <tr>
                     <td>Monthly ticket price:</td>
                     <td>
-                        <input type="text" formControlName="MonthlyPrice" placeholder="Monthly price..." required>
+                        <input type="text" formControlName="MonthlyPrice" title="Decimal values only" pattern="^\d+$" placeholder="Monthly price..." required>
                     </td>
                 </tr>
                 <tr>
                     <td>Annual ticket price:</td>
                     <td>
-                        <input type="text" formControlName="AnnualPrice" placeholder="Annual price..." required>
+                        <input type="text" formControlName="AnnualPrice" title="Decimal values only" pattern="^\d+$" placeholder="Annual price..." required>
                     </td>
                 </tr>
                  <tr class="success">
                    <td colspan="2">
-                         <button class="btn btn-success pull-right" type="submit"> Add prices</button>
+                         <button [disabled]="!addPricelistItemForm.valid" class="btn btn-success pull-right" type="submit"> Add prices</button>
                    </td>
                </tr>
        </tbody>    

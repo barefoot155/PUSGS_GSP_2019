@@ -1,4 +1,4 @@
-<table class="table table-bordered" *ngIf="loggedIn === false">
+<table class="table table-bordered" *ngIf="!loggedIn">
   <thead>
       <tr class="success">
           <th colspan="2">
@@ -12,14 +12,19 @@
                 Enter email (You will get your ticket there):
           </td>
           <td>
-                <input #email type="text" placeholder="Email..." required>                  
+                <input #email [(ngModel)]="emailbox" [value]="emailbox" type="text" placeholder="Email...">                  
           </td>
       </tr>                 
       <tr class="success">
           <td colspan="2">
-              <button class="btn btn-success pull-right" type="submit" (click)="onSubmit(email.value)">Buy ticket</button>
+              <button [disabled]="!emailbox" class="btn btn-success pull-right" type="submit" (click)="onSubmit()">Buy ticket</button>
           </td>
       </tr>
+      <tr class="warning" *ngIf="message != ''">
+            <th style="text-align:center" colspan="2">
+                <label>{{message}}</label>
+            </th>
+        </tr>
   </tbody>
 </table>
 
@@ -48,5 +53,10 @@
                   <button class="btn btn-success pull-right" type="submit" (click)="buyTicket(ticketType.value)">Buy ticket</button>
               </td>
           </tr>
+          <tr class="warning" *ngIf="message != ''">
+                <th style="text-align:center" colspan="2">
+                    <label>{{message}}</label>
+                </th>
+            </tr>
       </tbody>
 </table>

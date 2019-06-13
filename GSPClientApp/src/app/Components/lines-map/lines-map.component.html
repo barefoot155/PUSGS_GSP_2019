@@ -1,7 +1,7 @@
 <div>
   Select line number:
   <select #lineNumber (change)="onSelectionChangeNumber($event)">
-    <option value="">-- Please Select --</option>
+    <option>-- Please select --</option>
     <option *ngFor="let option of options;" [value]="option">
         {{option}}
     </option>
@@ -10,7 +10,7 @@
 
 <div>
   <!-- Kreiramo mapu -->
-   <agm-map [latitude]="startLat" [longitude]="startLon" [zoom]="15"><!-- (mapClick)="placeMarker($event)"-->  
+   <agm-map [latitude]="startLat" [longitude]="startLon" [zoom]="zoom">  
 
     <agm-polyline [strokeColor]="polyline.color">
       <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">

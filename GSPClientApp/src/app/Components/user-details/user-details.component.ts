@@ -14,6 +14,10 @@ export class UserDetailsComponent implements OnInit {
 
   userDetails : UserData;
   isChanged : boolean = false;
+  emailRegExp = new RegExp('^[a-zA-Z0-9\\.\\_]+@[a-zA-Z]+\\.[a-zA-Z]+$');
+  nameRegExp = new RegExp('^(\\s)*|([A-Za-z]*)');
+  numberRegExp = new RegExp('^(\\s)*(|[0-9]{3}\\/[0-9]{7})');
+  dateRegExp = new RegExp("^(\\s)*((0[1-9]|1[0-2])\\.(0[1-9]|1\\d|2\\d|3[01])\\.((19|20)\\d{2})\\.)$");
 
   constructor(private userService : UserServiceService, private fb: FormBuilder) { }
 
@@ -29,10 +33,16 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.userDetails);
-    this.userService.updateUserData(this.userDetails).subscribe(
-      result => console.log(result)
-    );
+    if(this.validate())
+    {
+      console.log('its valid');
+      this.userService.updateUserData(this.userDetails).subscribe(
+        result => console.log(result)
+      );
+    }
+    else{
+      console.log('its not valid');
+    }
   }
 
   typetoString(type : CustomerType) : string{
@@ -40,5 +50,17 @@ export class UserDetailsComponent implements OnInit {
   }
   statusToString(status : VerificationStatus) : string{
     return VerificationStatus[status];
+  }
+
+  validate(): boolean {
+    if(this.emailRegExp.test(this.userDetails.Email) && this.nameRegExp.test(this.userDetails.Name) && this.nameRegExp.test(this.userDetails.Surname)
+      && this.numberRegExp.test(this.userDetails.PhoneNumber) && this.dateRegExp.test(this.userDetails.DateOfBirth))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 }

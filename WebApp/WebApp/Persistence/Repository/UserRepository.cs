@@ -71,26 +71,31 @@ namespace WebApp.Persistence.Repository
             return AppDbContext.Users.FirstOrDefault(u=>u.Email == email);
         }
 
-        public IEnumerable<UserDataBindingModel> GetAllUsers()
+        public IEnumerable<UserDataBindingModel> GetAllAppUsers()
         {
             List<UserDataBindingModel> ret = new List<UserDataBindingModel>();
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
 
             foreach (var item in AppDbContext.Users.ToList())
             {
-                UserDataBindingModel temp = new UserDataBindingModel()
+                if (userManager.GetRoles(item.Id).Contains("AppUser"))
                 {
-                    UserName = item.UserName,
-                    Email = item.Email,
-                    Name = item.Name,
-                    Surname = item.Surname,
-                    Address = item.Address,
-                    DateOfBirth = item.DateOfBirth,
-                    PhoneNumber = item.PhoneNumber,
-                    CustomerType = item.Type,
-                    Status = item.Status
-                };
+                    UserDataBindingModel temp = new UserDataBindingModel()
+                    {
+                        UserName = item.UserName,
+                        Email = item.Email,
+                        Name = item.Name,
+                        Surname = item.Surname,
+                        Address = item.Address,
+                        DateOfBirth = item.DateOfBirth.ToString(),
+                        PhoneNumber = item.PhoneNumber,
+                        CustomerType = item.Type,
+                        Status = item.Status
+                    };
 
-                ret.Add(temp);
+                    ret.Add(temp);
+                }
             }
 
             return ret;

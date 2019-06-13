@@ -12,15 +12,15 @@ import { Router } from '@angular/router';
 })
 export class PricelistComponent implements OnInit {
   addPricelistForm = this.fb.group({
-    StartDate : ['', Validators.required],
-    EndDate : ['', Validators.required]
+    StartDate : ['', [Validators.required, Validators.pattern]],
+    EndDate : ['', [Validators.required, Validators.pattern]]
   });
 
   addPricelistItemForm = this.fb.group({
-    HourlyPrice : ['', Validators.required],
-    DailyPrice : ['', Validators.required],
-    MonthlyPrice : ['', Validators.required],
-    AnnualPrice : ['', Validators.required]
+    HourlyPrice : ['', [Validators.required, Validators.pattern]],
+    DailyPrice : ['', [Validators.required, Validators.pattern]],
+    MonthlyPrice : ['', [Validators.required, Validators.pattern]],
+    AnnualPrice : ['', [Validators.required, Validators.pattern]]
   });
 
   pricelistId : number = 0;
@@ -32,10 +32,8 @@ export class PricelistComponent implements OnInit {
   }
 
   addPricelist(){
-    //Pricelist
     this.pricelistService.addPricelist(this.addPricelistForm.value as AddPricelistModel).subscribe(data =>
       { 
-        console.log(data);
         this.pricelistId = data;
         this.pricelistAdded = true;
       });

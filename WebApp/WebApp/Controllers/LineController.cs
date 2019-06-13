@@ -54,7 +54,7 @@ namespace WebApp.Controllers
         [HttpGet]
         [ResponseType(typeof(List<StationBindingModel>))]
         [Route("GetStationsByLineNumber")]
-        [Authorize(Roles = "Admin, AppUser, Controller")]
+        [AllowAnonymous]
         public IHttpActionResult GetStationsByLineNumber(string lineNumber)
         {
             var stations = unitOfWork.Lines.GetAllStationsByLineNumber(lineNumber);

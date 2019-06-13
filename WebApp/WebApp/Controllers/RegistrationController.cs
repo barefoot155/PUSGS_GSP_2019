@@ -34,7 +34,10 @@ namespace WebApp.Controllers
         [Route("PostRegistration")]
         public IHttpActionResult PostRegistration(RegisterBindingModel registerBinding)
         {
-            DateTime.TryParse(registerBinding.DateOfBirth, out DateTime date);
+            if(!DateTime.TryParse(registerBinding.DateOfBirth, out DateTime date))
+            {
+                date = new DateTime(1900, 1, 1);
+            }
 
             ApplicationUser user = new ApplicationUser()
             {

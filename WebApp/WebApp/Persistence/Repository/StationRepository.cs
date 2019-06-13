@@ -36,9 +36,15 @@ namespace WebApp.Persistence.Repository
 
             try
             {
-                AppDbContext.Stations.Add(s);
-                AppDbContext.SaveChanges();
-                return true;
+                if (!AppDbContext.Stations.Any(stat => stat.Name == station.Name))
+                {
+                    AppDbContext.Stations.Add(s);
+                    AppDbContext.SaveChanges();
+                    return true;
+                }else
+                {
+                    return false;
+                }
             }
             catch
             {

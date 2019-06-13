@@ -39,7 +39,7 @@ namespace WebApp.Controllers
             {
                 UserName = user.UserName,
                 Address = user.Address,
-                DateOfBirth = user.DateOfBirth,
+                DateOfBirth = user.DateOfBirth.ToString(),
                 Email = user.Email,
                 Name = user.Name,
                 PhoneNumber = user.PhoneNumber,
@@ -56,9 +56,14 @@ namespace WebApp.Controllers
         [Authorize(Roles = "Admin, AppUser, Controller")]
         public IHttpActionResult UpdateUserData(UserDataBindingModel updateUserData)
         {
+            if(!DateTime.TryParse(updateUserData.DateOfBirth, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime date))
+            {
+                date = new DateTime(1900, 1, 1);
+            }
+
             ApplicationUser user = unitOfWork.Users.GetUserByUsername(updateUserData.UserName);
             user.Address = updateUserData.Address;
-            user.DateOfBirth = updateUserData.DateOfBirth;
+            user.DateOfBirth = date;
             user.Email = updateUserData.Email;
             user.Name = updateUserData.Name;
             user.Surname = updateUserData.Surname;
@@ -75,9 +80,9 @@ namespace WebApp.Controllers
         [ResponseType(typeof(IEnumerable<UserDataBindingModel>))]
         [HttpGet]
         [Authorize(Roles = "Controller")]
-        public IHttpActionResult GetAllUsers()
+        public IHttpActionResult GetAllAppUsers()
         {
-            List<UserDataBindingModel> ret = unitOfWork.Users.GetAllUsers().ToList();
+            List<UserDataBindingModel> ret = unitOfWork.Users.GetAllAppUsers().ToList();
 
             return Ok(ret);
         }

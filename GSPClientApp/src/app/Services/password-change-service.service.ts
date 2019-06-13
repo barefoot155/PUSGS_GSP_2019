@@ -10,7 +10,6 @@ import { HttpHeaders } from '@angular/common/http';
 export class PasswordChangeServiceService extends HttpService {
 
   updatePassword(model : ChangePasswordModel){
-    console.log(model);
     return this.http.post(this.url + "api/Account/ChangePassword", model);
   }
 }
