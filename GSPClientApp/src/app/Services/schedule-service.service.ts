@@ -34,6 +34,11 @@ export class ScheduleServiceService extends HttpService {
       return this.http.get<LineModel>(this.url + `api/Schedule/GetLineData?lineNumber=${lineNumber}`);
     }
 
+    getLineById(lineId: number) : Observable<LineModel>
+    {
+      return this.http.get<LineModel>(this.url + `api/Schedule/GetLineDataById?lineId=${lineId}`);
+    }
+
     getAllStations() : Observable<string[]>
     {
       return this.http.get<string[]>(this.url + "api/Schedule/GetAllStations");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
@@ -85,23 +86,41 @@ namespace WebApp.Persistence.Repository
 
         public bool UpdateLine(LineBindingModel line)
         {
-
-            foreach (Line lineItem in AppDbContext.Lines.ToList())
+            try
             {
-                if(lineItem.Id == line.Id)
+                foreach (Line lineItem in AppDbContext.Lines.ToList())
                 {
-                    lineItem.Number = line.Number;
-                    lineItem.LineType = line.LineType;
-                    lineItem.Stations = new List<Station>();
-                    foreach (string station in line.Stations)
+                    if (lineItem.Id == line.Id)
                     {
-                        lineItem.Stations.Add(GetStationByName(station));
+                        lineItem.Number = line.Number;
+                        lineItem.LineType = line.LineType;
+                        lineItem.Stations = new List<Station>();
+                        foreach (string station in line.Stations)
+                        {
+                            // check if current station is still in db
+                            if (AppDbContext.Stations.Any(s => s.Name == station))
+                            {
+                                lineItem.Stations.Add(GetStationByName(station));
+                            }
+                        }
+
+                        byte[] version = lineItem.RowVersion;
+
+                        if (version.SequenceEqual(line.RowVersion))
+                        {
+                            AppDbContext.Entry(lineItem).State = EntityState.Modified;
+                            AppDbContext.SaveChanges();
+                        }
+                        else
+                            throw new DbUpdateConcurrencyException();
+
+                        return true;
                     }
-
-                    AppDbContext.SaveChanges();
-
-                    return true;
                 }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return false;
             }
 
             return false;
@@ -138,6 +157,11 @@ namespace WebApp.Persistence.Repository
                 //conflict
                 return false;
             }
+        }
+
+        public Line GetLineById(int lineId)
+        {
+            return AppDbContext.Lines.Single(l => l.Id == lineId);
         }
     }
 }

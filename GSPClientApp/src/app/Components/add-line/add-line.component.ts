@@ -16,23 +16,39 @@ export class AddLineComponent implements OnInit {
   lineType : LineType =  LineType.Urban;
   lineNumber : string;
   selectedStations : string[] = [];
+  message : string = "";
 
   constructor(private lineService : LineServiceService, private scheduleService : ScheduleServiceService) { }
 
   ngOnInit() {
+    this.message = "";
     this.getAllStations();
   }
 
-  //TODO dodaj biranje stanica
   onSubmit(){
-    let lineData = new LineModel();
-    lineData.Number = this.lineNumber;
-    lineData.LineType = this.lineType;
-    lineData.Stations = this.selectedStations;
-    this.lineService.addNewLine(lineData).subscribe(
-      data =>{
-        console.log(data);
-    });
+    if(this.isValid()){
+      let lineData = new LineModel();
+      lineData.Number = this.lineNumber;
+      lineData.LineType = this.lineType;
+      lineData.Stations = this.selectedStations;
+      this.lineService.addNewLine(lineData).subscribe(
+        data =>{
+          console.log(data);
+          this.message = "Line added successfully";
+      });
+    }
+    else{
+      this.message = "Error! Line number is required";
+    }
+  }
+
+  isValid(){
+    if(this.lineNumber){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   getAllStations(){

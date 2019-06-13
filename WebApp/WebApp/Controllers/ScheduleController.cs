@@ -88,7 +88,7 @@ namespace WebApp.Controllers
         public IHttpActionResult GetLineData(string lineNumber)
         {
             Line line = unitOfWork.Lines.GetLineByLineNumber(lineNumber);
-            LineBindingModel lineBindingModel = new LineBindingModel() { Id = line.Id, Number = line.Number, LineType = line.LineType };
+            LineBindingModel lineBindingModel = new LineBindingModel() { Id = line.Id, Number = line.Number, LineType = line.LineType, RowVersion = line.RowVersion };
             lineBindingModel.Stations = new List<string>();
             foreach (Station station in line.Stations)
             {
@@ -96,6 +96,29 @@ namespace WebApp.Controllers
             }
 
             return Ok(lineBindingModel);
+        }
+
+        [ResponseType(typeof(LineBindingModel))]
+        [HttpGet]
+        [Route("GetLineDataById")]
+        public IHttpActionResult GetLineDataById(int lineId)
+        {
+            try
+            {
+                Line line = unitOfWork.Lines.GetLineById(lineId);
+                LineBindingModel lineBindingModel = new LineBindingModel() { Id = line.Id, Number = line.Number, LineType = line.LineType, RowVersion = line.RowVersion };
+                lineBindingModel.Stations = new List<string>();
+                foreach (Station station in line.Stations)
+                {
+                    lineBindingModel.Stations.Add(station.Name);
+                }
+
+                return Ok(lineBindingModel);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest();
+            }
         }
 
         [ResponseType(typeof(List<string>))]

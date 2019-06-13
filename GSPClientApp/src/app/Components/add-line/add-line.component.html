@@ -35,5 +35,10 @@
                 <button class="btn btn-success pull-right" (click)="onSubmit()">Add line</button>
             </td>
         </tr>
+        <tr class="warning" *ngIf="message != ''">
+                <th style="text-align:center" colspan="2">
+                    <label>{{message}}</label>
+                </th>
+        </tr>
     </tbody>
 </table>

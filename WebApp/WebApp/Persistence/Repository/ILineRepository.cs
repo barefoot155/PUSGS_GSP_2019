@@ -18,5 +18,6 @@ namespace WebApp.Persistence.Repository
         bool UpdateLine(LineBindingModel line);
         List<Station> GetAllStationsByLineNumber(string lineNumber);
         bool RemoveLine(int lineId);
+        Line GetLineById(int lineId);
     }
 }

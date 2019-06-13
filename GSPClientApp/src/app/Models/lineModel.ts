@@ -5,4 +5,5 @@ export class LineModel{
     Number : string;
     LineType : LineType;
     Stations : any[];
+    RowVersion : any[];
 }
